@@ -9,9 +9,12 @@ public class GridTileScript : MonoBehaviour
     public Material green;
     public Material brown;
 
+    string status;
+
     // Start is called before the first frame update
     void Start()
     {
+        status = "Free";
         GetComponent<Renderer>().material = brown;
     }
 
@@ -21,11 +24,22 @@ public class GridTileScript : MonoBehaviour
         
     }
 
-    void OnMouseOver() {
-        GetComponent<Renderer>().material = green;
+    void OnMouseEnter() {
+        if (status.Equals("Free")) {
+            GetComponent<Renderer>().material = green;
+        }
+    }
+
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0) && status.Equals("Free")) {
+            status = "Occupied";
+            GetComponent<Renderer>().material = red;
+        }
     }
 
     void OnMouseExit() {
-        GetComponent<Renderer>().material = brown;
+        if (status.Equals("Free")) {
+            GetComponent<Renderer>().material = brown;
+        }
     }
 }
