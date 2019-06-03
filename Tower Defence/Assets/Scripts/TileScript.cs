@@ -83,24 +83,39 @@ public class TileScript : MonoBehaviour
 		if (DistanceFromBottom == 0 && status.Equals("Free")) {
 			DistanceFromBottom = x;
 		}
+		if (isTopRowTile) {
+			transform.parent.GetComponent<GridScript>().setValidRoute(true);
+		}
 	}
 
 	void OnMouseEnter() {
+
 		if (status.Equals("Free")) {
+			status = "Selected";
+		}
+			
+
+		transform.parent.GetComponent<GridScript>().generateDistances();
+
+		if (status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() ) {
 			GetComponent<Renderer>().material = green;
+		}
+		if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() ) {
+			GetComponent<Renderer>().material = red;
 		}
 	}
 
 	private void OnMouseOver() {
-		if (Input.GetMouseButtonDown(0) && status.Equals("Free")) {
+		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute()) {
 			status = "Occupied";
 			GetComponent<Renderer>().material = black;
 		}
 	}
 
 	void OnMouseExit() {
-		if (status.Equals("Free")) {
+		if (status.Equals("Selected")) {
 			GetComponent<Renderer>().material = brown;
+			status = "Free";
 		}
 	}
 }

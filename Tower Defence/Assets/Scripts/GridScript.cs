@@ -6,6 +6,7 @@ public class GridScript : MonoBehaviour
 {
 
     public List<GameObject> tiles;
+	bool validRoute;
 
     // Start is called before the first frame update
     void Start()
@@ -20,10 +21,12 @@ public class GridScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        generateDistances();
+        //generateDistances();
     }
 
-    void generateDistances() {
+    public void generateDistances() {
+
+		validRoute = false;
 
         foreach (GameObject tile in tiles) {
             tile.GetComponent<TileScript>().resetDistance();
@@ -42,4 +45,12 @@ public class GridScript : MonoBehaviour
     public List<GameObject> getAllTiles() {
         return tiles;
     }
+
+	public void setValidRoute(bool val) {
+		validRoute = val;
+	}
+
+	public bool getValidRoute() {
+		return validRoute;
+	}
 }
