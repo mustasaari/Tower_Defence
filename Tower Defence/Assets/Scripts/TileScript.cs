@@ -15,10 +15,16 @@ public class TileScript : MonoBehaviour
 	public bool isBottomRowTile;
 	public bool isTopRowTile;
 
+	public Material red;
+	public Material green;
+	public Material brown;
+	public Material black;
+
     // Start is called before the first frame update
     void Start()
     {
 		status = "Free";
+		GetComponent<Renderer>().material = brown;
 
 		RaycastHit[] objects = Physics.SphereCastAll(transform.position, 6f, transform.up, 0f);
 
@@ -76,6 +82,25 @@ public class TileScript : MonoBehaviour
 	public void setDistanceFromBottom(int x) {
 		if (DistanceFromBottom == 0 && status.Equals("Free")) {
 			DistanceFromBottom = x;
+		}
+	}
+
+	void OnMouseEnter() {
+		if (status.Equals("Free")) {
+			GetComponent<Renderer>().material = green;
+		}
+	}
+
+	private void OnMouseOver() {
+		if (Input.GetMouseButtonDown(0) && status.Equals("Free")) {
+			status = "Occupied";
+			GetComponent<Renderer>().material = black;
+		}
+	}
+
+	void OnMouseExit() {
+		if (status.Equals("Free")) {
+			GetComponent<Renderer>().material = brown;
 		}
 	}
 }
