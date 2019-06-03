@@ -10,12 +10,8 @@ public class GridScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        int tilesId = 0;
-
         foreach (Transform child in transform) {
             tiles.Add(child.gameObject);
-            child.GetComponent<GridTileScript>().setID(tilesId);
-            tilesId++;
         }
 
         generateDistances();
@@ -30,14 +26,14 @@ public class GridScript : MonoBehaviour
     void generateDistances() {
 
         foreach (GameObject tile in tiles) {
-            tile.GetComponent<GridTileScript>().resetDistance();
+            tile.GetComponent<TileScript>().resetDistance();
         }
-
+			
         for (int i = 1; i < 90; i++) {
 
             foreach (GameObject tile in tiles) {
-                if (tile.GetComponent<GridTileScript>().getDistanceFromBottom() == i) {
-                    tile.GetComponent<GridTileScript>().setNeighborDistances(i + 1);
+                if (tile.GetComponent<TileScript>().getDistanceFromBottom() == i) {
+                    tile.GetComponent<TileScript>().setNeighborDistances(i + 1);
                 }
             }
         }

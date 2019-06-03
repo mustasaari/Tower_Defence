@@ -4,19 +4,26 @@ using UnityEngine;
 
 public class TileScript : MonoBehaviour
 {
+	public int DistanceFromBottom;
+	public string status;
 
 	public GameObject TileToLeft;
 	public GameObject TileToRight;
 	public GameObject TileToTop;
 	public GameObject TileToDown;
 
+	public bool isBottomRowTile;
+	public bool isTopRowTile;
+
     // Start is called before the first frame update
     void Start()
     {
+		status = "Free";
+
 		RaycastHit[] objects = Physics.SphereCastAll(transform.position, 6f, transform.up, 0f);
 
 		foreach (RaycastHit hit in objects) {
-			Debug.Log(hit.transform.gameObject.name);
+			//Debug.Log(hit.transform.gameObject.name);
 
 			if (hit.transform.gameObject.transform.position.x > transform.position.x && hit.transform.gameObject.transform.position.z == transform.position.z) {
 				TileToRight = hit.transform.gameObject;
@@ -38,4 +45,37 @@ public class TileScript : MonoBehaviour
     {
         
     }
+
+	public void resetDistance() {
+		if (isBottomRowTile) {
+			DistanceFromBottom = 1;
+		} else {
+			DistanceFromBottom = 0; // unset
+		}
+	}
+
+	public int getDistanceFromBottom() {
+		return DistanceFromBottom;
+	}
+
+	public void setNeighborDistances(int dist) {
+		if (TileToLeft != null) {
+			TileToLeft.GetComponent<TileScript>().setDistanceFromBottom(dist);
+		}
+		if (TileToRight != null) {
+			TileToRight.GetComponent<TileScript>().setDistanceFromBottom(dist);
+		}
+		if (TileToTop != null) {
+			TileToTop.GetComponent<TileScript>().setDistanceFromBottom(dist);
+		} 
+		if (TileToDown != null) {
+			TileToDown.GetComponent<TileScript>().setDistanceFromBottom(dist);
+		} 
+	}
+
+	public void setDistanceFromBottom(int x) {
+		if (DistanceFromBottom == 0 && status.Equals("Free")) {
+			DistanceFromBottom = x;
+		}
+	}
 }
