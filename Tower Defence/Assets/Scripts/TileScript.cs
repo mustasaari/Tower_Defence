@@ -6,6 +6,7 @@ public class TileScript : MonoBehaviour
 {
 	public int DistanceFromBottom;
 	public string status;
+	public string enemyWalkDirection = "Down";
 
 	public GameObject TileToLeft;
 	public GameObject TileToRight;
@@ -55,6 +56,7 @@ public class TileScript : MonoBehaviour
 	public void resetDistance() {
 		if (isBottomRowTile) {
 			DistanceFromBottom = 1;
+			enemyWalkDirection = "Down";
 		} else {
 			DistanceFromBottom = 0; // unset
 		}
@@ -66,22 +68,23 @@ public class TileScript : MonoBehaviour
 
 	public void setNeighborDistances(int dist) {
 		if (TileToLeft != null) {
-			TileToLeft.GetComponent<TileScript>().setDistanceFromBottom(dist);
+			TileToLeft.GetComponent<TileScript>().setDistanceFromBottom(dist, "Right");
 		}
 		if (TileToRight != null) {
-			TileToRight.GetComponent<TileScript>().setDistanceFromBottom(dist);
+			TileToRight.GetComponent<TileScript>().setDistanceFromBottom(dist, "Left");
 		}
 		if (TileToTop != null) {
-			TileToTop.GetComponent<TileScript>().setDistanceFromBottom(dist);
+			TileToTop.GetComponent<TileScript>().setDistanceFromBottom(dist, "Down");
 		} 
 		if (TileToDown != null) {
-			TileToDown.GetComponent<TileScript>().setDistanceFromBottom(dist);
+			TileToDown.GetComponent<TileScript>().setDistanceFromBottom(dist, "Up");
 		} 
 	}
 
-	public void setDistanceFromBottom(int x) {
+	public void setDistanceFromBottom(int x, string direction) {
 		if (DistanceFromBottom == 0 && status.Equals("Free")) {
 			DistanceFromBottom = x;
+			enemyWalkDirection = direction;
 		}
 		if (isTopRowTile) {
 			transform.parent.GetComponent<GridScript>().setValidRoute(true);
