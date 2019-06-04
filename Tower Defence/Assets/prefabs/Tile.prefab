@@ -110,6 +110,8 @@ MonoBehaviour:
   TileToRight: {fileID: 0}
   TileToTop: {fileID: 0}
   TileToDown: {fileID: 0}
+  towerPrefab: {fileID: -927199367670048503, guid: acf05d16513c82a43976963f9ad1c24f,
+    type: 3}
   isBottomRowTile: 0
   isTopRowTile: 0
   red: {fileID: 2100000, guid: 5e6dbe2b4d6f5d6438631da4cd0858a2, type: 2}

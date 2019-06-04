@@ -11,7 +11,7 @@ public class TileScript : MonoBehaviour
 	public GameObject TileToRight;
 	public GameObject TileToTop;
 	public GameObject TileToDown;
-
+	public GameObject towerPrefab; 	//tower
 	public bool isBottomRowTile;
 	public bool isTopRowTile;
 
@@ -109,6 +109,7 @@ public class TileScript : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute()) {
 			status = "Occupied";
 			GetComponent<Renderer>().material = black;
+			CreateTower();
 		}
 	}
 
@@ -117,5 +118,10 @@ public class TileScript : MonoBehaviour
 			GetComponent<Renderer>().material = brown;
 			status = "Free";
 		}
+	}
+
+	void CreateTower(){
+		Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+    GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
 	}
 }
