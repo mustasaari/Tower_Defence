@@ -121,7 +121,8 @@ public class TileScript : MonoBehaviour
 	}
 
 	void CreateTower(){
-		Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y + 1, this.transform.position.z);
+		Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y +0.1f, this.transform.position.z);
     GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
+		octo.transform.Rotate(-90,0,0);
 	}
 }
