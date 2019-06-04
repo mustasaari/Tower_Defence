@@ -109,7 +109,7 @@ public class TileScript : MonoBehaviour
 	}
 
 	private void OnMouseOver() {
-		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute()) {
+		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() && !isBottomRowTile && !isTopRowTile) {
 			status = "Occupied";
 			GetComponent<Renderer>().material = black;
 			CreateTower();

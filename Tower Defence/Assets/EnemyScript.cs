@@ -31,24 +31,24 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		calculator--;
+		transform.Translate(Vector3.forward * Time.deltaTime * 4f);
+        Vector3 newDir = new Vector3(0,0,0);
 
-		Vector3 newDir = Vector3.RotateTowards(transform.forward, Vector3.left, 0.01f,0.01f);
-		transform.rotation = Quaternion.LookRotation(newDir);
-		transform.Translate(Vector3.forward * Time.deltaTime * 2f);
-
-		/**
+		
 		if (direction.Equals("Down")) {
-			transform.Translate(Vector3.forward * Time.deltaTime * 2f);
-		}
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.back, 0.01f, 0.01f);
+        }
 		if (direction.Equals("Up")) {
-			transform.Translate(Vector3.forward * Time.deltaTime * -2f);
-		}
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.forward, 0.01f, 0.01f);
+        }
 		if (direction.Equals("Left")) {
-			transform.Translate(Vector3.left * Time.deltaTime * -2f);
+        newDir = Vector3.RotateTowards(transform.forward, Vector3.left, 0.01f, 0.01f);
 		}
 		if (direction.Equals("Right")) {
-			transform.Translate(Vector3.right * Time.deltaTime * -2f);
-		}*/
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.right, 0.01f, 0.01f);
+        }
+
+        transform.rotation = Quaternion.LookRotation(newDir);
 
     }
 }
