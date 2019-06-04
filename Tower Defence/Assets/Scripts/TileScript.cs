@@ -128,4 +128,8 @@ public class TileScript : MonoBehaviour
     GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
 		octo.transform.Rotate(-90,0,0);
 	}
+
+	public string getEnemyDirection() {
+		return enemyWalkDirection;
+	}
 }
