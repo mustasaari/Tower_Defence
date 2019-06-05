@@ -24,7 +24,7 @@ public class EnemyScript : MonoBehaviour
 
 			if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.down), out hit, 10f)) {
 				direction = hit.transform.gameObject.GetComponent<TileScript>().getEnemyDirection();
-				Debug.Log("Did Hit " +hit.transform.gameObject.name +"  " +direction);
+				//Debug.Log("Did Hit " +hit.transform.gameObject.name +"  " +direction);
 			}
 			calculator = 10;
 
