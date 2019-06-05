@@ -23,9 +23,6 @@ public class CameraScript : MonoBehaviour
         }
     }
 
-    //makes the camera rotate around "point" coords, rotating around its Y axis, 20 degrees per second times the speed modifier
-    // transform.RotateAround (point,new Vector3(0.0f,1.0f,0.0f),20 * Time.deltaTime * speedMod);
-
     void rotateLeft()
     {
         transform.RotateAround(point,new Vector3(0.0f,1.0f,0.0f),20 * Time.deltaTime * speedMod);
