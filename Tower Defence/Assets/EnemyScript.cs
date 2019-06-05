@@ -13,6 +13,7 @@ public class EnemyScript : MonoBehaviour
     {
 		direction = "Down";
 		calculator = 10;
+		transform.rotation = Quaternion.LookRotation(Vector3.back);
     }
 
     // Update is called once per frame

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GridTile
   - TowerTest
+  - Enemy
   layers:
   - Default
   - TransparentFX
