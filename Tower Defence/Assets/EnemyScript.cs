@@ -7,6 +7,7 @@ public class EnemyScript : MonoBehaviour
 
 	public string direction;
 	int calculator;
+    public int health = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -60,5 +61,19 @@ public class EnemyScript : MonoBehaviour
     public void destroyMinion() {
         GameManagerScript.removeMinionFromField();
         Destroy(gameObject);
+    }
+
+    public void takeDMG(int x)
+    {
+        health -= x;
+        checkHealth();
+    }
+
+    public void checkHealth()
+    {
+        if(health <= 0)
+        {
+            destroyMinion();
+        }
     }
 }

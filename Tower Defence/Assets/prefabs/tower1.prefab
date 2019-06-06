@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 155419488551296538}
   - component: {fileID: 9183736346039739436}
   - component: {fileID: 3192954175457663189}
+  - component: {fileID: 8569369630674897461}
   m_Layer: 0
   m_Name: tower1
   m_TagString: Untagged
@@ -77,3 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &8569369630674897461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3779488668554832905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bebcb0a60a5ad8d46b5626b890a0ee2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDMG: 0
+  baseRange: 5
+  range: 10
+  reloadTimer: 100
+  target: {fileID: 0}

@@ -30,7 +30,7 @@ public class TileScript : MonoBehaviour
 		RaycastHit[] objects = Physics.SphereCastAll(transform.position, 6f, transform.up, 0f);
 
 		foreach (RaycastHit hit in objects) {
-			//Debug.Log(hit.transform.gameObject.name);
+			//Debug.Log("SphereCast hit " + hit.transform.gameObject.name);
 
 			if (hit.transform.gameObject.transform.position.x > transform.position.x && hit.transform.gameObject.transform.position.z == transform.position.z) {
 				TileToRight = hit.transform.gameObject;
