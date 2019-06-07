@@ -114,6 +114,9 @@ public class TileScript : MonoBehaviour
 			GetComponent<Renderer>().material = brown;
 			CreateTower();
 		}
+        else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied")) {
+            openSlotMachine();
+        }
 	}
 
 	void OnMouseExit() {
@@ -133,4 +136,10 @@ public class TileScript : MonoBehaviour
 	public string getEnemyDirection() {
 		return enemyWalkDirection;
 	}
+
+    public void openSlotMachine() {
+        Debug.Log("Open Slot MAchine");
+        GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
+        slotmachine.GetComponent<SlotMachineScript>().openSlotMachine(transform.GetChild(0).gameObject);
+    }
 }

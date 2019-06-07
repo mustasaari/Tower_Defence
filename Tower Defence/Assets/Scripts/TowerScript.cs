@@ -122,4 +122,10 @@ public class TowerScript : MonoBehaviour
     {
         return this.attackDMG;
     }
+
+    private void OnMouseOver() {
+        if (Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied")) {
+            GetComponentInParent<TileScript>().openSlotMachine();
+        }
+    }
 }

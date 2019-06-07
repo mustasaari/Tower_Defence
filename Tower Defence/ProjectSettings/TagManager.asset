@@ -7,6 +7,7 @@ TagManager:
   - GridTile
   - TowerTest
   - Enemy
+  - SlotMachine
   layers:
   - Default
   - TransparentFX
