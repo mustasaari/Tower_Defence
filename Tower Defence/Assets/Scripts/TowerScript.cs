@@ -8,6 +8,8 @@ public class TowerScript : MonoBehaviour
     public float baseRange = 5f;
     public float range = 10f;
     public float reloadTimer = 100f;
+    public float attackSpeedBonus = 10;
+
     public GameObject target;
 
     // Start is called before the first frame update
@@ -33,7 +35,7 @@ public class TowerScript : MonoBehaviour
         else
         {
             //vähennä reloadTimer.
-            reloadTimer -= 10 * Time.deltaTime;
+            reloadTimer -= attackSpeedBonus * Time.deltaTime;
         }
     }
 
@@ -94,7 +96,7 @@ public class TowerScript : MonoBehaviour
     {
         // Debug.Log(this + " Bang! " + target);
         reloadTimer = 100f;
-        target.GetComponent<EnemyScript>().takeDMG(1);
+        target.GetComponent<EnemyScript>().takeDMG(attackDMG);
         drawDebugLine();
     }
 
@@ -113,14 +115,18 @@ public class TowerScript : MonoBehaviour
         return this.range;
     }
 
-    public void setAttack(float x)
+    public void setAttackDMG(int x)
     {
-        this.range = x + baseRange;
+        this.attackDMG = x;
     }
 
-    public int getAttack()
+    public int getAttackDMG()
     {
         return this.attackDMG;
+    }
+
+    public void setAttackSpeedBonus(float x) {
+        this.attackSpeedBonus = x;
     }
 
     private void OnMouseOver() {
