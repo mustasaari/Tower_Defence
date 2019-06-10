@@ -58,6 +58,12 @@ public class SlotMachineScript : MonoBehaviour
 
     public void rollAll() {
 
+        transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().startSpin();
+        transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().startSpin();
+        transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().startSpin();
+        transform.GetChild(4).gameObject.GetComponent<SlotWheelScript>().startSpin();
+        transform.GetChild(5).gameObject.GetComponent<SlotWheelScript>().startSpin();
+
         for (int i = 0; i < 5; i++) {   //set wheels to random values
             wheels[i] = Random.Range(1, 4);
         }
