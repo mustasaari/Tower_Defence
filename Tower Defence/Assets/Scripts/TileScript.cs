@@ -15,15 +15,16 @@ public class TileScript : MonoBehaviour
 	public GameObject towerPrefab; 	//tower
 	public bool isBottomRowTile;
 	public bool isTopRowTile;
-
 	public Material red;
 	public Material green;
 	public Material brown;
 	public Material black;
+	public static bool cursorActive;
 
     // Start is called before the first frame update
     void Start()
     {
+		cursorActive = true;
 		status = "Free";
 		GetComponent<Renderer>().material = brown;
 
@@ -93,30 +94,36 @@ public class TileScript : MonoBehaviour
 
 	void OnMouseEnter() {
 
-		if (status.Equals("Free")) {
+		if (status.Equals("Free") && cursorActive && GameManagerScript.gamePhase.Equals("Build")) {
 			status = "Selected";
 		}
 			
 
 		transform.parent.GetComponent<GridScript>().generateDistances();
 
-		if (status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() ) {
+		if (status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() && cursorActive && GameManagerScript.gamePhase.Equals("Build")) {
 			GetComponent<Renderer>().material = green;
 		}
-		if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() ) {
+		if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() && cursorActive && GameManagerScript.gamePhase.Equals("Build")) {
 			GetComponent<Renderer>().material = red;
 		}
 	}
 
 	private void OnMouseOver() {
-		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() && !isBottomRowTile && !isTopRowTile) {
+		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
+		&& !isBottomRowTile && !isTopRowTile) {
 			status = "Occupied";
 			GetComponent<Renderer>().material = brown;
 			CreateTower();
 		}
-        else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied")) {
+        else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied") && cursorActive  && GameManagerScript.gamePhase.Equals("Build")) {
             openSlotMachine();
         }
+		else if (GameManagerScript.gamePhase.Equals("Attack") && status.Equals("Selected")){
+			GetComponent<Renderer>().material = brown;
+			status = "Free";
+			transform.parent.GetComponent<GridScript>().generateDistances();
+		}
 	}
 
 	void OnMouseExit() {
@@ -128,7 +135,7 @@ public class TileScript : MonoBehaviour
 
 	void CreateTower(){
 		Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y +0.5f, this.transform.position.z);
-    GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
+    	GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
 		//octo.transform.Rotate(-90,0,0);
 		octo.transform.SetParent(this.transform);
 	}

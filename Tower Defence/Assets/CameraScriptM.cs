@@ -20,9 +20,11 @@ public class CameraScriptM : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(1)) {
             Cursor.lockState = CursorLockMode.Locked;
+            TileScript.cursorActive = false;
         }
         if (Input.GetMouseButtonUp(1)) {
             Cursor.lockState = CursorLockMode.None;
+            TileScript.cursorActive = true;
         }
 
         if (Input.GetMouseButton(1)) {

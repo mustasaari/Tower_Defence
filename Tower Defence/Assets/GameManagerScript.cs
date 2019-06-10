@@ -50,6 +50,7 @@ static int activeMinionsOnField;
 
     public void startAttack() {
         if (Input.GetButtonDown("Jump") && gamePhase.Equals("Build")) {
+            TileScript.cursorActive = false;
             gamePhase = "Attack";
             musteringPoints = 20 + (wave * (wave + wave + wave) );
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
@@ -137,6 +138,7 @@ static int activeMinionsOnField;
             gamePhase = "Build";
             wave++;
             Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
+            TileScript.cursorActive = true;
         }
     } 
 
