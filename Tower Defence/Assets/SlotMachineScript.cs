@@ -7,11 +7,13 @@ public class SlotMachineScript : MonoBehaviour
     GameObject towerToBeEdited;
 
     int[] wheels = new int[5];
+    bool cameraEnabled;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        cameraEnabled = false;
+        GetComponentInChildren<Camera>().enabled = true;
     }
 
     // Update is called once per frame
@@ -21,13 +23,24 @@ public class SlotMachineScript : MonoBehaviour
             Debug.Log("R key was pressed for reroll.");
             rollAll();
         }
+
+        Vector3 newDir = new Vector3(0, 0, 0);
+        if (cameraEnabled) {
+            newDir = Vector3.RotateTowards(transform.GetChild(6).gameObject.transform.forward, Vector3.forward, 0.06f, 0.06f);
+            transform.GetChild(6).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
+        }
+        else {
+            newDir = Vector3.RotateTowards(transform.GetChild(6).gameObject.transform.forward, Vector3.left, 0.06f, 0.06f);
+            transform.GetChild(6).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
+        }
     }
 
     public void openSlotMachine(GameObject tower) {
         Debug.Log("Slotmachine opens");
         towerToBeEdited = tower;
         Debug.Log("Tower : " + towerToBeEdited);
-        GetComponentInChildren<Camera>().enabled = true;
+        //GetComponentInChildren<Camera>().enabled = true;
+        cameraEnabled = true;
     }
 
     private void OnMouseOver() {
@@ -39,7 +52,8 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void closeSlotMachine() {
-        GetComponentInChildren<Camera>().enabled = false;
+        //GetComponentInChildren<Camera>().enabled = false;
+        cameraEnabled = false;
     }
 
     public void rollAll() {
