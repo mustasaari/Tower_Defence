@@ -2374,6 +2374,7 @@ MonoBehaviour:
   spawn9: {fileID: 680490637}
   spawn10: {fileID: 1243090885}
   enemy1: {fileID: 1401035011850875160, guid: 50551ba3538f40e4f84077cc8bc0a714, type: 3}
+  enemy2: {fileID: 6427738172573618113, guid: 4f6170548b64b5a46a9c263d4c351fc9, type: 3}
 --- !u!4 &439755127
 Transform:
   m_ObjectHideFlags: 0

@@ -8,6 +8,8 @@ public class EnemyScript : MonoBehaviour
 	public string direction;
 	int calculator;
     public int health = 10;
+    public float speed;
+    public int cost;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,7 @@ public class EnemyScript : MonoBehaviour
 		}
 
 		calculator--;
-		transform.Translate(Vector3.forward * Time.deltaTime * 4f);
+		transform.Translate(Vector3.forward * Time.deltaTime * speed);
         Vector3 newDir = new Vector3(0,0,0);
 
 		
@@ -44,7 +46,7 @@ public class EnemyScript : MonoBehaviour
             newDir = Vector3.RotateTowards(transform.forward, Vector3.forward, 0.01f, 0.01f);
         }
 		if (direction.Equals("Left")) {
-        newDir = Vector3.RotateTowards(transform.forward, Vector3.left, 0.01f, 0.01f);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.left, 0.01f, 0.01f);
 		}
 		if (direction.Equals("Right")) {
             newDir = Vector3.RotateTowards(transform.forward, Vector3.right, 0.01f, 0.01f);
@@ -75,5 +77,8 @@ public class EnemyScript : MonoBehaviour
         {
             destroyMinion();
         }
+    }
+    public int getCost(){
+        return this.cost;
     }
 }
