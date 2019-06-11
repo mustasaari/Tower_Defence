@@ -8,6 +8,7 @@ TagManager:
   - TowerTest
   - Enemy
   - SlotMachine
+  - CameraRig
   layers:
   - Default
   - TransparentFX
