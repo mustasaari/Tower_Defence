@@ -41,6 +41,10 @@ public class SlotMachineScript : MonoBehaviour
         Debug.Log("Tower : " + towerToBeEdited);
         //GetComponentInChildren<Camera>().enabled = true;
         cameraEnabled = true;
+
+        //send zoom command to camera
+        GameObject camera = GameObject.FindGameObjectWithTag("CameraRig");
+        camera.GetComponent<CameraScriptM>().towerZoomIn(towerToBeEdited);
     }
 
     private void OnMouseOver() {
@@ -54,6 +58,10 @@ public class SlotMachineScript : MonoBehaviour
     public void closeSlotMachine() {
         //GetComponentInChildren<Camera>().enabled = false;
         cameraEnabled = false;
+
+        //disable came tower zoom
+        GameObject camera = GameObject.FindGameObjectWithTag("CameraRig");
+        camera.GetComponent<CameraScriptM>().towerZoomOut();
     }
 
     public void rollAll() {
