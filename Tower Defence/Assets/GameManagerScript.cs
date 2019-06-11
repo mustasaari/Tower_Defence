@@ -24,7 +24,7 @@ public GameObject enemy2;
 
 //Specified in spawnMinions
 private GameObject spawndable;
-int sleep = 10;
+public float sleep = 0;
 
 int musteringPoints;
 static int activeMinionsOnField;
@@ -72,69 +72,71 @@ static int activeMinionsOnField;
             int rndEnemy = Random.Range(1, 101);
             if(rndEnemy > 0 && rndEnemy < 50){
                 spawndable = enemy1;
+                sleep = 5;
             }
             else if (rndEnemy >= 50 && rndEnemy <= 100){
+                sleep = 3;
                 spawndable = enemy2;
             }
 
             if (musteringPoints > 0) {
                 if (rnd == 1) {
                     Instantiate(spawndable, spawn1.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 2) {
                     Instantiate(spawndable, spawn2.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 3) {
                     Instantiate(spawndable, spawn3.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 4) {
                     Instantiate(spawndable, spawn4.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 5) {
                     Instantiate(spawndable, spawn5.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 6) {
                     Instantiate(spawndable, spawn6.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 7) {
                     Instantiate(spawndable, spawn7.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 8) {
                     Instantiate(spawndable, spawn8.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 9) {
                     Instantiate(spawndable, spawn9.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
                 else if (rnd == 10) {
                     Instantiate(spawndable, spawn10.transform.position, Quaternion.identity);
-                    sleep = 90;
+
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
                 }
@@ -142,8 +144,10 @@ static int activeMinionsOnField;
             }
         }
 
-        sleep--;
-
+        if (gamePhase.Equals("Attack")){
+            sleep -= 1 * Time.deltaTime;
+        }
+        
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
             wave++;

@@ -10,6 +10,7 @@ public class EnemyScript : MonoBehaviour
     public int health = 10;
     public float speed;
     public int cost;
+    private float rotSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +18,13 @@ public class EnemyScript : MonoBehaviour
 		direction = "Down";
 		calculator = 10;
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
+        Debug.Log(gameObject.transform.name);
+        if(gameObject.transform.name == "SpeedFly(Clone)"){
+            rotSpeed = 0.025f;
+        }
+        else if(gameObject.transform.name == "LadyBug(Clone)"){
+            rotSpeed = 0.01f;
+        }
     }
 
     // Update is called once per frame
@@ -40,16 +48,16 @@ public class EnemyScript : MonoBehaviour
 
 		
 		if (direction.Equals("Down")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.back, 0.01f, 0.01f);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.back, rotSpeed, rotSpeed);
         }
 		if (direction.Equals("Up")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.forward, 0.01f, 0.01f);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.forward, rotSpeed, rotSpeed);
         }
 		if (direction.Equals("Left")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.left, 0.01f, 0.01f);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.left, rotSpeed, rotSpeed);
 		}
 		if (direction.Equals("Right")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.right, 0.01f, 0.01f);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.right, rotSpeed, rotSpeed);
         }
 
         transform.rotation = Quaternion.LookRotation(newDir);
