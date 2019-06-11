@@ -9,23 +9,25 @@ public class CameraScriptM : MonoBehaviour
     private float pitch = 0.0f;
     // Start is called before the first frame update
     private float startHeight;
+    string cameraMode;
 
-    bool towerZoomEnabled;
     GameObject towerZoomGameObject;
+    float zoomYaw;
+    float zoomDistance;
 
     Vector3 positionBeforeZoom;
     Quaternion rotationBeforeZoom;
 
     void Start()
     {
+        cameraMode = "User";
         startHeight = transform.position.y;
-        towerZoomEnabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!towerZoomEnabled) {
+        if (cameraMode.Equals("User")) {
 
             if (Input.GetMouseButtonDown(1)) {
                 Cursor.lockState = CursorLockMode.Locked;
@@ -69,41 +71,65 @@ public class CameraScriptM : MonoBehaviour
             this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(55 + (transform.position.y - startHeight) / 1.5f, yaw, 0.0f);
         }
         //Tower Zoom
-        else {
+        if (cameraMode.Equals("Zoom")) {
             GameObject child = this.gameObject.transform.GetChild(0).gameObject;
 
-            if (Vector3.Distance(child.transform.position, towerZoomGameObject.transform.position) > 20 ) {
-                transform.position = Vector3.MoveTowards(transform.position, towerZoomGameObject.transform.position, 1f);
+            //if (Vector3.Distance(child.transform.position, towerZoomGameObject.transform.position) > 20 ) {
+                transform.position = Vector3.MoveTowards(transform.position, towerZoomGameObject.transform.position +new Vector3(7,10,-15), zoomDistance/35);
+
+            if (zoomYaw > 180 && zoomYaw < 360) {
+                zoomYaw += (360 - zoomYaw) / zoomDistance * 5;
+            }
+            else if (zoomYaw < 180 && zoomYaw > 0) {
+                zoomYaw -= (zoomYaw) / zoomDistance * 5;
             }
 
-            //child.transform.LookAt(towerZoomGameObject.transform.position);
-            //child.transform.rotation = Quaternion.RotateTowards(child.transform.rotation, towerZoomGameObject.transform.rotation, 0.2f);
-            //Vector3 direction = towerZoomGameObject.transform.position;
-            //Quaternion toRotation = Quaternion.FromToRotation(child.transform.forward, direction);
-            //child.transform.rotation = Quaternion.Lerp(child.transform.rotation, toRotation, 1f * Time.deltaTime);
+            transform.eulerAngles = new Vector3(0f, zoomYaw, 0.0f);
+            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(55 + (transform.position.y - startHeight) / 1.5f, zoomYaw, 0.0f);
+        }
 
-            // fast rotation
-            //float rotSpeed = 360f;
-            // distance between target and the actual rotating object
-            //Vector3 D = towerZoomGameObject.transform.position - child.transform.position;
-            // calculate the Quaternion for the rotation
-            //Quaternion rot = Quaternion.Slerp(child.transform.rotation, Quaternion.LookRotation(D), rotSpeed * Time.deltaTime);
-            //Apply the rotation 
-            //child.transform.rotation = rot;
-            // put 0 on the axys you do not want for the rotation object to rotate
-            //child.transform.eulerAngles = new Vector3(0, child.transform.eulerAngles.z, 0 );
+        if (cameraMode.Equals("ZoomOut")) {
+            transform.position = Vector3.MoveTowards(transform.position, positionBeforeZoom, zoomDistance/35);
+
+            if (zoomYaw > yaw) {
+                //zoomYaw -= 2;
+                zoomYaw -= (zoomYaw - yaw) / zoomDistance * 5;
+            }
+            if (zoomYaw < yaw) {
+                //zoomYaw += 2;
+                zoomYaw += (yaw - zoomYaw) / zoomDistance * 5;
+            }
+
+            transform.eulerAngles = new Vector3(0f, zoomYaw, 0.0f);
+            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(55 + (transform.position.y - startHeight) / 1.5f, zoomYaw, 0.0f);
+
+            if (transform.position == positionBeforeZoom) {
+                cameraMode = "User";
+            }
         }
     }
 
     public void towerZoomIn(GameObject tower) {
+        cameraMode = "Zoom";
         towerZoomGameObject = tower;
-        towerZoomEnabled = true;
+        //zoomYaw = yaw;
+        //zoomYaw = zoomYaw % 360;
+        yaw = yaw % 360;
+        Debug.Log("Yaw before : " + yaw);
+        //Muuta yaw positiiviseksi
+        if (yaw < 0) {
+            yaw = 360 + yaw;
+        }
+        zoomYaw = yaw;
+        Debug.Log("Yaw after : " + yaw);
         positionBeforeZoom = transform.position;
         rotationBeforeZoom = this.gameObject.transform.GetChild(0).gameObject.transform.rotation;
+
+        zoomDistance = Vector3.Distance(transform.position, towerZoomGameObject.transform.position);
 
     }
 
     public void towerZoomOut() {
-        towerZoomEnabled = false;
+        cameraMode = "ZoomOut";
     }
 }
