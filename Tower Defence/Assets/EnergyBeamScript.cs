@@ -14,26 +14,39 @@ public class EnergyBeamScript : MonoBehaviour
     {
         duration = 100;
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
-        GetComponent<LineRenderer>().SetPosition(1, transform.position +new Vector3(10,10,-20));
+        GetComponent<LineRenderer>().SetPosition(1, transform.position +new Vector3(0,0,0));
+
+        //line = GetComponent<LineRenderer>();
+        //LineRenderer line;
     }
 
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(transform.position, target.transform.position);
-        GetComponent<LineRenderer>().material.mainTextureScale = new Vector2(distance * 2, 1);
-        GetComponent<LineRenderer>().material.mainTextureOffset = new Vector2(-1 * Time.time, 1);
+        if (target != null) {
+            distance = Vector3.Distance(transform.position, target.transform.position);
+        }
 
-        GetComponent<LineRenderer>().SetPosition(1, target.transform.position - transform.position);
+        GetComponent<LineRenderer>().material.mainTextureScale = new Vector2(0.1f * distance, 1);
+        GetComponent<LineRenderer>().material.mainTextureOffset = new Vector2(-3f * Time.time, 1);
 
-        duration -= 1 * Time.deltaTime;
+        //line.material.mainTextureOffset = new Vector2(Time.time * -5f, 0);    //olisi pitänyt toimia
+        //line.material.mainTextureScale = new Vector2(0.3f, 1f);
 
+
+        //jos target on yhä elossa, päivitä location targettiin
+        if (target != null) {
+            GetComponent<LineRenderer>().SetPosition(1, target.transform.position + new Vector3(0, 1, 0));
+        }
+
+        //death timer
+        duration -= 50 * Time.deltaTime;
         if ( duration < 0) {
             Destroy(gameObject);
         }
     }
 
     public void endPosition(GameObject endPos) {
-
+        target = endPos;
     }
 }

@@ -50,6 +50,8 @@ MonoBehaviour:
   reloadTimer: 100
   attackSpeedBonus: 10
   target: {fileID: 0}
+  laserPrefab: {fileID: 2090972765259016677, guid: 2fa3b613a885cdf46a5d97a94fc7a9d2,
+    type: 3}
 --- !u!1001 &5222801478163952117
 PrefabInstance:
   m_ObjectHideFlags: 0

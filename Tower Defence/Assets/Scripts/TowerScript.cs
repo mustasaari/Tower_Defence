@@ -11,6 +11,7 @@ public class TowerScript : MonoBehaviour
     public float attackSpeedBonus = 10;
 
     public GameObject target;
+    public GameObject laserPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -96,6 +97,7 @@ public class TowerScript : MonoBehaviour
     {
         // Debug.Log(this + " Bang! " + target);
         reloadTimer = 100f;
+        drawLaser();
         target.GetComponent<EnemyScript>().takeDMG(attackDMG);
         drawDebugLine();
     }
@@ -103,6 +105,11 @@ public class TowerScript : MonoBehaviour
     public void drawDebugLine()
     {
         Debug.DrawLine(transform.position + new Vector3(0,5,0), target.transform.position, Color.red, 2.5f);
+    }
+
+    public void drawLaser() {
+        GameObject laser = Instantiate(laserPrefab, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        laser.GetComponent<EnergyBeamScript>().endPosition(target);
     }
 
     public void setRange(float x)
