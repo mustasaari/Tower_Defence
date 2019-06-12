@@ -4,38 +4,42 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
+    private static GameObject uiCanvas;
+    public static string gamePhase;
+    public static int wave;
+    public static int leafHP;
+    private static int money;
+    public static int buildableTowers;
+    public GameObject spawn1;
+    public GameObject spawn2;
+    public GameObject spawn3;
+    public GameObject spawn4;
+    public GameObject spawn5;
+    public GameObject spawn6;
+    public GameObject spawn7;
+    public GameObject spawn8;
+    public GameObject spawn9;
+    public GameObject spawn10;
+    public GameObject enemy1;
+    public GameObject enemy2;
 
-public static string gamePhase;
-public static int wave;
-public static int leafHP;
-public GameObject spawn1;
-public GameObject spawn2;
-public GameObject spawn3;
-public GameObject spawn4;
-public GameObject spawn5;
-public GameObject spawn6;
-public GameObject spawn7;
-public GameObject spawn8;
-public GameObject spawn9;
-public GameObject spawn10;
+    //Specified in spawnMinions
+    private GameObject spawndable;
+    public float sleep = 0;
 
-public GameObject enemy1;
-public GameObject enemy2;
-
-//Specified in spawnMinions
-private GameObject spawndable;
-public float sleep = 0;
-
-int musteringPoints;
-static int activeMinionsOnField;
+    int musteringPoints;
+    static int activeMinionsOnField;
 
     // Start is called before the first frame update
     void Start()
     {
+        uiCanvas = GameObject.FindWithTag("UI");
         gamePhase = "Build";
         wave = 1;
         leafHP = 100;
         activeMinionsOnField = 0;
+        money = 50;
+        buildableTowers = 3;
     }
 
     // Update is called once per frame
@@ -151,16 +155,46 @@ static int activeMinionsOnField;
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
             wave++;
+            money += 50;
+            buildableTowers = 3;
+            uiCanvas.GetComponent<CanvasScript>().updateWave(wave);
+            uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
+            uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
             Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
             TileScript.cursorActive = true;
         }
     } 
 
-    public void eatLeafHP() {   //player hitpoints
+    public static void eatLeafHP() {   //player hitpoints
         leafHP--;
+        uiCanvas.GetComponent<CanvasScript>().updateLife(leafHP);
     }
 
     public static void removeMinionFromField() {
         activeMinionsOnField--;
+    }
+
+    public static void reduceMoney(){
+        money -= 10;
+        uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
+    }
+    public static void reduceTowers(){
+        buildableTowers--;
+        uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+    }
+
+    public static int getLeafHP(){
+    return leafHP;
+    }
+
+    public static int getMoney(){
+        return money;
+    }
+    
+    public static int getWave(){
+        return wave;
+    }
+    public static int getTowers(){
+        return buildableTowers;
     }
 }

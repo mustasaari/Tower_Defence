@@ -63,6 +63,7 @@ public class EnemyScript : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(newDir);
 
         if (transform.position.z < -70) {
+            GameManagerScript.eatLeafHP();
             destroyMinion();
         }
 

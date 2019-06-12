@@ -78,6 +78,7 @@ public class SlotMachineScript : MonoBehaviour
         Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2] + " " + wheels[3] + " " + wheels[4]);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackDMG(10); //reset dmg to base
         applyResults();
+        GameManagerScript.reduceMoney();
     }
 
     public void applyResults() {

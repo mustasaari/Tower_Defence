@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - SlotMachine
   - CameraRig
+  - UI
   layers:
   - Default
   - TransparentFX

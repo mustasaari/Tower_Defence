@@ -111,7 +111,7 @@ public class TileScript : MonoBehaviour
 
 	private void OnMouseOver() {
 		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
-		&& !isBottomRowTile && !isTopRowTile) {
+		&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0) {
 			status = "Occupied";
 			GetComponent<Renderer>().material = brown;
 			CreateTower();
@@ -135,9 +135,10 @@ public class TileScript : MonoBehaviour
 
 	void CreateTower(){
 		Vector3 newPos = new Vector3(this.transform.position.x, this.transform.position.y +0.5f, this.transform.position.z);
-    	GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
+		GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
 		//octo.transform.Rotate(-90,0,0);
 		octo.transform.SetParent(this.transform);
+		GameManagerScript.reduceTowers();
 	}
 
 	public string getEnemyDirection() {
