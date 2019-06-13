@@ -6,7 +6,7 @@ public class SlotMachineScript : MonoBehaviour
 {
     GameObject towerToBeEdited;
 
-    int[] wheels = new int[5];
+    int[] wheels = new int[3];
     bool cameraEnabled;
 
     // Start is called before the first frame update
@@ -26,12 +26,12 @@ public class SlotMachineScript : MonoBehaviour
 
         Vector3 newDir = new Vector3(0, 0, 0);
         if (cameraEnabled) {
-            newDir = Vector3.RotateTowards(transform.GetChild(6).gameObject.transform.forward, Vector3.forward, 0.06f, 0.06f);
-            transform.GetChild(6).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
+            newDir = Vector3.RotateTowards(transform.GetChild(4).gameObject.transform.forward, Vector3.forward, 0.06f, 0.06f);
+            transform.GetChild(4).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
         }
         else {
-            newDir = Vector3.RotateTowards(transform.GetChild(6).gameObject.transform.forward, Vector3.left, 0.06f, 0.06f);
-            transform.GetChild(6).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
+            newDir = Vector3.RotateTowards(transform.GetChild(4).gameObject.transform.forward, Vector3.left, 0.06f, 0.06f);
+            transform.GetChild(4).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
         }
     }
 
@@ -69,13 +69,11 @@ public class SlotMachineScript : MonoBehaviour
         transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().startSpin();
         transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().startSpin();
         transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().startSpin();
-        transform.GetChild(4).gameObject.GetComponent<SlotWheelScript>().startSpin();
-        transform.GetChild(5).gameObject.GetComponent<SlotWheelScript>().startSpin();
 
-        for (int i = 0; i < 5; i++) {   //set wheels to random values
+        for (int i = 0; i < 3; i++) {   //set wheels to random values
             wheels[i] = Random.Range(1, 4);
         }
-        Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2] + " " + wheels[3] + " " + wheels[4]);
+        Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2]);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackDMG(10); //reset dmg to base
         applyResults();
         GameManagerScript.reduceMoney();
@@ -88,15 +86,15 @@ public class SlotMachineScript : MonoBehaviour
 
         if ( towerToBeEdited != null) {
 
-            for (int i = 0; i <= 4; i++) {
+            for (int i = 0; i <= 2; i++) {
                 if (wheels[i] == 1) {   //   1 == ATTACK DMG
-                    attackToSend = attackToSend * 1.5f;
+                    attackToSend = attackToSend * 2f;
                 }
                 if (wheels[i] == 2) {   //   2 == RANGE
-                    rangeToSend = rangeToSend * 1.5f;
+                    rangeToSend = rangeToSend * 2f;
                 }
                 if (wheels[i] == 3) {   //   3 == SPEED
-                    attackSpeedToSend = attackSpeedToSend * 1.5f;
+                    attackSpeedToSend = attackSpeedToSend * 2f;
                 }
             }
 

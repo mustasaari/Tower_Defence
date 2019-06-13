@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnergyBeamScript : MonoBehaviour
 {
     public GameObject target;
+    public Transform targetPos;
 
     float duration;
     float distance;
@@ -14,7 +15,7 @@ public class EnergyBeamScript : MonoBehaviour
     {
         duration = 100;
         GetComponent<LineRenderer>().SetPosition(0, transform.position);
-        GetComponent<LineRenderer>().SetPosition(1, transform.position +new Vector3(0,0,0));
+        //GetComponent<LineRenderer>().SetPosition(1, transform.position +new Vector3(0,20,0));
 
         //line = GetComponent<LineRenderer>();
         //LineRenderer line;
@@ -48,5 +49,7 @@ public class EnergyBeamScript : MonoBehaviour
 
     public void endPosition(GameObject endPos) {
         target = endPos;
+        targetPos = endPos.transform; //tallennetaan tieto myös positiosta joka ei muutu jos gameobject katoaa
+        GetComponent<LineRenderer>().SetPosition(1, targetPos.position + new Vector3(0, 1, 0));
     }
 }
