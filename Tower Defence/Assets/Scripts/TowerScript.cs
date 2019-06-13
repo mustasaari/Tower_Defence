@@ -14,15 +14,17 @@ public class TowerScript : MonoBehaviour
     public GameObject target;
     public GameObject laserPrefab;
 
-    int[] wheels = new int[3];
+    public int[] wheels = new int[3];
 
     // Start is called before the first frame update
     void Start()
     {
+        GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
+        slotmachine.GetComponent<SlotMachineScript>().firstTimeRandomization(this.gameObject);
+
         setRange(10f);
-        GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
+        //GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
         Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
-        
     }
 
     // Update is called once per frame

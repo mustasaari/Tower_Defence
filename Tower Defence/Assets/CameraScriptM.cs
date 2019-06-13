@@ -115,13 +115,13 @@ public class CameraScriptM : MonoBehaviour
         //zoomYaw = yaw;
         //zoomYaw = zoomYaw % 360;
         yaw = yaw % 360;
-        Debug.Log("Yaw before : " + yaw);
+        //Debug.Log("Yaw before : " + yaw);
         //Muuta yaw positiiviseksi
         if (yaw < 0) {
             yaw = 360 + yaw;
         }
         zoomYaw = yaw;
-        Debug.Log("Yaw after : " + yaw);
+        //Debug.Log("Yaw after : " + yaw);
         positionBeforeZoom = transform.position;
         rotationBeforeZoom = this.gameObject.transform.GetChild(0).gameObject.transform.rotation;
 
