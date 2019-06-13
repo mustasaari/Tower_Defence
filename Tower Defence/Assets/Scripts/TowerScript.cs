@@ -14,10 +14,14 @@ public class TowerScript : MonoBehaviour
     public GameObject target;
     public GameObject laserPrefab;
 
+    int[] wheels = new int[3];
+
     // Start is called before the first frame update
     void Start()
     {
         setRange(10f);
+        GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
+        Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
         
     }
 
@@ -143,6 +147,14 @@ public class TowerScript : MonoBehaviour
 
     public int getMoneyProduction() {
         return moneyProduction;
+    }
+
+    public void setWheels(int[] x) {
+        wheels = x;
+    }
+
+    public int[] getWheels() {
+        return wheels;
     }
 
     private void OnMouseOver() {

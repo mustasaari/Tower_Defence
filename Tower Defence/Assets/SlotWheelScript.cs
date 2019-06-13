@@ -15,6 +15,7 @@ public class SlotWheelScript : MonoBehaviour
     void Start()
     {
         remainingRotation = 0;
+        myFutureSymbol = 2000;
     }
 
     // Update is called once per frame
@@ -45,5 +46,18 @@ public class SlotWheelScript : MonoBehaviour
     public void startSpin(int symbol) {
         remainingRotation += 360;
         myFutureSymbol = symbol;
+    }
+
+    public void setSymbolNow(int symbol) {
+
+        Debug.Log("SYMBOL " + symbol);
+
+        //HIDE SYMBOLS ALL
+        int childCount = transform.GetChild(0).gameObject.transform.childCount;
+        for (int i = 0; i < childCount; i++) {
+            transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        transform.GetChild(0).gameObject.transform.GetChild(symbol -1).gameObject.SetActive(true);
     }
 }

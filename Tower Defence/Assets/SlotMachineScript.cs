@@ -6,6 +6,7 @@ public class SlotMachineScript : MonoBehaviour
 {
     GameObject towerToBeEdited;
 
+    int amountOfWheelSymbolsInGame = 4;
     int[] wheels = new int[3];
     bool cameraEnabled;
 
@@ -38,10 +39,18 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void openSlotMachine(GameObject tower) {
-        Debug.Log("Slotmachine opens");
+        //Debug.Log("Slotmachine opens");
         towerToBeEdited = tower;
-        Debug.Log("Tower : " + towerToBeEdited);
+        //Debug.Log("Tower : " + towerToBeEdited);
         //GetComponentInChildren<Camera>().enabled = true;
+
+        wheels = tower.GetComponent<TowerScript>().getWheels();
+        transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[0]);
+        transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[1]);
+        transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[2]);
+
+        applyResults();
+
         cameraEnabled = true;
 
         //send zoom command to camera
@@ -69,8 +78,7 @@ public class SlotMachineScript : MonoBehaviour
     public void rollAll() {
 
         for (int i = 0; i < 3; i++) {   //set wheels to random values
-            wheels[i] = Random.Range(1, 5);     // 1dmf 2range 3speed 4money
-
+            wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
             transform.GetChild(i + 1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[i]);
         }
 
@@ -120,9 +128,22 @@ public class SlotMachineScript : MonoBehaviour
             towerToBeEdited.GetComponent<TowerScript>().setRange(rangeToSend);
             towerToBeEdited.GetComponent<TowerScript>().setAttackSpeedBonus(attackSpeedToSend);
             towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(moneyToSend);
+            towerToBeEdited.GetComponent<TowerScript>().setWheels(wheels);
 
             GetComponentInChildren<TextMesh>().text = "Attack : " +(int)attackToSend +"\nSpeed : " +(int)attackSpeedToSend +"\nRange : " +(int)rangeToSend +"\nMoney per wave : " +moneyToSend;
 
         }
+    }
+
+    public void firstTimeRandomization(GameObject tower) {  //Full of fail
+        int[] wheelRND = new int[3];
+        //towerToBeEdited = tower;
+
+        for (int i = 0; i < 3; i++) {   //set wheels to random values
+            wheelRND[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
+        }
+
+        tower.GetComponent<TowerScript>().setWheels(wheelRND);
+       // applyResults();
     }
 }
