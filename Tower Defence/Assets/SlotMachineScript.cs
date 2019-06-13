@@ -20,8 +20,10 @@ public class SlotMachineScript : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
-            Debug.Log("R key was pressed for reroll.");
-            rollAll();
+            if(GameManagerScript.getMoney() >= 10){
+                Debug.Log("R key was pressed for reroll.");
+                rollAll();
+            }
         }
 
         Vector3 newDir = new Vector3(0, 0, 0);
