@@ -148,19 +148,21 @@ public class SlotMachineScript : MonoBehaviour
         /*
         for (int i = 0; i < 3; i++) {   //set wheels to random values
             wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
-        }
+        }*/
 
         for (int i = 0; i < 3; i++) {   //set wheels to random values
             wheelRND[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
-        }*/
+        }
 
 
         //Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2]);
         //Debug.Log("Slot machine result 2 : " + wheelRND[0] + " " + wheelRND[1] + " " + wheelRND[2]);
 
         towerToBeEdited.GetComponent<TowerScript>().setWheels(wheelRND);
-        towerToBeEdited.GetComponent<TowerScript>().setRange(20);
-        towerToBeEdited.GetComponent<TowerScript>().setAttackSpeedBonus(20);
-        towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(1);
+        wheels = wheelRND;
+        applyResults();
+        //towerToBeEdited.GetComponent<TowerScript>().setRange(20);
+        //towerToBeEdited.GetComponent<TowerScript>().setAttackSpeedBonus(20);
+        //towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(1);
     }
 }

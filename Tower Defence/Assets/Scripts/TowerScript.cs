@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-    int moneyProduction = 0;
+    public int moneyProduction = 0;
     public int attackDMG = 10;
     public float baseRange = 5f;
     public float range = 10f;
@@ -19,10 +19,10 @@ public class TowerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
-        slotmachine.GetComponent<SlotMachineScript>().firstTimeRandomization(this.gameObject);
+        //GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
+        //slotmachine.GetComponent<SlotMachineScript>().firstTimeRandomization(this.gameObject);
 
-        setRange(10f);
+        //setRange(10f);
         //GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
         Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
     }
@@ -121,6 +121,7 @@ public class TowerScript : MonoBehaviour
 
     public void setRange(float x)
     {
+        Debug.Log("RANGE SET");
         this.range = x + baseRange;
     }
 

@@ -138,6 +138,10 @@ public class TileScript : MonoBehaviour
 		GameObject octo = Instantiate(towerPrefab, newPos, Quaternion.identity) as GameObject;
 		//octo.transform.Rotate(-90,0,0);
 		octo.transform.SetParent(this.transform);
+
+        GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
+        slotmachine.GetComponent<SlotMachineScript>().firstTimeRandomization(transform.GetChild(0).gameObject);
+
         GameManagerScript.reduceTowers();
 	}
 
