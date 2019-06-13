@@ -38,7 +38,7 @@ public class GameManagerScript : MonoBehaviour
         wave = 1;
         leafHP = 100;
         activeMinionsOnField = 0;
-        money = 50;
+        money = 10;
         buildableTowers = 3;
     }
 
@@ -152,16 +152,26 @@ public class GameManagerScript : MonoBehaviour
             sleep -= 1 * Time.deltaTime;
         }
         
+        //Check for wave end condition
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
             wave++;
-            money += 50;
-            buildableTowers = 3;
+            //money += 50;
+            buildableTowers += 1;
+            Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
+            TileScript.cursorActive = true;
+
+            GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+            int income = 0;
+            foreach (GameObject tower in towers) {
+                income += tower.GetComponent<TowerScript>().getMoneyProduction();
+            }
+            Debug.Log("Towers found : " +towers.Length);
+            money += income;
+
             uiCanvas.GetComponent<CanvasScript>().updateWave(wave);
             uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
-            Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
-            TileScript.cursorActive = true;
         }
     } 
 
@@ -175,7 +185,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public static void reduceMoney(){
-        money -= 10;
+        money -= 1;
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
     public static void reduceTowers(){

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class TowerScript : MonoBehaviour
 {
-    public int attackDMG = 1;
+    int moneyProduction = 0;
+    public int attackDMG = 10;
     public float baseRange = 5f;
     public float range = 10f;
     public float reloadTimer = 100f;
@@ -134,6 +135,14 @@ public class TowerScript : MonoBehaviour
 
     public void setAttackSpeedBonus(float x) {
         this.attackSpeedBonus = x;
+    }
+
+    public void setMoneyProduction(int x) {
+        moneyProduction = x;
+    }
+
+    public int getMoneyProduction() {
+        return moneyProduction;
     }
 
     private void OnMouseOver() {

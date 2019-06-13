@@ -20,7 +20,7 @@ public class SlotMachineScript : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
-            if(GameManagerScript.getMoney() >= 10){
+            if(GameManagerScript.getMoney() >= 1){
                 Debug.Log("R key was pressed for reroll.");
                 rollAll();
             }
@@ -68,13 +68,16 @@ public class SlotMachineScript : MonoBehaviour
 
     public void rollAll() {
 
-        transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().startSpin();
-        transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().startSpin();
-        transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().startSpin();
-
         for (int i = 0; i < 3; i++) {   //set wheels to random values
-            wheels[i] = Random.Range(1, 4);
+            wheels[i] = Random.Range(1, 5);     // 1dmf 2range 3speed 4money
+
+            transform.GetChild(i + 1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[i]);
         }
+
+        //transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[]);
+        //transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().startSpin();
+        //transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().startSpin();
+
         Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2]);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackDMG(10); //reset dmg to base
         applyResults();
@@ -85,6 +88,7 @@ public class SlotMachineScript : MonoBehaviour
         float attackToSend = 10;
         float rangeToSend = 10;
         float attackSpeedToSend = 10;
+        int moneyToSend = 0;
 
         if ( towerToBeEdited != null) {
 
@@ -98,14 +102,26 @@ public class SlotMachineScript : MonoBehaviour
                 if (wheels[i] == 3) {   //   3 == SPEED
                     attackSpeedToSend = attackSpeedToSend * 2f;
                 }
+                if (wheels[i] == 4) {   //  4 == money
+                    if (moneyToSend == 0) {     //money level 1
+                        moneyToSend = 1;
+                    }
+                    else if (moneyToSend == 1) {    //money level 2
+                        moneyToSend = 3;
+                    }
+                    else if(moneyToSend == 3) {     //money level 3
+                        moneyToSend = 6;
+                    }
+                }
             }
 
             //send to tower
             towerToBeEdited.GetComponent<TowerScript>().setAttackDMG((int)attackToSend);   // float to int
             towerToBeEdited.GetComponent<TowerScript>().setRange(rangeToSend);
             towerToBeEdited.GetComponent<TowerScript>().setAttackSpeedBonus(attackSpeedToSend);
+            towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(moneyToSend);
 
-            GetComponentInChildren<TextMesh>().text = "Attack : " +(int)attackToSend +"\nSpeed : " +(int)attackSpeedToSend +"\nRange : " +(int)rangeToSend; ;
+            GetComponentInChildren<TextMesh>().text = "Attack : " +(int)attackToSend +"\nSpeed : " +(int)attackSpeedToSend +"\nRange : " +(int)rangeToSend +"\nMoney per wave : " +moneyToSend;
 
         }
     }

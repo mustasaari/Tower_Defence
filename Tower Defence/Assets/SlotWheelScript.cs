@@ -9,6 +9,8 @@ public class SlotWheelScript : MonoBehaviour
 
     float remainingRotation;
 
+    int myFutureSymbol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,9 +27,23 @@ public class SlotWheelScript : MonoBehaviour
             remainingRotation -= wheelSpeed;
             transform.Rotate(0, 0, -wheelSpeed, Space.Self);
         }
+
+        if (remainingRotation < 180 && myFutureSymbol < 1000) {
+
+            int childCount = transform.GetChild(0).gameObject.transform.childCount;
+
+            for (int i = 0; i < childCount; i++) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.SetActive(false);
+            }
+
+            Debug.Log("MyFutureSymbol  : " + myFutureSymbol);
+            transform.GetChild(0).gameObject.transform.GetChild(myFutureSymbol -1).gameObject.SetActive(true);
+            myFutureSymbol = 2000;
+        }
     }
 
-    public void startSpin() {
+    public void startSpin(int symbol) {
         remainingRotation += 360;
+        myFutureSymbol = symbol;
     }
 }
