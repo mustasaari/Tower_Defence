@@ -20,10 +20,10 @@ public class EnemyScript : MonoBehaviour
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
         Debug.Log(gameObject.transform.name);
         if(gameObject.transform.name == "SpeedFly(Clone)"){
-            rotSpeed = 0.025f;
+            rotSpeed = 2.5f * Time.deltaTime;
         }
         else if(gameObject.transform.name == "LadyBug(Clone)"){
-            rotSpeed = 0.01f;
+            rotSpeed = 1 * Time.deltaTime;
         }
     }
 
@@ -45,7 +45,6 @@ public class EnemyScript : MonoBehaviour
 		calculator--;
 		transform.Translate(Vector3.forward * Time.deltaTime * speed);
         Vector3 newDir = new Vector3(0,0,0);
-
 		
 		if (direction.Equals("Down")) {
             newDir = Vector3.RotateTowards(transform.forward, Vector3.back, rotSpeed, rotSpeed);

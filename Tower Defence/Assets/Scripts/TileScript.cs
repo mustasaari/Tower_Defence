@@ -94,7 +94,7 @@ public class TileScript : MonoBehaviour
 
 	void OnMouseEnter() {
 
-		if (status.Equals("Free") && cursorActive && GameManagerScript.gamePhase.Equals("Build")) {
+		if (status.Equals("Free") && cursorActive && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
 			status = "Selected";
 		}
 			

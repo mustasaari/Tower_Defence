@@ -48,6 +48,17 @@ public class GameManagerScript : MonoBehaviour
         startAttack();
         spawnMinions();
         Debug.Log(gamePhase);
+
+        if (Input.GetKeyDown(KeyCode.Alpha1)) {
+            buildableTowers += 5;
+            money += 10;
+            uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
+            uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2)) {
+            Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
+        }
+
     }
 
     public static string getGamePhase() {
