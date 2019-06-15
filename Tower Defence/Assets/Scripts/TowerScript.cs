@@ -13,6 +13,7 @@ public class TowerScript : MonoBehaviour
 
     public GameObject target;
     public GameObject laserPrefab;
+    public GameObject laserPrefab2;
 
     public int[] wheels = new int[3];
 
@@ -104,7 +105,7 @@ public class TowerScript : MonoBehaviour
     {
         // Debug.Log(this + " Bang! " + target);
         reloadTimer = 100f;
-        drawLaser();
+        drawBullet();
         target.GetComponent<EnemyScript>().takeDMG(attackDMG);
         drawDebugLine();
     }
@@ -117,6 +118,16 @@ public class TowerScript : MonoBehaviour
     public void drawLaser() {
         GameObject laser = Instantiate(laserPrefab, transform.position + new Vector3(0, 3, 0), transform.rotation);
         laser.GetComponent<EnergyBeamScript>().endPosition(target);
+    }
+
+    public void drawLaser2() {
+        GameObject beam = Instantiate(laserPrefab2, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        beam.GetComponent<EnergyBeamTwoScript>().setTarget(target);
+    }
+
+    public void drawBullet() {
+        GameObject beam = Instantiate(laserPrefab2, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        beam.GetComponent<BulletScript3>().setTarget(target);
     }
 
     public void setRange(float x)

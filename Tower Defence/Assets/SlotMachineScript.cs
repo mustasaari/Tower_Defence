@@ -44,6 +44,9 @@ public class SlotMachineScript : MonoBehaviour
         //Debug.Log("Tower : " + towerToBeEdited);
         //GetComponentInChildren<Camera>().enabled = true;
 
+        //enable left side return camera
+        transform.GetChild(8).GetComponent<Camera>().enabled = true;
+
         wheels = tower.GetComponent<TowerScript>().getWheels();
         transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[0]);
         transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[1]);
@@ -69,6 +72,9 @@ public class SlotMachineScript : MonoBehaviour
     public void closeSlotMachine() {
         //GetComponentInChildren<Camera>().enabled = false;
         cameraEnabled = false;
+
+        //close left-side return-camera
+        transform.GetChild(8).GetComponent<Camera>().enabled = false;
 
         //disable came tower zoom
         GameObject camera = GameObject.FindGameObjectWithTag("CameraRig");

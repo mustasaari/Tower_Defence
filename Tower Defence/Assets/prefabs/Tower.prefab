@@ -44,6 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bebcb0a60a5ad8d46b5626b890a0ee2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moneyProduction: 0
   attackDMG: 1
   baseRange: 5
   range: 10
@@ -52,6 +53,9 @@ MonoBehaviour:
   target: {fileID: 0}
   laserPrefab: {fileID: 2090972765259016677, guid: 2fa3b613a885cdf46a5d97a94fc7a9d2,
     type: 3}
+  laserPrefab2: {fileID: 2351333036289382990, guid: d8a0bc1c256dce8479ba728ea6b1c77d,
+    type: 3}
+  wheels: 000000000000000000000000
 --- !u!1001 &5222801478163952117
 PrefabInstance:
   m_ObjectHideFlags: 0
