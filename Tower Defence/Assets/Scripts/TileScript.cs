@@ -150,7 +150,7 @@ public class TileScript : MonoBehaviour
 	}
 
     public void openSlotMachine() {
-        Debug.Log("Open Slot MAchine");
+        //Debug.Log("Open Slot MAchine");
         GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
         slotmachine.GetComponent<SlotMachineScript>().openSlotMachine(transform.GetChild(0).gameObject);
     }

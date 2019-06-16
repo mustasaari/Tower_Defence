@@ -40,6 +40,7 @@ public class GameManagerScript : MonoBehaviour
         activeMinionsOnField = 0;
         money = 10;
         buildableTowers = 3;
+        InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 2);
     }
 
     // Update is called once per frame
@@ -205,7 +206,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public static int getLeafHP(){
-    return leafHP;
+        return leafHP;
     }
 
     public static int getMoney(){
@@ -217,5 +218,11 @@ public class GameManagerScript : MonoBehaviour
     }
     public static int getTowers(){
         return buildableTowers;
+    }
+
+    void CalculateActiveMinionsOnFieldInvokeRepeating() {
+        if (gamePhase.Equals("Attack")) {
+            activeMinionsOnField = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        }
     }
 }

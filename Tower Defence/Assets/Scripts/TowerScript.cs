@@ -25,7 +25,7 @@ public class TowerScript : MonoBehaviour
 
         //setRange(10f);
         //GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
-        Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
+        //Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
     }
 
     // Update is called once per frame
@@ -132,7 +132,7 @@ public class TowerScript : MonoBehaviour
 
     public void setRange(float x)
     {
-        Debug.Log("RANGE SET");
+        //Debug.Log("RANGE SET");
         this.range = x + baseRange;
     }
 

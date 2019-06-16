@@ -37,7 +37,7 @@ public class SlotWheelScript : MonoBehaviour
                 transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.SetActive(false);
             }
 
-            Debug.Log("MyFutureSymbol  : " + myFutureSymbol);
+            //Debug.Log("MyFutureSymbol  : " + myFutureSymbol);
             transform.GetChild(0).gameObject.transform.GetChild(myFutureSymbol -1).gameObject.SetActive(true);
             myFutureSymbol = 2000;
         }
@@ -50,7 +50,7 @@ public class SlotWheelScript : MonoBehaviour
 
     public void setSymbolNow(int symbol) {
 
-        Debug.Log("SYMBOL " + symbol);
+        //Debug.Log("SYMBOL " + symbol);
 
         //HIDE SYMBOLS ALL
         int childCount = transform.GetChild(0).gameObject.transform.childCount;

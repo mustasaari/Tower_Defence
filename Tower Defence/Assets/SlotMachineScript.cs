@@ -62,7 +62,7 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     private void OnMouseOver() {
-        Debug.Log("Mouse on slotmachine");
+        //Debug.Log("Mouse on slotmachine");
         if (Input.GetMouseButtonDown(0)) {
             //towerToBeEdited.GetComponent<TowerScript>().setRange(40);
             closeSlotMachine();
@@ -143,7 +143,7 @@ public class SlotMachineScript : MonoBehaviour
 
     public void firstTimeRandomization(GameObject towerx) {  //Full of fail
 
-        Debug.Log("FTR start");
+        //Debug.Log("FTR start");
         int[] wheelRND = new int[3];
         wheelRND[0] = 4;
         wheelRND[1] = 2;

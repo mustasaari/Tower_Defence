@@ -6,7 +6,7 @@ public class EnemyScript : MonoBehaviour
 {
 
 	public string direction;
-	int calculator;
+	float calculator;
     public int health = 10;
     public float speed;
     public int cost;
@@ -16,9 +16,9 @@ public class EnemyScript : MonoBehaviour
     void Start()
     {
 		direction = "Down";
-		calculator = 10;
+		calculator = 10f;
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
-        Debug.Log(gameObject.transform.name);
+        //Debug.Log(gameObject.transform.name);
         if(gameObject.transform.name == "SpeedFly(Clone)"){
             rotSpeed = 2.5f * Time.deltaTime;
         }
@@ -32,17 +32,17 @@ public class EnemyScript : MonoBehaviour
     {
 		RaycastHit hit;
 
-		if (calculator == 0) {
+		if (calculator <= 0) {
 
 			if (Physics.Raycast(transform.position +new Vector3(0,0.1f,0), transform.TransformDirection(Vector3.down), out hit, 10f)) {
 				direction = hit.transform.gameObject.GetComponent<TileScript>().getEnemyDirection();
 				//Debug.Log("Did Hit " +hit.transform.gameObject.name +"  " +direction);
 			}
-			calculator = 10;
-
+			calculator = 10f;
+            Debug.Log("Scanned");
 		}
 
-		calculator--;
+		calculator -= 25 * Time.deltaTime;
 		transform.Translate(Vector3.forward * Time.deltaTime * speed);
         Vector3 newDir = new Vector3(0,0,0);
 		
