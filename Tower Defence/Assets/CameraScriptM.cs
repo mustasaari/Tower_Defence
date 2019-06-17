@@ -5,6 +5,8 @@ using UnityEngine;
 public class CameraScriptM : MonoBehaviour
 {
 
+    public float angle;
+
     private float yaw = 0.0f;
     private float pitch = 0.0f;
     // Start is called before the first frame update
@@ -68,7 +70,7 @@ public class CameraScriptM : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, 10, transform.position.z);
             }
 
-            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(55 + (transform.position.y - startHeight) / 1.5f, yaw, 0.0f);
+            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(angle + (transform.position.y - startHeight) / 1.5f, yaw, 0.0f);
         }
         //Tower Zoom
         if (cameraMode.Equals("Zoom")) {
@@ -85,7 +87,7 @@ public class CameraScriptM : MonoBehaviour
             }
 
             transform.eulerAngles = new Vector3(0f, zoomYaw, 0.0f);
-            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(55 + (transform.position.y - startHeight) / 1.5f, zoomYaw, 0.0f);
+            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(angle + (transform.position.y - startHeight) / 1.5f, zoomYaw, 0.0f);
         }
 
         if (cameraMode.Equals("ZoomOut")) {
@@ -101,7 +103,7 @@ public class CameraScriptM : MonoBehaviour
             }
 
             transform.eulerAngles = new Vector3(0f, zoomYaw, 0.0f);
-            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(55 + (transform.position.y - startHeight) / 1.5f, zoomYaw, 0.0f);
+            this.gameObject.transform.GetChild(0).gameObject.transform.eulerAngles = new Vector3(angle + (transform.position.y - startHeight) / 1.5f, zoomYaw, 0.0f);
 
             if (transform.position == positionBeforeZoom) {
                 cameraMode = "User";
