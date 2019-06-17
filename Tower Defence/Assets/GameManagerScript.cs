@@ -70,7 +70,7 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && gamePhase.Equals("Build")) {
             TileScript.cursorActive = false;
             gamePhase = "Attack";
-            musteringPoints = 20 + (wave * (wave + wave + wave) );
+            musteringPoints = 10 + (wave * (wave + wave + wave) );
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
         }
     }
@@ -88,10 +88,10 @@ public class GameManagerScript : MonoBehaviour
             int rndEnemy = Random.Range(1, 101);
             if(rndEnemy > 0 && rndEnemy < 50){
                 spawndable = enemy1;
-                sleep = 5;
+                sleep = 500;
             }
             else if (rndEnemy >= 50 && rndEnemy <= 100){
-                sleep = 3;
+                sleep = 300;
                 spawndable = enemy2;
             }
 
@@ -161,7 +161,7 @@ public class GameManagerScript : MonoBehaviour
         }
 
         if (gamePhase.Equals("Attack")){
-            sleep -= 1 * Time.deltaTime;
+            sleep -= (100 + (wave * wave/3)) * Time.deltaTime;
         }
         
         //Check for wave end condition
