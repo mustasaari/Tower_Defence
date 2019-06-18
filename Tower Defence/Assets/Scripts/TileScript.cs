@@ -17,7 +17,7 @@ public class TileScript : MonoBehaviour
 	public bool isTopRowTile;
 	public Material red;
 	public Material green;
-	public Material brown;
+	public Material defaultMaterial;
 	public Material black;
 	public static bool cursorActive;
 
@@ -26,7 +26,8 @@ public class TileScript : MonoBehaviour
     {
 		cursorActive = true;
 		status = "Free";
-		GetComponent<Renderer>().material = brown;
+        defaultMaterial = GetComponent<Renderer>().material;
+		//GetComponent<Renderer>().material = defaultMaterial;
 
 		RaycastHit[] objects = Physics.SphereCastAll(transform.position, 6f, transform.up, 0f);
 
@@ -113,14 +114,14 @@ public class TileScript : MonoBehaviour
 		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
 		&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0) {
 			status = "Occupied";
-			GetComponent<Renderer>().material = brown;
+			GetComponent<Renderer>().material = defaultMaterial;
 			CreateTower();
 		}
         else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied") && cursorActive  && GameManagerScript.gamePhase.Equals("Build")) {
             openSlotMachine();
         }
 		else if (GameManagerScript.gamePhase.Equals("Attack") && status.Equals("Selected")){
-			GetComponent<Renderer>().material = brown;
+			GetComponent<Renderer>().material = defaultMaterial;
 			status = "Free";
 			transform.parent.GetComponent<GridScript>().generateDistances();
 		}
@@ -128,7 +129,7 @@ public class TileScript : MonoBehaviour
 
 	void OnMouseExit() {
 		if (status.Equals("Selected")) {
-			GetComponent<Renderer>().material = brown;
+			GetComponent<Renderer>().material = defaultMaterial;
 			status = "Free";
 		}
 	}
