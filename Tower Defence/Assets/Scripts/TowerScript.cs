@@ -32,6 +32,8 @@ public class TowerScript : MonoBehaviour
     void Update()
     {
         checkReload();
+
+        checkAppearance();
     }
 
     public void checkReload()
@@ -174,6 +176,34 @@ public class TowerScript : MonoBehaviour
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied")) {
             GetComponentInParent<TileScript>().openSlotMachine();
+        }
+    }
+
+    public void checkAppearance() {
+
+        //disable all
+        for (int i = 0; i < 3; i++) {
+            transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+        }
+
+        //tämä toimii mutta grafiikat puuttuu !
+        /*
+        for (int i = 0; i < 3; i++) {
+            transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(wheels[i]).gameObject.SetActive(true);
+        }
+        */
+
+
+        //first test        ihan toimiva mutta yllä olis parempi
+        
+        for (int i = 0; i < 3; i++) {
+            if (wheels[i] == 1) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.SetActive(true);      //base     //floor     
+            }
+            else {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
+            }
         }
     }
 }
