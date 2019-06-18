@@ -6,7 +6,7 @@ public class SlotMachineScript : MonoBehaviour
 {
     GameObject towerToBeEdited;
 
-    int amountOfWheelSymbolsInGame = 4;
+    int amountOfWheelSymbolsInGame = 4;     // 1damage 2range 3speed 4money
     int[] wheels = new int[3];
     bool cameraEnabled;
 
@@ -136,7 +136,7 @@ public class SlotMachineScript : MonoBehaviour
             towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(moneyToSend);
             towerToBeEdited.GetComponent<TowerScript>().setWheels(wheels);
 
-            GetComponentInChildren<TextMesh>().text = "Attack : " +(int)attackToSend +"\nSpeed : " +(int)attackSpeedToSend +"\nRange : " +(int)rangeToSend +"\nMoney per wave : " +moneyToSend;
+            GetComponentInChildren<TextMesh>().text = "Damage : " +(int)attackToSend +"\nSpeed : " +(int)attackSpeedToSend +"\nRange : " +(int)rangeToSend +"\nMoney per wave : " +moneyToSend;
 
         }
     }
