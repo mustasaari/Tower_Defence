@@ -10,16 +10,21 @@ public class GameManagerScript : MonoBehaviour
     public static int leafHP;
     private static int money;
     public static int buildableTowers;
-    public GameObject spawn1;
-    public GameObject spawn2;
-    public GameObject spawn3;
-    public GameObject spawn4;
-    public GameObject spawn5;
-    public GameObject spawn6;
-    public GameObject spawn7;
-    public GameObject spawn8;
-    public GameObject spawn9;
-    public GameObject spawn10;
+
+    //public GameObject spawn1; now in array
+    //public GameObject spawn2;
+    //public GameObject spawn3;
+    //public GameObject spawn4;
+    //public GameObject spawn5;
+    //public GameObject spawn6;
+    //public GameObject spawn7;
+    //public GameObject spawn8;
+    //public GameObject spawn9;
+    //public GameObject spawn10;
+
+    public GameObject[] spawns;
+    public GameObject[] activatedSpawns;
+
     public GameObject enemy1;
     public GameObject enemy2;
 
@@ -42,6 +47,11 @@ public class GameManagerScript : MonoBehaviour
         buildableTowers = 3;
         InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 2);
         ToastText.Instance.Show3DTextToast("Text Message", 10);
+
+        activatedSpawns = new GameObject[10];
+        int rnd = Random.Range(0, 10);
+        spawns[rnd].transform.GetChild(0).GetComponent<Digger>().activateDigger();
+        activatedSpawns[0] = spawns[rnd];
     }
 
     // Update is called once per frame
@@ -79,12 +89,24 @@ public class GameManagerScript : MonoBehaviour
 
     public void spawnMinions() {
         if (gamePhase.Equals("Attack") && sleep < 1) {
+
+            /*
             int maxSpawn = wave + 1;
             if (maxSpawn > 11) {
                 maxSpawn = 11;
             }
 
             int rnd = Random.Range(1,maxSpawn); // 1-10
+
+            spawns[maxSpawn-2].transform.GetChild(0).GetComponent<Digger>().activateDigger(); //play digger animation
+            */
+
+            int maxSpawn = wave;
+            if(wave > 10 ) {
+                maxSpawn = 10;
+            }
+
+            int rnd = Random.Range(0, maxSpawn);
 
             //Testing Enemy spawngin. Needs to be reworked in future! -------------------------------------------------HOX HOX HOX!
             int rndEnemy = Random.Range(1, 101);
@@ -98,6 +120,15 @@ public class GameManagerScript : MonoBehaviour
             }
 
             if (musteringPoints > 0) {
+
+                Debug.Log("Spawnpoint RND was : " + rnd);
+                Instantiate(spawndable, activatedSpawns[rnd].transform.position, Quaternion.identity);
+
+                musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
+                activeMinionsOnField++;
+
+                
+                /*
                 if (rnd == 1) {
                     Instantiate(spawndable, spawn1.transform.position, Quaternion.identity);
 
@@ -157,7 +188,9 @@ public class GameManagerScript : MonoBehaviour
 
                     musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                     activeMinionsOnField++;
-                }
+                } */
+
+
 
             }
         }
@@ -186,6 +219,23 @@ public class GameManagerScript : MonoBehaviour
             uiCanvas.GetComponent<CanvasScript>().updateWave(wave);
             uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+
+            //update spawnpoint
+            bool doUntil = false;
+
+            if (wave < 11) {
+
+                while (!doUntil) {
+                    int rnd = Random.Range(0, 10); // 0-9
+
+                    if (!spawns[rnd].transform.GetChild(0).GetComponent<Digger>().getActivated()) {
+                        spawns[rnd].transform.GetChild(0).GetComponent<Digger>().activateDigger();
+                        activatedSpawns[wave - 1] = spawns[rnd];
+                        doUntil = true;
+                    }
+
+                }
+            }
         }
     } 
 
