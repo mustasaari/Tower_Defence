@@ -81,6 +81,8 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && gamePhase.Equals("Build")) {
             TileScript.cursorActive = false;
             gamePhase = "Attack";
+            uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " incoming!");
+            sleep = 500;    //some delay before first minion comes
             //musteringPoints = 10 + (wave * (wave + wave + wave) );
             musteringPoints = 10 + (wave * wave);
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
@@ -202,6 +204,7 @@ public class GameManagerScript : MonoBehaviour
         //Check for wave end condition
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
+            uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
             wave++;
             //money += 50;
             buildableTowers += 1;
