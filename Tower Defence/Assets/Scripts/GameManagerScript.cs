@@ -71,7 +71,8 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetButtonDown("Jump") && gamePhase.Equals("Build")) {
             TileScript.cursorActive = false;
             gamePhase = "Attack";
-            musteringPoints = 10 + (wave * (wave + wave + wave) );
+            //musteringPoints = 10 + (wave * (wave + wave + wave) );
+            musteringPoints = 10 + (wave * wave);
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
         }
     }
@@ -162,7 +163,7 @@ public class GameManagerScript : MonoBehaviour
         }
 
         if (gamePhase.Equals("Attack")){
-            sleep -= (100 + (wave * wave/3)) * Time.deltaTime;
+            sleep -= (100 + (wave * wave/1.5f)) * Time.deltaTime;
         }
         
         //Check for wave end condition
