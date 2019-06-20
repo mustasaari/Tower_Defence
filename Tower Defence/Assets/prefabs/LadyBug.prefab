@@ -66,6 +66,8 @@ MonoBehaviour:
     type: 3}
   aoeEffectPrefab2: {fileID: 7130356915469136438, guid: 056c9330834c80b4dbb9c5098902ecc9,
     type: 3}
+  aoeEffectPrefab3: {fileID: 2988728182637776445, guid: b2bb33af9dd6fde45b7bea7e8086f612,
+    type: 3}
   dmgText: {fileID: 1269665793904038872, guid: fce28f806a1371847abba128ca4d9f40, type: 3}
 --- !u!1001 &1401035012589885746
 PrefabInstance:

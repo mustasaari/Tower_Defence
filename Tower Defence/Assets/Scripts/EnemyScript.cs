@@ -14,6 +14,7 @@ public class EnemyScript : MonoBehaviour
 
     public GameObject aoeEffectPrefab1;
     public GameObject aoeEffectPrefab2;
+    public GameObject aoeEffectPrefab3;
     public GameObject dmgText;
 
     // Start is called before the first frame update
@@ -92,8 +93,11 @@ public class EnemyScript : MonoBehaviour
             if (aoe > 0 && aoe < 11) {  //play correct graphics based on radius
                 Instantiate(aoeEffectPrefab1, transform.position, transform.rotation);
             }
-            else if (aoe >= 11) {       //play correct graphics based on radius
+            else if (aoe >= 11 && aoe <21) {       //play correct graphics based on radius
                 Instantiate(aoeEffectPrefab2, transform.position, transform.rotation);
+            }
+            else if (aoe >= 21) {
+                Instantiate(aoeEffectPrefab3, transform.position, transform.rotation);
             }
         }               //AOE stuff ends
 

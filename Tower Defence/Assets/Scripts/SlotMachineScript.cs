@@ -105,6 +105,10 @@ public class SlotMachineScript : MonoBehaviour
         int moneyToSend = 0;
         int aoeToSend = 0;
 
+        //wheels[0] = 5; //set wheels manually for testing
+        //wheels[1] = 4;
+        //wheels[2] = 4;
+
         if ( towerToBeEdited != null) {
 
             for (int i = 0; i <= 2; i++) {
