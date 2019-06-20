@@ -10,6 +10,7 @@ public class TowerScript : MonoBehaviour
     public float range = 10f;
     public float reloadTimer = 100f;
     public float attackSpeedBonus = 10;
+    int areaOfEffectRadius;
 
     public GameObject target;
     public GameObject laserPrefab;
@@ -108,7 +109,10 @@ public class TowerScript : MonoBehaviour
         // Debug.Log(this + " Bang! " + target);
         reloadTimer = 100f;
         drawBullet();
-        target.GetComponent<EnemyScript>().takeDMG(attackDMG);
+
+        Color debugColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));  //DEBUG COLOR to see what tower does what
+
+        target.GetComponent<EnemyScript>().takeDMG(attackDMG, areaOfEffectRadius, debugColor);
         drawDebugLine();
     }
 
@@ -163,6 +167,10 @@ public class TowerScript : MonoBehaviour
 
     public int getMoneyProduction() {
         return moneyProduction;
+    }
+
+    public void setAoERadius(int aoe) {
+        this.areaOfEffectRadius = aoe;
     }
 
     public void setWheels(int[] x) {

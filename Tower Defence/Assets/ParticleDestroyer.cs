@@ -9,7 +9,7 @@ public class ParticleDestroyer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pasy = GetComponent<ParticleSystem>();
+        pasy = transform.GetChild(0).transform.gameObject.GetComponent<ParticleSystem>();
     }
 
     // Update is called once per frame

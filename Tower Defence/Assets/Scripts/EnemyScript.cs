@@ -12,6 +12,10 @@ public class EnemyScript : MonoBehaviour
     public int cost;
     private float rotSpeed;
 
+    public GameObject aoeEffectPrefab1;
+    public GameObject aoeEffectPrefab2;
+    public GameObject dmgText;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -73,9 +77,29 @@ public class EnemyScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void takeDMG(int x)
+    public void takeDMG(int dmg, int aoe, Color debugColor)
     {
-        health -= x;
+        if (aoe > 0) {  //AOE stuff begins
+
+            RaycastHit[] objects = Physics.SphereCastAll(transform.position, aoe/2, transform.up, 0f);
+
+            foreach(RaycastHit hit in objects) {
+                if (hit.transform.gameObject.tag == "Enemy" && hit.transform.gameObject != this.gameObject) {
+                    hit.transform.gameObject.GetComponent<EnemyScript>().takeDMG(dmg, 0, debugColor);   //do not pass aoe on
+                }
+            }
+
+            if (aoe > 0 && aoe < 11) {  //play correct graphics based on radius
+                Instantiate(aoeEffectPrefab1, transform.position, transform.rotation);
+            }
+            else if (aoe >= 11) {       //play correct graphics based on radius
+                Instantiate(aoeEffectPrefab2, transform.position, transform.rotation);
+            }
+        }               //AOE stuff ends
+
+        GameObject txt = Instantiate(dmgText, transform.position, transform.rotation);
+        txt.GetComponent<dmgTextScript>().setNumber(dmg, debugColor);
+        health -= dmg;
         checkHealth();
     }
 
