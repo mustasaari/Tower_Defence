@@ -191,8 +191,25 @@ public class TowerScript : MonoBehaviour
 
         //disable all
         for (int i = 0; i < 3; i++) {
-            transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(false);
-            transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+
+            //Ei disabloida sitä objektia minkä pitäisi tulla aktiivisesti koska scriptit ei suoritu
+            if (wheels[i] != 1) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(false);
+            }
+            if (wheels[i] != 2) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.SetActive(false);
+            }
+            if (wheels[i] != 3) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(2).gameObject.SetActive(false);
+            }
+            if (wheels[i] != 4) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(3).gameObject.SetActive(false);
+            }
+            if (wheels[i] != 5) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(4).gameObject.SetActive(false);
+            }
+
+
         }
 
         //tämä toimii mutta grafiikat puuttuu !
@@ -205,10 +222,24 @@ public class TowerScript : MonoBehaviour
 
         //first test        ihan toimiva mutta yllä olis parempi
         
-        for (int i = 0; i < 3; i++) {
-            if (wheels[i] == 1) {
+        for (int i = 0; i < 3; i++) {   //iterate through floors
+            if (wheels[i] == 1) {   //Damage
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);      //base     //floor     
+            }
+            else if (wheels[i] == 2) {   //Range
                 transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(1).gameObject.SetActive(true);      //base     //floor     
             }
+            else if (wheels[i] == 3) {   //Speed
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(2).gameObject.SetActive(true);      //base     //floor     
+            }
+            else if (wheels[i] == 4) {   //Money
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(3).gameObject.SetActive(true);      //base     //floor     
+            }
+            else if (wheels[i] == 5) {   //Area of effect
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(4).gameObject.SetActive(true);      //base     //floor     
+            }
+
+
             else {
                 transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(0).gameObject.SetActive(true);
             }

@@ -77,7 +77,7 @@ public class CameraScriptM : MonoBehaviour
             GameObject child = this.gameObject.transform.GetChild(0).gameObject;
 
             //if (Vector3.Distance(child.transform.position, towerZoomGameObject.transform.position) > 20 ) {
-                transform.position = Vector3.MoveTowards(transform.position, towerZoomGameObject.transform.position +new Vector3(7,10,-15), zoomDistance/35);
+                transform.position = Vector3.MoveTowards(transform.position, towerZoomGameObject.transform.position +new Vector3(7,15,-15), zoomDistance/35);
 
             if (zoomYaw > 180 && zoomYaw < 360) {
                 zoomYaw += (360 - zoomYaw) / zoomDistance * 5;

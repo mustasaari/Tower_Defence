@@ -111,11 +111,11 @@ MonoBehaviour:
   TileToRight: {fileID: 0}
   TileToTop: {fileID: 0}
   TileToDown: {fileID: 0}
-  towerPrefab: {fileID: 7257947359222783556, guid: a4c95a53b1d009046850ae86c562dc2e,
+  towerPrefab: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
     type: 3}
   isBottomRowTile: 1
   isTopRowTile: 0
   red: {fileID: 2100000, guid: 5e6dbe2b4d6f5d6438631da4cd0858a2, type: 2}
   green: {fileID: 2100000, guid: ff47a599bb4f21e4bbad197b9904334e, type: 2}
-  brown: {fileID: 2100000, guid: d47e6ff0468914945944777bae2ff0e5, type: 2}
+  defaultMaterial: {fileID: 0}
   black: {fileID: 2100000, guid: 3791ae34436cb8345b09f7dec223b22c, type: 2}
