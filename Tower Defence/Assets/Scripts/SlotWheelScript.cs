@@ -11,9 +11,12 @@ public class SlotWheelScript : MonoBehaviour
 
     int myFutureSymbol;
 
+    bool rotationReady;
+
     // Start is called before the first frame update
     void Start()
     {
+        rotationReady = true;
         remainingRotation = 0;
         myFutureSymbol = 2000;
     }
@@ -27,6 +30,9 @@ public class SlotWheelScript : MonoBehaviour
         if (remainingRotation > rotation) {
             remainingRotation -= wheelSpeed;
             transform.Rotate(0, 0, -wheelSpeed, Space.Self);
+        }
+        else {
+            rotationReady = true;
         }
 
         if (remainingRotation < 180 && myFutureSymbol < 1000) {
@@ -46,8 +52,10 @@ public class SlotWheelScript : MonoBehaviour
     public void startSpin(int symbol) {
         remainingRotation += 360;
         myFutureSymbol = symbol;
+        rotationReady = false;
     }
 
+    //set symbols instantly when existing tower is opened
     public void setSymbolNow(int symbol) {
 
         //Debug.Log("SYMBOL " + symbol);
@@ -59,5 +67,9 @@ public class SlotWheelScript : MonoBehaviour
         }
 
         transform.GetChild(0).gameObject.transform.GetChild(symbol -1).gameObject.SetActive(true);
+    }
+
+    public bool getRotationReady() {
+        return rotationReady;
     }
 }

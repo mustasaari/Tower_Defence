@@ -20422,7 +20422,7 @@ GameObject:
   - component: {fileID: 757619930}
   m_Layer: 0
   m_Name: Wheel3
-  m_TagString: Untagged
+  m_TagString: SlotMachineWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20757,7 +20757,7 @@ GameObject:
   - component: {fileID: 1819803647}
   m_Layer: 0
   m_Name: Wheel2
-  m_TagString: Untagged
+  m_TagString: SlotMachineWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20998,7 +20998,7 @@ GameObject:
   - component: {fileID: 942961280}
   m_Layer: 0
   m_Name: Wheel1
-  m_TagString: Untagged
+  m_TagString: SlotMachineWheel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

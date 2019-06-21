@@ -10,6 +10,12 @@ public class SlotMachineScript : MonoBehaviour
     int[] wheels = new int[3];
     bool cameraEnabled;
 
+    float attackToSend;
+    float rangeToSend ;
+    float attackSpeedToSend ;
+    int moneyToSend;
+    int aoeToSend;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +29,11 @@ public class SlotMachineScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R)) {
             if(GameManagerScript.getMoney() >= 1){
                 Debug.Log("R key was pressed for reroll.");
-                rollAll();
+                if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
+                    transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
+                    transform.GetChild(3).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady()) {
+                    rollAll();
+                }
             }
         }
 
@@ -35,6 +45,12 @@ public class SlotMachineScript : MonoBehaviour
         else {
             newDir = Vector3.RotateTowards(transform.GetChild(4).gameObject.transform.forward, Vector3.left, 0.06f, 0.06f);
             transform.GetChild(4).gameObject.transform.rotation = Quaternion.LookRotation(newDir);
+        }
+
+        if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
+            transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
+            transform.GetChild(3).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady()) {
+            updateUI();
         }
     }
 
@@ -99,11 +115,11 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void applyResults() {
-        float attackToSend = 10;
-        float rangeToSend = 10;
-        float attackSpeedToSend = 10;
-        int moneyToSend = 0;
-        int aoeToSend = 0;
+        attackToSend = 10;
+        rangeToSend = 10;
+        attackSpeedToSend = 10;
+        moneyToSend = 0;
+        aoeToSend = 0;
 
         //wheels[0] = 5; //set wheels manually for testing
         //wheels[1] = 4;
@@ -145,7 +161,7 @@ public class SlotMachineScript : MonoBehaviour
             towerToBeEdited.GetComponent<TowerScript>().setWheels(wheels);
             towerToBeEdited.GetComponent<TowerScript>().setAoERadius(aoeToSend);
 
-            GetComponentInChildren<TextMesh>().text = "Damage : " +(int)attackToSend +"\nSpeed : " +(int)attackSpeedToSend +"\nRange : " +(int)rangeToSend +"\nMoney per wave : " +moneyToSend;
+            //update ui removed to own method
 
         }
     }
@@ -179,5 +195,9 @@ public class SlotMachineScript : MonoBehaviour
         //towerToBeEdited.GetComponent<TowerScript>().setRange(20);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackSpeedBonus(20);
         //towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(1);
+    }
+
+    public void updateUI() {
+        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend;
     }
 }

@@ -18,6 +18,8 @@ public class TowerScript : MonoBehaviour
 
     public int[] wheels = new int[3];
 
+    GameObject[] slotMachineWheels;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,10 @@ public class TowerScript : MonoBehaviour
         //setRange(10f);
         //GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
         //Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
+
+        slotMachineWheels = GameObject.FindGameObjectsWithTag("SlotMachineWheel");
+
+        checkAppearance();
     }
 
     // Update is called once per frame
@@ -34,7 +40,12 @@ public class TowerScript : MonoBehaviour
     {
         checkReload();
 
-        checkAppearance();
+
+        //Update tower looks when all wheels have stopped :/
+        if (slotMachineWheels[0].GetComponent<SlotWheelScript>().getRotationReady() && slotMachineWheels[1].GetComponent<SlotWheelScript>().getRotationReady() && slotMachineWheels[2].GetComponent<SlotWheelScript>().getRotationReady()) {
+            checkAppearance();
+        }
+
     }
 
     public void checkReload()
@@ -132,7 +143,7 @@ public class TowerScript : MonoBehaviour
     }
 
     public void drawBullet() {
-        GameObject beam = Instantiate(laserPrefab2, transform.position + new Vector3(0, 3, 0), transform.rotation);
+        GameObject beam = Instantiate(laserPrefab2, transform.position + new Vector3(0, 15, 0), transform.rotation);
         beam.GetComponent<BulletScript3>().setTarget(target);
     }
 
@@ -182,7 +193,7 @@ public class TowerScript : MonoBehaviour
     }
 
     private void OnMouseOver() {
-        if (Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied")) {
+        if (Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied") && GameManagerScript.gamePhase.Equals("Build")) {
             GetComponentInParent<TileScript>().openSlotMachine();
         }
     }
