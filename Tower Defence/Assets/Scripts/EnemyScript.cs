@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyScript : MonoBehaviour
 {
 
+    public string name;
 	public string direction;
 	float calculator;
     public int health = 10;
@@ -17,12 +18,15 @@ public class EnemyScript : MonoBehaviour
     public GameObject aoeEffectPrefab3;
     public GameObject dmgText;
 
+    private int maxHP;
+
     // Start is called before the first frame update
     void Start()
     {
 		direction = "Down";
 		calculator = 10f;
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
+        maxHP = health;
         //Debug.Log(gameObject.transform.name);
         if(gameObject.transform.name == "SpeedFly(Clone)"){
             rotSpeed = 3f * Time.deltaTime;
@@ -116,5 +120,9 @@ public class EnemyScript : MonoBehaviour
     }
     public int getCost(){
         return this.cost;
+    }
+
+    public void OnMouseOver() {
+        GameManagerScript.showEnemyHP(health, maxHP, name);
     }
 }

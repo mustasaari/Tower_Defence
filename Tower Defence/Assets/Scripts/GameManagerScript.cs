@@ -281,6 +281,10 @@ public class GameManagerScript : MonoBehaviour
         return buildableTowers;
     }
 
+    public static void showEnemyHP(int hp, int maxhp, string name) {
+        uiCanvas.transform.GetChild(5).gameObject.GetComponent<EnemyHPIndicator>().show(hp, maxhp, name);
+    }
+
     void CalculateActiveMinionsOnFieldInvokeRepeating() {
         if (gamePhase.Equals("Attack")) {
             activeMinionsOnField = GameObject.FindGameObjectsWithTag("Enemy").Length;
