@@ -255,6 +255,12 @@ public class GameManagerScript : MonoBehaviour
         money -= 1;
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
+
+    public static void addTowers() {
+        buildableTowers++;
+        uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+    }
+
     public static void reduceTowers(){
         buildableTowers--;
         uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);

@@ -25,10 +25,10 @@ public class EnemyScript : MonoBehaviour
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
         //Debug.Log(gameObject.transform.name);
         if(gameObject.transform.name == "SpeedFly(Clone)"){
-            rotSpeed = 2.5f * Time.deltaTime;
+            rotSpeed = 3f * Time.deltaTime;
         }
         else if(gameObject.transform.name == "LadyBug(Clone)"){
-            rotSpeed = 1 * Time.deltaTime;
+            rotSpeed = 1.5f * Time.deltaTime;
         }
     }
 

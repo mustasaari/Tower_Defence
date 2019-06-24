@@ -155,4 +155,8 @@ public class TileScript : MonoBehaviour
         GameObject slotmachine = GameObject.FindWithTag("SlotMachine");
         slotmachine.GetComponent<SlotMachineScript>().openSlotMachine(transform.GetChild(0).gameObject);
     }
+
+    public void setStatus(string stat) {
+        status = stat;
+    }
 }
