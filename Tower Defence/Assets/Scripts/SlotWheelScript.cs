@@ -25,11 +25,13 @@ public class SlotWheelScript : MonoBehaviour
     void Update()
     {
 
-        float rotation = wheelSpeed * Time.deltaTime;
+        float rotation = wheelSpeed * Time.deltaTime * 75f;
 
-        if (remainingRotation > rotation) {
-            remainingRotation -= wheelSpeed;
-            transform.Rotate(0, 0, -wheelSpeed, Space.Self);
+        if (remainingRotation > rotation && rotationReady == false) {
+            remainingRotation -= rotation;
+            //remainingRotation -= wheelSpeed;
+            transform.Rotate(0, 0, -rotation, Space.Self);
+            //transform.Rotate(0, 0, -wheelSpeed, Space.Self);
         }
         else {
             rotationReady = true;
