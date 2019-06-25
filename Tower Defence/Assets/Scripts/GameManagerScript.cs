@@ -255,6 +255,12 @@ public class GameManagerScript : MonoBehaviour
         money -= 1;
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
+
+    public static void addTowers() {
+        buildableTowers++;
+        uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+    }
+
     public static void reduceTowers(){
         buildableTowers--;
         uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
@@ -273,6 +279,10 @@ public class GameManagerScript : MonoBehaviour
     }
     public static int getTowers(){
         return buildableTowers;
+    }
+
+    public static void showEnemyHP(int hp, int maxhp, string name) {
+        uiCanvas.transform.GetChild(5).gameObject.GetComponent<EnemyHPIndicator>().show(hp, maxhp, name);
     }
 
     void CalculateActiveMinionsOnFieldInvokeRepeating() {

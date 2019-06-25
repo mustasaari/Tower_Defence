@@ -203,4 +203,11 @@ public class SlotMachineScript : MonoBehaviour
     public void updateUI() {
         GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend;
     }
+
+    public void deleteTower() {
+        towerToBeEdited.gameObject.GetComponentInParent<TileScript>().setStatus("Free");
+        GameManagerScript.addTowers();
+        Destroy(towerToBeEdited);
+        closeSlotMachine();
+    }
 }

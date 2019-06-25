@@ -9,6 +9,7 @@ public class ToastText : MonoBehaviour
 
     private static bool isShowingTextMessage;
     private static GameObject textMeshGameObject;
+    private static GameObject uiCanvas;
 
     // Preventing instantiation of class by making constructor protoected (or private)
     protected ToastText() { }
@@ -32,19 +33,21 @@ public class ToastText : MonoBehaviour
         if (!isShowingTextMessage)
             return;
 
-        var headPosition = Camera.main.transform.position;
-        var gazeDirection = Camera.main.transform.forward;
+        // var headPosition = Camera.main.transform.position;
+        // var gazeDirection = Camera.main.transform.forward;
 
-        float distanceFromCamera = 2; // TODO: Move this to const
+        // float distanceFromCamera = 2; // TODO: Move this to const
 
-        Vector3 desiredPosition = headPosition + gazeDirection * distanceFromCamera;
-        textMeshGameObject.transform.position = desiredPosition;
+        // Vector3 desiredPosition = headPosition + gazeDirection * distanceFromCamera;
+        // textMeshGameObject.transform.position = desiredPosition;
 
-        // Rotate the object to face the user.
-        Quaternion toQuat = Camera.main.transform.localRotation;
-        toQuat.x = 0;
-        toQuat.z = 0;
-        textMeshGameObject.transform.rotation = toQuat;
+        // // Rotate the object to face the user.
+        // Quaternion toQuat = Camera.main.transform.localRotation;
+        // toQuat.x = 0;
+        // toQuat.z = 0;
+
+        // textMeshGameObject.transform.rotation = Quaternion.identity;
+        
     }
 
     // Returns current text mesh or creates new one if there is no
@@ -58,14 +61,19 @@ public class ToastText : MonoBehaviour
         {
             // TODO: Make constants
             curTextMesh = textMeshGameObject.AddComponent(typeof(TextMesh)) as TextMesh;
+
+            uiCanvas = GameObject.FindWithTag("UI");
+            curTextMesh.transform.SetParent(uiCanvas.transform);
+
             MeshRenderer meshRenderer = textMeshGameObject.GetComponent(typeof(MeshRenderer)) as MeshRenderer;
             meshRenderer.enabled = true;
             curTextMesh.anchor = TextAnchor.MiddleCenter;
             curTextMesh.alignment = TextAlignment.Center;
             curTextMesh.fontStyle = FontStyle.Bold;
             curTextMesh.fontSize = 20;
+            curTextMesh.transform.position = new Vector3(0.0f, 0.0f, 0.0f);
 
-            curTextMesh.transform.localScale = new Vector3(0.02f, 0.02f, 0.02f);
+            curTextMesh.transform.localScale = new Vector3(1, 1, 1);
         }
 
         return curTextMesh;
