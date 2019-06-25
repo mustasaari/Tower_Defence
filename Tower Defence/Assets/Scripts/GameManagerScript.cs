@@ -280,4 +280,8 @@ public class GameManagerScript : MonoBehaviour
             activeMinionsOnField = GameObject.FindGameObjectsWithTag("Enemy").Length;
         }
     }
+
+    public static void messageToUI(string message) {
+        uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
+    }
 }

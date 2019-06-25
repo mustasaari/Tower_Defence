@@ -35,6 +35,9 @@ public class SlotMachineScript : MonoBehaviour
                     rollAll();
                 }
             }
+            else {
+                GameManagerScript.messageToUI("Not enough resources");
+            }
         }
 
         Vector3 newDir = new Vector3(0, 0, 0);
