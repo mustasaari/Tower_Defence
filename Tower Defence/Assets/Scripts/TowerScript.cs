@@ -18,8 +18,9 @@ public class TowerScript : MonoBehaviour
 
     public int[] wheels = new int[3];
     public bool[] lockedWheels;
-
     GameObject[] slotMachineWheels;
+
+    ParticleSystem rangeParticle; 
 
     // Start is called before the first frame update
     void Start()
@@ -32,6 +33,8 @@ public class TowerScript : MonoBehaviour
         //Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
 
         slotMachineWheels = GameObject.FindGameObjectsWithTag("SlotMachineWheel");
+        rangeParticle = transform.GetChild(2).gameObject.GetComponent<ParticleSystem>();
+        rangeParticle.Stop();
 
         lockedWheels = new bool[3];
         lockedWheels[0] = false;
@@ -157,6 +160,8 @@ public class TowerScript : MonoBehaviour
     {
         //Debug.Log("RANGE SET");
         this.range = x + baseRange;
+        ParticleSystem.ShapeModule shape = rangeParticle.shape;
+        shape.radius = range + 1f;
     }
 
     public float getRange()
@@ -204,6 +209,14 @@ public class TowerScript : MonoBehaviour
 
     public void setLockedWheels(bool[] lw) {
         lockedWheels = lw;
+    }
+
+    private void OnMouseEnter() {
+        rangeParticle.Play();
+    }
+
+    private void OnMouseExit() {
+        rangeParticle.Stop();
     }
 
     private void OnMouseOver() {
