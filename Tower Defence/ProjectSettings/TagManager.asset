@@ -12,6 +12,7 @@ TagManager:
   - UI
   - Tower
   - SlotMachineWheel
+  - SlotMachineArm
   layers:
   - Default
   - TransparentFX

@@ -28,17 +28,7 @@ public class SlotMachineScript : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.R)) {
-            if(GameManagerScript.getMoney() >= 1){
-                Debug.Log("R key was pressed for reroll.");
-                if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
-                    transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
-                    transform.GetChild(3).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady()) {
-                    rollAll();
-                }
-            }
-            else {
-                GameManagerScript.messageToUI("Not enough resources");
-            }
+            rollTheWheel();
         }
 
         Vector3 newDir = new Vector3(0, 0, 0);
@@ -115,6 +105,7 @@ public class SlotMachineScript : MonoBehaviour
             if (lockedWheels[i] == false) {
                 wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
                 transform.GetChild(i + 1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[i]);
+                GameObject.FindGameObjectWithTag("SlotMachineArm").GetComponent<Animator>().Play("SlotArmAnimation", 0, 0.0f);
             }
         }
 
@@ -229,6 +220,20 @@ public class SlotMachineScript : MonoBehaviour
         }
         else if (lockedWheels[lck] == true) {
             lockedWheels[lck] = false;
+        }
+    }
+
+    public void rollTheWheel() {
+        if (GameManagerScript.getMoney() >= 1) {
+            Debug.Log("R key was pressed for reroll.");
+            if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
+                transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
+                transform.GetChild(3).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady()) {
+                rollAll();
+            }
+        }
+        else {
+            GameManagerScript.messageToUI("Not enough resources");
         }
     }
 }
