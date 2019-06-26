@@ -8,6 +8,7 @@ public class SlotMachineScript : MonoBehaviour
 
     int amountOfWheelSymbolsInGame = 5;     // 1damage 2range 3speed 4money  5AoE
     int[] wheels = new int[3];
+    bool[] lockedWheels;
     bool cameraEnabled;
 
     float attackToSend;
@@ -71,6 +72,13 @@ public class SlotMachineScript : MonoBehaviour
         transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[1]);
         transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().setSymbolNow(wheels[2]);
 
+        //get lockedwheels data
+        lockedWheels = tower.GetComponent<TowerScript>().getLockedWheels();
+        //should set lock gaphics to correspond
+        transform.GetChild(10).gameObject.GetComponent<WheelLockScript>().setLock(lockedWheels[0]);
+        transform.GetChild(11).gameObject.GetComponent<WheelLockScript>().setLock(lockedWheels[1]);
+        transform.GetChild(12).gameObject.GetComponent<WheelLockScript>().setLock(lockedWheels[2]);
+
         applyResults();
 
         cameraEnabled = true;
@@ -103,8 +111,11 @@ public class SlotMachineScript : MonoBehaviour
     public void rollAll() {
 
         for (int i = 0; i < 3; i++) {   //set wheels to random values
-            wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
-            transform.GetChild(i + 1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[i]);
+
+            if (lockedWheels[i] == false) {
+                wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
+                transform.GetChild(i + 1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[i]);
+            }
         }
 
         //transform.GetChild(1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[]);
@@ -209,5 +220,15 @@ public class SlotMachineScript : MonoBehaviour
         GameManagerScript.addTowers();
         Destroy(towerToBeEdited);
         closeSlotMachine();
+    }
+
+    public void lockPressed(int lck) {
+        Debug.Log("Lock " + lck + " pressed");
+        if (lockedWheels[lck] == false ) {
+            lockedWheels[lck] = true;
+        }
+        else if (lockedWheels[lck] == true) {
+            lockedWheels[lck] = false;
+        }
     }
 }

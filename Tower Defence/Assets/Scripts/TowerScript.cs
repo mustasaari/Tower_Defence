@@ -17,6 +17,7 @@ public class TowerScript : MonoBehaviour
     public GameObject laserPrefab2;
 
     public int[] wheels = new int[3];
+    public bool[] lockedWheels;
 
     GameObject[] slotMachineWheels;
 
@@ -31,6 +32,11 @@ public class TowerScript : MonoBehaviour
         //Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
 
         slotMachineWheels = GameObject.FindGameObjectsWithTag("SlotMachineWheel");
+
+        lockedWheels = new bool[3];
+        lockedWheels[0] = false;
+        lockedWheels[1] = false;
+        lockedWheels[2] = false;
 
         checkAppearance();
     }
@@ -190,6 +196,14 @@ public class TowerScript : MonoBehaviour
 
     public int[] getWheels() {
         return wheels;
+    }
+
+    public bool[] getLockedWheels() {
+        return lockedWheels;
+    }
+
+    public void setLockedWheels(bool[] lw) {
+        lockedWheels = lw;
     }
 
     private void OnMouseOver() {

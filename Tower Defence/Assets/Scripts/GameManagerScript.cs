@@ -46,7 +46,7 @@ public class GameManagerScript : MonoBehaviour
         money = 10;
         buildableTowers = 3;
         InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 2);
-        ToastText.Instance.Show3DTextToast("Text Message", 10);
+        //ToastText.Instance.Show3DTextToast("Text Message", 10);
 
         activatedSpawns = new GameObject[10];
         int rnd = Random.Range(0, 10);
