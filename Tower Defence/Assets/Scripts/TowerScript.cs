@@ -20,7 +20,8 @@ public class TowerScript : MonoBehaviour
     public bool[] lockedWheels;
     GameObject[] slotMachineWheels;
 
-    ParticleSystem rangeParticle; 
+    ParticleSystem rangeParticle;
+    float rangeIndicatorRange;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +43,7 @@ public class TowerScript : MonoBehaviour
         lockedWheels[2] = false;
 
         checkAppearance();
+
     }
 
     // Update is called once per frame
@@ -160,8 +162,12 @@ public class TowerScript : MonoBehaviour
     {
         //Debug.Log("RANGE SET");
         this.range = x + baseRange;
-        ParticleSystem.ShapeModule shape = rangeParticle.shape;
-        shape.radius = range + 1f;
+
+        //Tässä tuli null reference erroria varmaankin kun kutsuttiin slotmachinen kautta.
+        //Tein floatin joka asetetaan tässä ja sitten rangeksi onMouseOver metodissa. t: mikko
+        rangeIndicatorRange = x + 5f;
+        //ParticleSystem.ShapeModule shape = rangeParticle.shape;
+        //shape.radius = range + 15f;
     }
 
     public float getRange()
@@ -220,6 +226,11 @@ public class TowerScript : MonoBehaviour
     }
 
     private void OnMouseOver() {
+
+        //asettaa rangeIndikaattori particlen rangen
+        ParticleSystem.ShapeModule shape = rangeParticle.shape;
+        shape.radius = rangeIndicatorRange;
+
         if (Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied") && GameManagerScript.gamePhase.Equals("Build")) {
             GetComponentInParent<TileScript>().openSlotMachine();
         }
