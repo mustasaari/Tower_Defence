@@ -21,12 +21,15 @@ public class TileScript : MonoBehaviour
 	public Material black;
 	public static bool cursorActive;
 
+    float buildDelay;
+
     // Start is called before the first frame update
     void Start()
     {
 		cursorActive = true;
 		status = "Free";
         defaultMaterial = GetComponent<Renderer>().material;
+        buildDelay = 0;
 		//GetComponent<Renderer>().material = defaultMaterial;
 
 		RaycastHit[] objects = Physics.SphereCastAll(transform.position, 6f, transform.up, 0f);
@@ -52,7 +55,10 @@ public class TileScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonUp(0)) {
+            buildDelay = 0;
+            GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
+        }
     }
 
 	public void resetDistance() {
@@ -111,12 +117,22 @@ public class TileScript : MonoBehaviour
 	}
 
 	private void OnMouseOver() {
-		if (Input.GetMouseButtonDown(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
+		if (Input.GetMouseButton(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
 		&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0) {
-			status = "Occupied";
-			GetComponent<Renderer>().material = defaultMaterial;
-			CreateTower();
+
+            if (buildDelay > 100) {
+                GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
+                status = "Occupied";
+                GetComponent<Renderer>().material = defaultMaterial;
+                CreateTower();
+            }
+            else {
+                buildDelay += Time.deltaTime * 100f;
+                GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().increase();
+                GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setPosition(transform);
+            }
 		}
+
         else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied") && cursorActive  && GameManagerScript.gamePhase.Equals("Build")) {
             openSlotMachine();
         }
@@ -128,7 +144,10 @@ public class TileScript : MonoBehaviour
 	}
 
 	void OnMouseExit() {
-		if (status.Equals("Selected")) {
+        GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
+        buildDelay = 0;
+
+        if (status.Equals("Selected")) {
 			GetComponent<Renderer>().material = defaultMaterial;
 			status = "Free";
 		}
