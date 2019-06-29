@@ -22,6 +22,7 @@ public class TileScript : MonoBehaviour
 	public static bool cursorActive;
 
     float buildDelay;
+    bool buildDragPrevent;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,9 @@ public class TileScript : MonoBehaviour
 		cursorActive = true;
 		status = "Free";
         defaultMaterial = GetComponent<Renderer>().material;
+
         buildDelay = 0;
+        buildDragPrevent = false;
 		//GetComponent<Renderer>().material = defaultMaterial;
 
 		RaycastHit[] objects = Physics.SphereCastAll(transform.position, 6f, transform.up, 0f);
@@ -90,7 +93,7 @@ public class TileScript : MonoBehaviour
 	}
 
 	public void setDistanceFromBottom(int x, string direction) {
-		if (DistanceFromBottom == 0 && status.Equals("Free")) {
+		if (DistanceFromBottom == 0 && (status.Equals("Free") || status.Equals("NonBuildable"))) {
 			DistanceFromBottom = x;
 			enemyWalkDirection = direction;
 		}
@@ -117,8 +120,16 @@ public class TileScript : MonoBehaviour
 	}
 
 	private void OnMouseOver() {
+
+        if (Input.GetMouseButtonDown(0)) {
+            buildDragPrevent = true;
+        }
+        if (Input.GetMouseButtonUp(0)) {
+            buildDragPrevent = false;
+        }
+
 		if (Input.GetMouseButton(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
-		&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0) {
+		&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0 && buildDragPrevent) {
 
             if (buildDelay > 100) {
                 GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
@@ -146,6 +157,7 @@ public class TileScript : MonoBehaviour
 	void OnMouseExit() {
         GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
         buildDelay = 0;
+        buildDragPrevent = false;
 
         if (status.Equals("Selected")) {
 			GetComponent<Renderer>().material = defaultMaterial;

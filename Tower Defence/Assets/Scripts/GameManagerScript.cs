@@ -57,7 +57,9 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        startAttack();
+        if (Input.GetButtonDown("Jump")) {
+            startAttack();
+        }
         spawnMinions();
         Debug.Log(gamePhase);
 
@@ -78,7 +80,8 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public void startAttack() {
-        if (Input.GetButtonDown("Jump") && gamePhase.Equals("Build")) {
+        //if (Input.GetButtonDown("Jump") && gamePhase.Equals("Build")) {   //removed because of ui button
+        if (gamePhase.Equals("Build")) {
             TileScript.cursorActive = false;
             gamePhase = "Attack";
             uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " incoming!");
