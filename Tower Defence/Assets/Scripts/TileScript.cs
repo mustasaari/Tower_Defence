@@ -144,7 +144,8 @@ public class TileScript : MonoBehaviour
             }
 		}
 
-        else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied") && cursorActive  && GameManagerScript.gamePhase.Equals("Build")) {
+        //childcount added to if-statemant because clicking occupied-mushroom-tile caused trying to open slotmachine
+        else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied") && cursorActive  && GameManagerScript.gamePhase.Equals("Build") && transform.childCount > 0 ) {
             openSlotMachine();
         }
 		else if (GameManagerScript.gamePhase.Equals("Attack") && status.Equals("Selected")){

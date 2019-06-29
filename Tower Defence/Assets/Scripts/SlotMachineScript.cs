@@ -6,6 +6,8 @@ public class SlotMachineScript : MonoBehaviour
 {
     GameObject towerToBeEdited;
 
+    public GameObject towerDestroyAnimation;
+
     int amountOfWheelSymbolsInGame = 5;     // 1damage 2range 3speed 4money  5AoE
     int[] wheels = new int[3];
     bool[] lockedWheels;
@@ -207,6 +209,7 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void deleteTower() {
+        Instantiate(towerDestroyAnimation, towerToBeEdited.transform.position, towerToBeEdited.transform.rotation);
         towerToBeEdited.gameObject.GetComponentInParent<TileScript>().setStatus("Free");
         GameManagerScript.addTowers();
         Destroy(towerToBeEdited);
