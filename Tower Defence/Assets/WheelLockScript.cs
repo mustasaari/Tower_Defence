@@ -34,6 +34,7 @@ public class WheelLockScript : MonoBehaviour
     private void OnMouseOver() {
         if(Input.GetMouseButtonDown(0)) {
             GetComponentInParent<SlotMachineScript>().lockPressed(lockNumber);
+            GetComponent<AudioSource>().Play();
             if (wheelLocked) {
                 wheelLocked = false;
             }

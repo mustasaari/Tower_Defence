@@ -102,6 +102,8 @@ public class SlotMachineScript : MonoBehaviour
 
     public void rollAll() {
 
+        GetComponent<AudioSource>().Play();
+
         for (int i = 0; i < 3; i++) {   //set wheels to random values
 
             if (lockedWheels[i] == false) {
@@ -232,7 +234,11 @@ public class SlotMachineScript : MonoBehaviour
             if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
                 transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
                 transform.GetChild(3).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady()) {
-                rollAll();
+
+                //if all wheels are locked then cannot roll
+                if(!(lockedWheels[0] && lockedWheels[1] && lockedWheels[2])) {
+                    rollAll();
+                }
             }
         }
         else {

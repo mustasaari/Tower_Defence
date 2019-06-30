@@ -34,6 +34,10 @@ public class SlotWheelScript : MonoBehaviour
             //transform.Rotate(0, 0, -wheelSpeed, Space.Self);
         }
         else {
+            if (!rotationReady) {
+                GetComponent<AudioSource>().Play();
+            }
+
             rotationReady = true;
         }
 
