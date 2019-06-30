@@ -19,10 +19,15 @@ public class Digger : MonoBehaviour
         if (activated && transform.position.y < 0) {
             transform.Translate(transform.up * Time.deltaTime * 5);
         }
+
+        if(activated && transform.position.y >= 0) {
+            transform.GetChild(2).Translate(Vector3.down * Time.deltaTime * 2, Space.World);
+        }
     }
 
     public void activateDigger() {
         activated = true;
+        transform.parent.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
     }
 
     public bool getActivated() {

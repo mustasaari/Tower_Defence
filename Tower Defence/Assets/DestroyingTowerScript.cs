@@ -11,11 +11,13 @@ public class DestroyingTowerScript : MonoBehaviour
             transform.GetChild(i).gameObject.SetActive(true);
             transform.GetChild(i).gameObject.transform.SetParent(null);
         }
-        Destroy(gameObject);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<AudioSource>().isPlaying == false) {
+            Destroy(gameObject);
+        }
     }
 }
