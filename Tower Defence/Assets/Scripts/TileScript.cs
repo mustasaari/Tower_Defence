@@ -159,7 +159,7 @@ public class TileScript : MonoBehaviour
 
 			//SetTile selected if when leaving from UI Element.
 			if (!GetComponent<Renderer>().material.name.Equals("green (Instance)") && !status.Equals("Occupied") 
-			&& !status.Equals("NonBuildable") && GameManagerScript.gamePhase.Equals("Build")) {
+			&& !status.Equals("NonBuildable") && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
                 GetComponent<Renderer>().material = green;
                 status = "Selected";
             }
