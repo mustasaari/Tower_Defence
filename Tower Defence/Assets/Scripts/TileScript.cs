@@ -106,7 +106,7 @@ public class TileScript : MonoBehaviour
 	void OnMouseEnter() {
 
         
-		if (!EventSystem.current.IsPointerOverGameObject() && cursorActive){		//IF NOT UI ELEMENT Check!
+		//if (!EventSystem.current.IsPointerOverGameObject() && cursorActive){		//IF NOT UI ELEMENT Check!  1.7
 			if (status.Equals("Free") && cursorActive && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
 				status = "Selected";
 			}
@@ -119,14 +119,14 @@ public class TileScript : MonoBehaviour
 			if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() && GameManagerScript.gamePhase.Equals("Build")) {
 				GetComponent<Renderer>().material = red;
 			}
-		} 
+		//}     1.7
 	}
 
 	private void OnMouseOver() {
 
-        transform.parent.GetComponent<GridScript>().generateDistances();    // 1.7 generate distances in each update because mouse might come over without OnEnter from UI
+        //transform.parent.GetComponent<GridScript>().generateDistances();    // 1.7 generate distances in each update because mouse might come over without OnEnter from UI
 
-        if (!EventSystem.current.IsPointerOverGameObject() && cursorActive){		//IF NOT UI ELEMENT Check! -> then normal behaviour
+        //if (!EventSystem.current.IsPointerOverGameObject() && cursorActive){		//IF NOT UI ELEMENT Check! -> then normal behaviour 1.7
 			if (Input.GetMouseButtonDown(0)) {
 				buildDragPrevent = true;
 			}
@@ -135,7 +135,7 @@ public class TileScript : MonoBehaviour
 			}
 
 			if (Input.GetMouseButton(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
-			&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0 && buildDragPrevent) {
+			&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0 && buildDragPrevent && !EventSystem.current.IsPointerOverGameObject()) {  //1.7 vaihtoehto2 ispointerover lisätty
 
 				if (buildDelay > 100) {
 					GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
@@ -160,24 +160,37 @@ public class TileScript : MonoBehaviour
 				transform.parent.GetComponent<GridScript>().generateDistances();
 			}
 
+            //1.7
 			//SetTile selected if when leaving from UI Element.
-			if (!GetComponent<Renderer>().material.name.Equals("green (Instance)") && !status.Equals("Occupied") 
-			&& !status.Equals("NonBuildable") && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
-                GetComponent<Renderer>().material = green;
-                status = "Selected";
-            }
+			//if (!GetComponent<Renderer>().material.name.Equals("green (Instance)") && !status.Equals("Occupied") 
+			//&& !status.Equals("NonBuildable") && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
+            //    GetComponent<Renderer>().material = green;
+            //    status = "Selected";
+            //}
 
             //1.7 UI hommeleiden jälkeen ei ruutu muutu punaiseksi niin tämä IF-lause kopioitu onMouseEnteristä 
             //ei valid routea
-            if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() && GameManagerScript.gamePhase.Equals("Build")) {
-                GetComponent<Renderer>().material = red;
-            }
+            //if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() && GameManagerScript.gamePhase.Equals("Build")) {
+            //    GetComponent<Renderer>().material = red;
+            //}
 
+        //}
+		//else if(!status.Equals("NonBuildable") && !status.Equals("Occupied")){
+		//	GetComponent<Renderer>().material = defaultMaterial;
+		//} //1.7 loppuu
+
+        //1.7 vaihtoehto2
+        //jos ruutu (oletetusti) vihreänä ja hiiri menee UI:n päälle vaihda väri defaultiin
+        if (status.Equals("Selected") && EventSystem.current.IsPointerOverGameObject()) {
+            GetComponent<Renderer>().material = defaultMaterial;
+        } //jos ruutu valittuna ja ei-ui:n päällä ja route on ok niin vihreäksi väri laita
+        else if (status.Equals("Selected") && !EventSystem.current.IsPointerOverGameObject() && transform.parent.GetComponent<GridScript>().getValidRoute()) {
+            GetComponent<Renderer>().material = green;
+        }   // jos valittuna mutta ei reittiä ole niin sitten punainen
+        else if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute()) {
+            GetComponent<Renderer>().material = red;
         }
-		else if(!status.Equals("NonBuildable") && !status.Equals("Occupied")){
-			GetComponent<Renderer>().material = defaultMaterial;
-		}
-	}
+    }
 
 	void OnMouseExit() {
         GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
