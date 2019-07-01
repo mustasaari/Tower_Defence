@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TileScript : MonoBehaviour
 {
@@ -104,54 +105,66 @@ public class TileScript : MonoBehaviour
 
 	void OnMouseEnter() {
 
-		if (status.Equals("Free") && cursorActive && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
-			status = "Selected";
-		}
-			
+		if (!EventSystem.current.IsPointerOverGameObject() && cursorActive){		//IF NOT UI ELEMENT Check!
+			if (status.Equals("Free") && cursorActive && GameManagerScript.gamePhase.Equals("Build") && !isBottomRowTile && !isTopRowTile) {
+				status = "Selected";
+			}
+				
+			transform.parent.GetComponent<GridScript>().generateDistances();
 
-		transform.parent.GetComponent<GridScript>().generateDistances();
-
-		if (status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() && cursorActive && GameManagerScript.gamePhase.Equals("Build")) {
-			GetComponent<Renderer>().material = green;
-		}
-		if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() && cursorActive && GameManagerScript.gamePhase.Equals("Build")) {
-			GetComponent<Renderer>().material = red;
+			if (status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() && GameManagerScript.gamePhase.Equals("Build")) {
+				GetComponent<Renderer>().material = green;
+			}
+			if (status.Equals("Selected") && !transform.parent.GetComponent<GridScript>().getValidRoute() && GameManagerScript.gamePhase.Equals("Build")) {
+				GetComponent<Renderer>().material = red;
+			}
 		}
 	}
 
 	private void OnMouseOver() {
 
-        if (Input.GetMouseButtonDown(0)) {
-            buildDragPrevent = true;
-        }
-        if (Input.GetMouseButtonUp(0)) {
-            buildDragPrevent = false;
-        }
+		if (!EventSystem.current.IsPointerOverGameObject() && cursorActive){		//IF NOT UI ELEMENT Check!
+			if (Input.GetMouseButtonDown(0)) {
+				buildDragPrevent = true;
+			}
+			if (Input.GetMouseButtonUp(0)) {
+				buildDragPrevent = false;
+			}
 
-		if (Input.GetMouseButton(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
-		&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0 && buildDragPrevent) {
+			if (Input.GetMouseButton(0) && status.Equals("Selected") && transform.parent.GetComponent<GridScript>().getValidRoute() 
+			&& !isBottomRowTile && !isTopRowTile && GameManagerScript.getTowers() > 0 && buildDragPrevent) {
 
-            if (buildDelay > 100) {
-                GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
-                status = "Occupied";
-                GetComponent<Renderer>().material = defaultMaterial;
-                CreateTower();
-            }
-            else {
-                buildDelay += Time.deltaTime * 100f;
-                GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().increase();
-                GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setPosition(transform);
+				if (buildDelay > 100) {
+					GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setSizeToZero();
+					status = "Occupied";
+					GetComponent<Renderer>().material = defaultMaterial;
+					CreateTower();
+				}
+				else {
+					buildDelay += Time.deltaTime * 100f;
+					GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().increase();
+					GameObject.FindGameObjectWithTag("BuildingInProgress").GetComponent<BuildingInProgressScript>().setPosition(transform);
+				}
+			}
+
+			//childcount added to if-statemant because clicking occupied-mushroom-tile caused trying to open slotmachine
+			else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied")  && GameManagerScript.gamePhase.Equals("Build") && transform.childCount > 0 ) {
+				openSlotMachine();
+			}
+			else if (GameManagerScript.gamePhase.Equals("Attack") && status.Equals("Selected")){
+				GetComponent<Renderer>().material = defaultMaterial;
+				status = "Free";
+				transform.parent.GetComponent<GridScript>().generateDistances();
+			}
+
+			//SetTile selected if when leaving from UI Element.
+			if (!GetComponent<Renderer>().material.name.Equals("green (Instance)") && !status.Equals("Occupied") && !status.Equals("NonBuildable") ) {
+                GetComponent<Renderer>().material = green;
+                status = "Selected";
             }
 		}
-
-        //childcount added to if-statemant because clicking occupied-mushroom-tile caused trying to open slotmachine
-        else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied") && cursorActive  && GameManagerScript.gamePhase.Equals("Build") && transform.childCount > 0 ) {
-            openSlotMachine();
-        }
-		else if (GameManagerScript.gamePhase.Equals("Attack") && status.Equals("Selected")){
+		else if(!status.Equals("NonBuildable") && !status.Equals("Occupied")){
 			GetComponent<Renderer>().material = defaultMaterial;
-			status = "Free";
-			transform.parent.GetComponent<GridScript>().generateDistances();
 		}
 	}
 

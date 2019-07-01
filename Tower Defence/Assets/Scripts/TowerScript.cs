@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TowerScript : MonoBehaviour
 {
@@ -231,7 +232,7 @@ public class TowerScript : MonoBehaviour
         ParticleSystem.ShapeModule shape = rangeParticle.shape;
         shape.radius = rangeIndicatorRange;
 
-        if (Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied") && GameManagerScript.gamePhase.Equals("Build")) {
+        if (!EventSystem.current.IsPointerOverGameObject() && Input.GetMouseButtonDown(0) && GetComponentInParent<TileScript>().status.Equals("Occupied") && GameManagerScript.gamePhase.Equals("Build")) {
             GetComponentInParent<TileScript>().openSlotMachine();
         }
     }
