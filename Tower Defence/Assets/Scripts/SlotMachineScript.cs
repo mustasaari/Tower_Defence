@@ -19,11 +19,15 @@ public class SlotMachineScript : MonoBehaviour
     int moneyToSend;
     int aoeToSend;
 
+    int rollCost;
+
     // Start is called before the first frame update
     void Start()
     {
         cameraEnabled = false;
         GetComponentInChildren<Camera>().enabled = true;
+        rollCost = 1;
+        //checkRollCost();
     }
 
     // Update is called once per frame
@@ -71,6 +75,7 @@ public class SlotMachineScript : MonoBehaviour
         transform.GetChild(11).gameObject.GetComponent<WheelLockScript>().setLock(lockedWheels[1]);
         transform.GetChild(12).gameObject.GetComponent<WheelLockScript>().setLock(lockedWheels[2]);
 
+        checkRollCost();
         applyResults();
 
         cameraEnabled = true;
@@ -120,7 +125,7 @@ public class SlotMachineScript : MonoBehaviour
         Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2]);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackDMG(10); //reset dmg to base
         applyResults();
-        GameManagerScript.reduceMoney();
+        GameManagerScript.reduceMoney(rollCost);
     }
 
     public void applyResults() {
@@ -211,11 +216,17 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void deleteTower() {
-        Instantiate(towerDestroyAnimation, towerToBeEdited.transform.position, towerToBeEdited.transform.rotation);
-        towerToBeEdited.gameObject.GetComponentInParent<TileScript>().setStatus("Free");
-        GameManagerScript.addTowers();
-        Destroy(towerToBeEdited);
-        closeSlotMachine();
+        if (GameManagerScript.getMoney() >=  1) {
+            GameManagerScript.reduceMoney(1);
+            Instantiate(towerDestroyAnimation, towerToBeEdited.transform.position, towerToBeEdited.transform.rotation);
+            towerToBeEdited.gameObject.GetComponentInParent<TileScript>().setStatus("Free");
+            GameManagerScript.addTowers();
+            Destroy(towerToBeEdited);
+            closeSlotMachine();
+        }
+        else {
+            GameManagerScript.messageToUI("Not enough resources");
+        }
     }
 
     public void lockPressed(int lck) {
@@ -226,10 +237,11 @@ public class SlotMachineScript : MonoBehaviour
         else if (lockedWheels[lck] == true) {
             lockedWheels[lck] = false;
         }
+        checkRollCost();
     }
 
     public void rollTheWheel() {
-        if (GameManagerScript.getMoney() >= 1) {
+        if (GameManagerScript.getMoney() >= rollCost) {
             Debug.Log("R key was pressed for reroll.");
             if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
                 transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
@@ -244,5 +256,33 @@ public class SlotMachineScript : MonoBehaviour
         else {
             GameManagerScript.messageToUI("Not enough resources");
         }
+    }
+
+    public void checkRollCost() {
+
+        int numberOfLockedWheels = 0;
+
+        for (int i = 0; i < 3; i++) {
+            if (lockedWheels[i] == true) {
+                numberOfLockedWheels++;
+            }
+        }
+
+        if (numberOfLockedWheels == 0) {
+            transform.GetChild(14).GetComponent<TextMesh>().text = "Roll cost : 1";
+            rollCost = 1;
+        }
+        else if (numberOfLockedWheels == 1) {
+            transform.GetChild(14).GetComponent<TextMesh>().text = "Roll cost : 2";
+            rollCost = 2;
+        }
+        else if (numberOfLockedWheels == 2) {
+            transform.GetChild(14).GetComponent<TextMesh>().text = "Roll cost : 3";
+            rollCost = 3;
+        }
+        else if (numberOfLockedWheels == 3) {
+            transform.GetChild(14).GetComponent<TextMesh>().text = "All Wheels Locked";
+        }
+
     }
 }

@@ -254,8 +254,8 @@ public class GameManagerScript : MonoBehaviour
         activeMinionsOnField--;
     }
 
-    public static void reduceMoney(){
-        money -= 1;
+    public static void reduceMoney(int amount){
+        money -= amount;
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
 

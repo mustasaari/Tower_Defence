@@ -24,10 +24,14 @@ public class WheelLockScript : MonoBehaviour
     void Update()
     {
         if (wheelLocked && lockPart2.transform.position.y >= startPosY -0.5f) { //Down
-            lockPart2.transform.Translate(Vector3.up * Time.deltaTime * -10f, Space.World);
+            lockPart2.transform.Translate(Vector3.up * Time.deltaTime * -20f, Space.World);
         } 
-        else if (!wheelLocked && lockPart2.transform.position.y <= startPosY +3.2f) {  //up
-            lockPart2.transform.Translate(Vector3.up * Time.deltaTime * +10f, Space.World);
+        else if (!wheelLocked && lockPart2.transform.position.y <= startPosY +2f) {  //up
+            lockPart2.transform.Translate(Vector3.up * Time.deltaTime * +20f, Space.World);
+        }
+
+        else if (!wheelLocked && lockPart2.transform.position.y >= startPosY + 2.2f) {
+            lockPart2.transform.Translate(Vector3.up * Time.deltaTime * -5f, Space.World);
         }
     }
 
