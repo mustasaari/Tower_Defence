@@ -10,8 +10,6 @@ public class CanvasScript : MonoBehaviour
     private Text life;
     private Text money;
     private Text towers;
-    private Button launcWave;
-    private Image alphaImage;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +18,6 @@ public class CanvasScript : MonoBehaviour
         life = GameObject.Find("Life").GetComponent<Text>();
         money = GameObject.Find("Money").GetComponent<Text>();
         towers = GameObject.Find("Towers").GetComponent<Text>();
-        launcWave = GameObject.Find("LaunchWave").GetComponent<Button>();
-        alphaImage = GameObject.Find("AlphaLayer").GetComponent<Image>();
 
         wave.text= "Wave: " + GameManagerScript.getWave();
         life.text= "Life: " + GameManagerScript.getLeafHP();
@@ -48,9 +44,12 @@ public class CanvasScript : MonoBehaviour
     public void updateTowers(int t){
         towers.text = "Buildable Towers: " + t;
     }
-    public void enableLayerImage(bool b){
-        transform.GetChild(8).gameObject.SetActive(b);
-        launcWave.gameObject.SetActive(!b);
-        alphaImage.enabled = b;
+    public void enablePauseObjects(bool b){
+        transform.GetChild(8).gameObject.SetActive(b);  //PausePanel
+        transform.GetChild(7).gameObject.SetActive(b);  //AlphaLayer
+        transform.GetChild(6).gameObject.SetActive(!b);  //Launchwave
+        if(transform.GetChild(9).gameObject.active){
+            transform.GetChild(9).gameObject.SetActive(b);
+        }
     }
 }

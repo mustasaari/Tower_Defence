@@ -63,12 +63,12 @@ public class GameManagerScript : MonoBehaviour
             if(pauseToggle)
             {
                 Time.timeScale = 1;
-                uiCanvas.GetComponent<CanvasScript>().enableLayerImage(false);
+                uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(false);
                 pauseToggle = !pauseToggle;
             }
             else if(!pauseToggle){
                 Time.timeScale = 0;
-                uiCanvas.GetComponent<CanvasScript>().enableLayerImage(true);
+                uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(true);
                 pauseToggle = !pauseToggle;
             }
         }
@@ -311,5 +311,10 @@ public class GameManagerScript : MonoBehaviour
 
     public static void messageToUI(string message) {
         uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
+    }
+    public void resumeGame(){
+        Time.timeScale = 1;
+        uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(false);
+        pauseToggle = !pauseToggle;
     }
 }
