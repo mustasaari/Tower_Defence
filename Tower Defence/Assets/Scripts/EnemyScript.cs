@@ -29,10 +29,10 @@ public class EnemyScript : MonoBehaviour
         maxHP = health;
         //Debug.Log(gameObject.transform.name);
         if(gameObject.transform.name == "SpeedFly(Clone)"){
-            rotSpeed = 3f * Time.deltaTime;
+            rotSpeed = 3f;
         }
         else if(gameObject.transform.name == "LadyBug(Clone)"){
-            rotSpeed = 1.5f * Time.deltaTime;
+            rotSpeed = 1.5f;
         }
     }
 
@@ -56,16 +56,16 @@ public class EnemyScript : MonoBehaviour
         Vector3 newDir = new Vector3(0,0,0);
 		
 		if (direction.Equals("Down")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.back, rotSpeed, rotSpeed);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.back, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
         }
 		if (direction.Equals("Up")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.forward, rotSpeed, rotSpeed);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.forward, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
         }
 		if (direction.Equals("Left")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.left, rotSpeed, rotSpeed);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.left, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
 		}
 		if (direction.Equals("Right")) {
-            newDir = Vector3.RotateTowards(transform.forward, Vector3.right, rotSpeed, rotSpeed);
+            newDir = Vector3.RotateTowards(transform.forward, Vector3.right, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
         }
 
         transform.rotation = Quaternion.LookRotation(newDir);
