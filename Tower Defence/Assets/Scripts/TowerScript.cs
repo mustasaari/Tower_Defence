@@ -24,6 +24,8 @@ public class TowerScript : MonoBehaviour
     ParticleSystem rangeParticle;
     float rangeIndicatorRange;
 
+    public string targetingMode; //Default, Furthest, Nearest, Least HP, most HP
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +35,7 @@ public class TowerScript : MonoBehaviour
         //setRange(10f);
         //GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
         //Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
+        targetingMode = "Default";
 
         slotMachineWheels = GameObject.FindGameObjectsWithTag("SlotMachineWheel");
         rangeParticle = transform.GetChild(2).gameObject.GetComponent<ParticleSystem>();
@@ -119,11 +122,39 @@ public class TowerScript : MonoBehaviour
                 // Debug.Log("enemy found");
             }
         }
+        //set first enemy from list as comparator
+        if (enemies.Count > 0) {
+            target = enemies[0];
+        }
+
         foreach(GameObject enemy in enemies)
         {
+            if (targetingMode.Equals("Default")) {
+                target = enemy;
+            }
+            else if (targetingMode.Equals("LowestHP")) {
+                if(enemy.GetComponent<EnemyScript>().getHealth() < target.GetComponent<EnemyScript>().getHealth()) {
+                    target = enemy;
+                }
+            }
+            else if (targetingMode.Equals("HighestHP")) {
+                if (enemy.GetComponent<EnemyScript>().getHealth() > target.GetComponent<EnemyScript>().getHealth()) {
+                    target = enemy;
+                }
+            }
+            else if (targetingMode.Equals("Nearest")) {
+                if (Vector3.Distance(transform.position, enemy.transform.position) < Vector3.Distance(transform.position, target.transform.position)) {
+                    target = enemy;
+                }
+            }
+            else if (targetingMode.Equals("Farthest")) {
+                if (Vector3.Distance(transform.position, enemy.transform.position) > Vector3.Distance(transform.position, target.transform.position)) {
+                    target = enemy;
+                }
+            }
+
             //change this later plz!
             // Debug.Log("enemy set");
-            target = enemy;
         }
     }
 
@@ -216,6 +247,10 @@ public class TowerScript : MonoBehaviour
 
     public void setLockedWheels(bool[] lw) {
         lockedWheels = lw;
+    }
+
+    public void setTargetingMode(string mode) {
+        targetingMode = mode;
     }
 
     private void OnMouseEnter() {

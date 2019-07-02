@@ -125,4 +125,8 @@ public class EnemyScript : MonoBehaviour
     public void OnMouseOver() {
         GameManagerScript.showEnemyHP(health, maxHP, name);
     }
+
+    public int getHealth() {
+        return health;
+    }
 }

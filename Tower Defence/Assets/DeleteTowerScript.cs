@@ -21,4 +21,12 @@ public class DeleteTowerScript : MonoBehaviour
             gameObject.GetComponentInParent<SlotMachineScript>().deleteTower();
         }
     }
+
+    private void OnMouseEnter() {
+        transform.GetChild(0).gameObject.SetActive(true);
+    }
+
+    private void OnMouseExit() {
+        transform.GetChild(0).gameObject.SetActive(false);
+    }
 }
