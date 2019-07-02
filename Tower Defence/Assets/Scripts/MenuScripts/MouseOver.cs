@@ -12,6 +12,7 @@ public class MouseOver: MonoBehaviour, IPointerEnterHandler{
     {
         //do stuff
         Debug.Log("Mouse OVER!!!");
-        AudioSource.PlayClipAtPoint(mouseOverAudio, Camera.main.transform.position);
+        AudioSource.PlayClipAtPoint(mouseOverAudio, Camera.main.transform.position, PlayerPrefs.GetFloat("SFXvolume", 0.5f));
+        
     }
 }
