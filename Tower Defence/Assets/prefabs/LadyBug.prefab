@@ -61,7 +61,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Ladybug
   direction: 
-  health: 100
+  health: 80
   speed: 4
   cost: 5
   aoeEffectPrefab1: {fileID: 6265869265389634832, guid: aecacfae702e49840898d290c4b700e4,
@@ -83,11 +83,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: roboBones
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 89901ead5ad64794cb04d80ac3e62584,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: bc6d55560cf763a42ac434279dfdb4aa, type: 2}
     - target: {fileID: -4216859302048453862, guid: 89901ead5ad64794cb04d80ac3e62584,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -158,6 +153,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.237401
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 89901ead5ad64794cb04d80ac3e62584,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: bc6d55560cf763a42ac434279dfdb4aa, type: 2}
     - target: {fileID: -1145414106354058766, guid: 89901ead5ad64794cb04d80ac3e62584,
         type: 3}
       propertyPath: m_Materials.Array.data[0]

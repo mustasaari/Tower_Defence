@@ -102,7 +102,7 @@ public class GameManagerScript : MonoBehaviour
             uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " incoming!");
             sleep = 500;    //some delay before first minion comes
             //musteringPoints = 10 + (wave * (wave + wave + wave) );
-            musteringPoints = 10 + (wave * wave);
+            musteringPoints = 5 + (wave * wave);
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
         }
     }
@@ -132,91 +132,37 @@ public class GameManagerScript : MonoBehaviour
             int rndEnemy = Random.Range(1, 101);
             if(rndEnemy > 0 && rndEnemy < 50){
                 spawndable = enemy1;
-                sleep = 500;
+                sleep = 600;
             }
             else if (rndEnemy >= 50 && rndEnemy <= 100){
                 sleep = 300;
                 spawndable = enemy2;
             }
 
-            if (musteringPoints > 0) {
+            if (musteringPoints >= spawndable.GetComponent<EnemyScript>().getCost()) {
 
                 Debug.Log("Spawnpoint RND was : " + rnd);
                 Instantiate(spawndable, activatedSpawns[rnd].transform.position, Quaternion.identity);
 
                 musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
                 activeMinionsOnField++;
-
-                
-                /*
-                if (rnd == 1) {
-                    Instantiate(spawndable, spawn1.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 2) {
-                    Instantiate(spawndable, spawn2.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 3) {
-                    Instantiate(spawndable, spawn3.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 4) {
-                    Instantiate(spawndable, spawn4.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 5) {
-                    Instantiate(spawndable, spawn5.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 6) {
-                    Instantiate(spawndable, spawn6.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 7) {
-                    Instantiate(spawndable, spawn7.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 8) {
-                    Instantiate(spawndable, spawn8.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 9) {
-                    Instantiate(spawndable, spawn9.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                }
-                else if (rnd == 10) {
-                    Instantiate(spawndable, spawn10.transform.position, Quaternion.identity);
-
-                    musteringPoints -= spawndable.GetComponent<EnemyScript>().getCost();
-                    activeMinionsOnField++;
-                } */
-
-
-
             }
+            //------------------------------Nopee korjaus------------------------------
+            else if(musteringPoints >= enemy2.GetComponent<EnemyScript>().getCost()){
+                Instantiate(enemy2, activatedSpawns[rnd].transform.position, Quaternion.identity);
+
+                musteringPoints -= enemy2.GetComponent<EnemyScript>().getCost();
+                activeMinionsOnField++;
+                musteringPoints = 0;
+            }
+            else{
+                musteringPoints = 0;
+            }
+            //------------------------------Nopee korjaus------------------------------
         }
 
         if (gamePhase.Equals("Attack")){
-            sleep -= (100 + (wave * wave/1.5f)) * Time.deltaTime;
+            sleep -= (100 + (wave * wave)) * Time.deltaTime;
         }
         
         //Check for wave end condition

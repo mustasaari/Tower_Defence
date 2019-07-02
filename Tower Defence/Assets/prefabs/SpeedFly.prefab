@@ -60,7 +60,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Speedfly
   direction: 
-  health: 50
+  health: 40
   speed: 8
   cost: 3
   aoeEffectPrefab1: {fileID: 6265869265389634832, guid: aecacfae702e49840898d290c4b700e4,
@@ -77,6 +77,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6427738172573618140}
     m_Modifications:
+    - target: {fileID: -927199367670048503, guid: 054055b1716817348a8dd392680f88e2,
+        type: 3}
+      propertyPath: m_Name
+      value: fastrobot1
+      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 054055b1716817348a8dd392680f88e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -146,11 +151,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.3114393
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 054055b1716817348a8dd392680f88e2,
-        type: 3}
-      propertyPath: m_Name
-      value: fastrobot1
       objectReference: {fileID: 0}
     - target: {fileID: -1212445537685685361, guid: 054055b1716817348a8dd392680f88e2,
         type: 3}
