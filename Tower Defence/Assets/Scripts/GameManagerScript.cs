@@ -161,8 +161,11 @@ public class GameManagerScript : MonoBehaviour
             //------------------------------Nopee korjaus------------------------------
         }
 
+        //Enemy Spawn speed over waves
+        //HighScores :
+        //2.7 Mikko - Wave 17 - vaikeus 2f
         if (gamePhase.Equals("Attack")){
-            sleep -= (100 + (wave * wave)) * Time.deltaTime;
+            sleep -= (100 + (wave * wave * 2f)) * Time.deltaTime;
         }
         
         //Check for wave end condition

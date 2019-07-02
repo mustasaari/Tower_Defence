@@ -59,7 +59,7 @@ public class SlotMachineScript : MonoBehaviour
         towerToBeEdited = tower;
         //Debug.Log("Tower : " + towerToBeEdited);
         //GetComponentInChildren<Camera>().enabled = true;
-
+        setTargetingCrystalSelectorToPlace();
         //enable left side return camera
         transform.GetChild(8).GetComponent<Camera>().enabled = true;
 
@@ -283,6 +283,28 @@ public class SlotMachineScript : MonoBehaviour
         else if (numberOfLockedWheels == 3) {
             transform.GetChild(14).GetComponent<TextMesh>().text = "All Wheels Locked";
         }
+  
+    }
 
+    public void setTargetingFromCrystal(string mode) {
+        towerToBeEdited.GetComponent<TowerScript>().setTargetingMode(mode);
+    }
+
+    public void setTargetingCrystalSelectorToPlace() {
+        if (towerToBeEdited.GetComponent<TowerScript>().getTargetingMode().Equals("Default")) {
+            GameObject.FindGameObjectWithTag("TargetingCrystalSelector").transform.position = transform.GetChild(0).GetChild(0).position;
+        }
+        if (towerToBeEdited.GetComponent<TowerScript>().getTargetingMode().Equals("HighestHP")) {
+            GameObject.FindGameObjectWithTag("TargetingCrystalSelector").transform.position = transform.GetChild(0).GetChild(1).position;
+        }
+        if (towerToBeEdited.GetComponent<TowerScript>().getTargetingMode().Equals("LowestHP")) {
+            GameObject.FindGameObjectWithTag("TargetingCrystalSelector").transform.position = transform.GetChild(0).GetChild(2).position;
+        }
+        if (towerToBeEdited.GetComponent<TowerScript>().getTargetingMode().Equals("Farthest")) {
+            GameObject.FindGameObjectWithTag("TargetingCrystalSelector").transform.position = transform.GetChild(0).GetChild(3).position;
+        }
+        if (towerToBeEdited.GetComponent<TowerScript>().getTargetingMode().Equals("Nearest")) {
+            GameObject.FindGameObjectWithTag("TargetingCrystalSelector").transform.position = transform.GetChild(0).GetChild(4).position;
+        }
     }
 }

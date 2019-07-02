@@ -253,6 +253,10 @@ public class TowerScript : MonoBehaviour
         targetingMode = mode;
     }
 
+    public string getTargetingMode() {
+        return targetingMode;
+    }
+
     private void OnMouseEnter() {
         rangeParticle.Play();
     }
