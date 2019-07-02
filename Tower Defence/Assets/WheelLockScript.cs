@@ -12,6 +12,7 @@ public class WheelLockScript : MonoBehaviour
 
     private GameObject lockPart2;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,7 +39,7 @@ public class WheelLockScript : MonoBehaviour
     private void OnMouseOver() {
         if(Input.GetMouseButtonDown(0)) {
             GetComponentInParent<SlotMachineScript>().lockPressed(lockNumber);
-            GetComponent<AudioSource>().Play();
+            GetComponent<AudioSource>().PlayOneShot(GetComponent<AudioSource>().clip, PlayerPrefs.GetFloat("SFXvolume", 0.5f));
             if (wheelLocked) {
                 wheelLocked = false;
             }
