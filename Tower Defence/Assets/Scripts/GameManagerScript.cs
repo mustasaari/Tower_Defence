@@ -31,9 +31,9 @@ public class GameManagerScript : MonoBehaviour
     //Specified in spawnMinions
     private GameObject spawndable;
     public float sleep = 0;
-
     int musteringPoints;
     static int activeMinionsOnField;
+    bool pauseToggle;
 
     // Start is called before the first frame update
     void Start()
@@ -45,6 +45,7 @@ public class GameManagerScript : MonoBehaviour
         activeMinionsOnField = 0;
         money = 10;
         buildableTowers = 3;
+        pauseToggle = false;
         InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 2);
         //ToastText.Instance.Show3DTextToast("Text Message", 10);
 
@@ -57,6 +58,20 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if(pauseToggle)
+            {
+                Time.timeScale = 1;
+                uiCanvas.GetComponent<CanvasScript>().enableLayerImage(false);
+                pauseToggle = !pauseToggle;
+            }
+            else if(!pauseToggle){
+                Time.timeScale = 0;
+                uiCanvas.GetComponent<CanvasScript>().enableLayerImage(true);
+                pauseToggle = !pauseToggle;
+            }
+        }
         if (Input.GetButtonDown("Jump")) {
             startAttack();
         }
