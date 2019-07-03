@@ -29,7 +29,9 @@ public class TileScript : MonoBehaviour
     void Start()
     {
 		cursorActive = true;
-		status = "Free";
+        if (!status.Equals("NonBuildable") && !status.Equals("Occupied")) {
+            status = "Free";
+        }
         defaultMaterial = GetComponent<Renderer>().material;
 
         buildDelay = 0;
