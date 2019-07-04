@@ -34,6 +34,9 @@ public class EnemyScript : MonoBehaviour
         else if(gameObject.transform.name == "LadyBug(Clone)"){
             rotSpeed = 1.5f;
         }
+        else {
+            rotSpeed = 1f;
+        }
     }
 
     // Update is called once per frame
