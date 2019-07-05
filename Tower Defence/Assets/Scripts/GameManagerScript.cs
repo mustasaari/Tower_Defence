@@ -199,6 +199,7 @@ public class GameManagerScript : MonoBehaviour
             uiCanvas.GetComponent<CanvasScript>().updateWave(wave);
             uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+            setGameSpeed(1);
 
             //update spawnpoint
             bool doUntil = false;
@@ -271,6 +272,10 @@ public class GameManagerScript : MonoBehaviour
     public static void messageToUI(string message) {
         uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
     }
+    public void setGameSpeed(int speed){
+        Time.timeScale = speed;
+    }
+
     public void resumeGame(){
         Time.timeScale = 1;
         uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(false);

@@ -56,9 +56,11 @@ public class CanvasScript : MonoBehaviour
     public void setAttackPhase(bool phas) {
         if (phas) {
             transform.GetChild(6).gameObject.SetActive(false);
+            transform.GetChild(10).gameObject.SetActive(true);
         }
         else {
             transform.GetChild(6).gameObject.SetActive(true);
+            transform.GetChild(10).gameObject.SetActive(false);
         }
     }
 }
