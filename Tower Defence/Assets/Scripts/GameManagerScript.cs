@@ -35,10 +35,12 @@ public class GameManagerScript : MonoBehaviour
     int musteringPoints;
     static int activeMinionsOnField;
     bool pauseToggle;
+    float desiredgamespeed;
 
     // Start is called before the first frame update
     void Start()
     {
+        desiredgamespeed = 1;
         Time.timeScale = 1;
         uiCanvas = GameObject.FindWithTag("UI");
         gamePhase = "Build";
@@ -89,7 +91,7 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
         }
-
+        checkDesiredGameSpeed();
     }
 
     public static string getGamePhase() {
@@ -272,8 +274,22 @@ public class GameManagerScript : MonoBehaviour
     public static void messageToUI(string message) {
         uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
     }
-    public void setGameSpeed(int speed){
-        Time.timeScale = speed;
+    public void setGameSpeed(float speed){
+        desiredgamespeed = speed;
+    }
+
+    public void setDesiredGameSpeed(float speed){
+        desiredgamespeed = speed;
+    }
+
+    public void checkDesiredGameSpeed(){
+        if(desiredgamespeed > Time.timeScale){
+            Time.timeScale += 0.05f;
+        }
+        else if(desiredgamespeed < Time.timeScale){
+            Time.timeScale -= 0.05f;
+        }
+        Debug.Log(Time.timeScale);
     }
 
     public void resumeGame(){
