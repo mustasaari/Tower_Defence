@@ -77,13 +77,13 @@ public class CameraScriptM : MonoBehaviour
             GameObject child = this.gameObject.transform.GetChild(0).gameObject;
 
             //if (Vector3.Distance(child.transform.position, towerZoomGameObject.transform.position) > 20 ) {
-                transform.position = Vector3.MoveTowards(transform.position, towerZoomGameObject.transform.position +new Vector3(7,15,-15), zoomDistance/35);
+                transform.position = Vector3.MoveTowards(transform.position, towerZoomGameObject.transform.position +new Vector3(7,15,-15), zoomDistance/35 * Time.deltaTime * 50);
 
             if (zoomYaw > 180 && zoomYaw < 360) {
-                zoomYaw += (360 - zoomYaw) / zoomDistance * 5;
+                zoomYaw += (360 - zoomYaw) / zoomDistance * 5 * Time.deltaTime * 60;
             }
             else if (zoomYaw < 180 && zoomYaw > 0) {
-                zoomYaw -= (zoomYaw) / zoomDistance * 5;
+                zoomYaw -= (zoomYaw) / zoomDistance * 5 * Time.deltaTime * 60;
             }
 
             transform.eulerAngles = new Vector3(0f, zoomYaw, 0.0f);
@@ -91,15 +91,15 @@ public class CameraScriptM : MonoBehaviour
         }
 
         if (cameraMode.Equals("ZoomOut")) {
-            transform.position = Vector3.MoveTowards(transform.position, positionBeforeZoom, zoomDistance/35);
+            transform.position = Vector3.MoveTowards(transform.position, positionBeforeZoom, zoomDistance/35 * Time.deltaTime * 50);
 
             if (zoomYaw > yaw) {
                 //zoomYaw -= 2;
-                zoomYaw -= (zoomYaw - yaw) / zoomDistance * 5;
+                zoomYaw -= (zoomYaw - yaw) / zoomDistance * 5 * Time.deltaTime * 85;
             }
             if (zoomYaw < yaw) {
                 //zoomYaw += 2;
-                zoomYaw += (yaw - zoomYaw) / zoomDistance * 5;
+                zoomYaw += (yaw - zoomYaw) / zoomDistance * 5 * Time.deltaTime * 85;
             }
 
             transform.eulerAngles = new Vector3(0f, zoomYaw, 0.0f);
