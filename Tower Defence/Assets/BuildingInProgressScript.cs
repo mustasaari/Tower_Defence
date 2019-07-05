@@ -29,6 +29,12 @@ public class BuildingInProgressScript : MonoBehaviour
             if (size > i) {
                 transform.GetChild(i).gameObject.SetActive(true);
             }
+
+            if (size > 1 && !GetComponent<AudioSource>().isPlaying ) {
+                GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+                GetComponent<AudioSource>().pitch = (size/100) +0.5f;
+                GetComponent<AudioSource>().Play();
+            }
         }
 
         transform.GetChild(5).position = new Vector3(transform.GetChild(5).position.x, size/5.3f, transform.GetChild(5).position.z);
@@ -49,5 +55,6 @@ public class BuildingInProgressScript : MonoBehaviour
         for (int i = 0; i < transform.childCount; i++) {
             transform.GetChild(i).gameObject.SetActive(false);
         }
+        GetComponent<AudioSource>().Stop();
     }
 }

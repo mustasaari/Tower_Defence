@@ -41,6 +41,8 @@ public class TowerScript : MonoBehaviour
         //setRange(10f);
         //GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().firstTimeRandomization(gameObject);
         //Debug.Log("Tower created  my wheel is: " + wheels[0] + wheels[1] + wheels[2]);
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+
         targetingMode = "Default";
 
         slotMachineWheels = GameObject.FindGameObjectsWithTag("SlotMachineWheel");
