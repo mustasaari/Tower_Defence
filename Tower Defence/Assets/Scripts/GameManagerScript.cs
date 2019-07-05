@@ -278,15 +278,11 @@ public class GameManagerScript : MonoBehaviour
         desiredgamespeed = speed;
     }
 
-    public void setDesiredGameSpeed(float speed){
-        desiredgamespeed = speed;
-    }
-
     public void checkDesiredGameSpeed(){
-        if(desiredgamespeed > Time.timeScale){
+        if(desiredgamespeed > Time.timeScale + 0.05f){
             Time.timeScale += 0.05f;
         }
-        else if(desiredgamespeed < Time.timeScale){
+        else if(desiredgamespeed < Time.timeScale - 0.05f){
             Time.timeScale -= 0.05f;
         }
         Debug.Log(Time.timeScale);
