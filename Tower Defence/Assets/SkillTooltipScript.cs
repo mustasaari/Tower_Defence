@@ -27,13 +27,15 @@ public class SkillTooltipScript : MonoBehaviour
         GameObject go = GameObject.FindGameObjectWithTag("SkillTooltip");
         go.GetComponent<Renderer>().enabled = true;
         go.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = tooltiptext;
+        go.transform.GetChild(1).gameObject.SetActive(true);
     }
 
     public void OnMouseExit() {
             //GameObject.FindGameObjectWithTag("SkillTooltip").SetActive(false);
             GameObject go = GameObject.FindGameObjectWithTag("SkillTooltip");
             go.GetComponent<Renderer>().enabled = false;
-            go.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "";
+        go.transform.GetChild(1).gameObject.SetActive(false);
+        go.transform.GetChild(0).gameObject.GetComponent<TextMesh>().text = "";
         }
 
 
