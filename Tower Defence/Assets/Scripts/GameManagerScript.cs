@@ -74,7 +74,7 @@ public class GameManagerScript : MonoBehaviour
                 pauseToggle = !pauseToggle;
             }
         }
-        if (Input.GetButtonDown("Jump")) {
+        if (Input.GetKeyDown(KeyCode.Return)) {
             startAttack();
         }
         spawnMinions();
