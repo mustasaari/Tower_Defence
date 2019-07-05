@@ -107,6 +107,7 @@ public class SlotMachineScript : MonoBehaviour
 
     public void rollAll() {
 
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
         GetComponent<AudioSource>().Play();
 
         for (int i = 0; i < 3; i++) {   //set wheels to random values
