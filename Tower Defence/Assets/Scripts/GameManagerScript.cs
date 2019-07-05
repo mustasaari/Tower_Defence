@@ -27,6 +27,7 @@ public class GameManagerScript : MonoBehaviour
 
     public GameObject enemy1;
     public GameObject enemy2;
+    public GameObject enemy3;
 
     //Specified in spawnMinions
     private GameObject spawndable;
@@ -104,6 +105,7 @@ public class GameManagerScript : MonoBehaviour
             //musteringPoints = 10 + (wave * (wave + wave + wave) );
             musteringPoints = 5 + (wave * wave);
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
+            uiCanvas.GetComponent<CanvasScript>().setAttackPhase(true);
         }
     }
 
@@ -129,14 +131,20 @@ public class GameManagerScript : MonoBehaviour
             int rnd = Random.Range(0, maxSpawn);
 
             //Testing Enemy spawngin. Needs to be reworked in future! -------------------------------------------------HOX HOX HOX!
-            int rndEnemy = Random.Range(1, 101);
-            if(rndEnemy > 0 && rndEnemy < 50){
+            int rndEnemy = Random.Range(1, 20 + wave);  //Starst from 1-20
+            //SpeedFly level 1      1-15   
+            if(rndEnemy >= 1 && rndEnemy <= 15){
                 spawndable = enemy1;
-                sleep = 600;
-            }
-            else if (rndEnemy >= 50 && rndEnemy <= 100){
                 sleep = 300;
+            }
+            //LadyBug level 1       16 - 30
+            else if (rndEnemy >= 16 && rndEnemy <= 30){
+                sleep = 600;
                 spawndable = enemy2;
+            }
+            else if( rndEnemy >= 31 && rndEnemy <= 999 ) {
+                sleep = 600;
+                spawndable = enemy3;
             }
 
             if (musteringPoints >= spawndable.GetComponent<EnemyScript>().getCost()) {
@@ -186,6 +194,7 @@ public class GameManagerScript : MonoBehaviour
             Debug.Log("Towers found : " +towers.Length);
             money += income;
 
+            uiCanvas.GetComponent<CanvasScript>().setAttackPhase(false);
             uiCanvas.GetComponent<CanvasScript>().updateWave(wave);
             uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);

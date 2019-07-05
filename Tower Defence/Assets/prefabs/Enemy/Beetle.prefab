@@ -60,9 +60,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name: Beetle
   direction: 
-  health: 80
+  health: 320
   speed: 4
-  cost: 5
+  cost: 20
   aoeEffectPrefab1: {fileID: 6265869265389634832, guid: aecacfae702e49840898d290c4b700e4,
     type: 3}
   aoeEffectPrefab2: {fileID: 7130356915469136438, guid: 056c9330834c80b4dbb9c5098902ecc9,
@@ -162,12 +162,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: eac2a893af17ce04c81902b484df270e, type: 2}
-    - target: {fileID: 3383253211369017260, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
-        type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 2100000, guid: 065c79c8853c7f64b874c7cb8afe1cb2, type: 2}
-    - target: {fileID: 3383253211369017260, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
+    - target: {fileID: 8208578879198709976, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -177,7 +172,17 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 065c79c8853c7f64b874c7cb8afe1cb2, type: 2}
-    - target: {fileID: 8208578879198709976, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
+    - target: {fileID: 3383253211369017260, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: eac2a893af17ce04c81902b484df270e, type: 2}
+    - target: {fileID: 3383253211369017260, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 065c79c8853c7f64b874c7cb8afe1cb2, type: 2}
+    - target: {fileID: 1318462475825722627, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -187,11 +192,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 424759e92e3049d4ba7fc0861a623d14, type: 2}
-    - target: {fileID: 1318462475825722627, guid: 7f301b7a2b8c1be4889d7fc83c379fbf,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: eac2a893af17ce04c81902b484df270e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f301b7a2b8c1be4889d7fc83c379fbf, type: 3}
 --- !u!4 &4484791012484183320 stripped
