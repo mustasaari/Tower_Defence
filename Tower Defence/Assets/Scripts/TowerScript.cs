@@ -26,6 +26,12 @@ public class TowerScript : MonoBehaviour
 
     public string targetingMode; //Default, Furthest, Nearest, Least HP, most HP
 
+    public Material crystalMaterialDefault;
+    public Material crystalMaterialLowHP;
+    public Material crystalMaterialHighHP;
+    public Material crystalMaterialNear;
+    public Material crystalMaterialFar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -251,6 +257,22 @@ public class TowerScript : MonoBehaviour
 
     public void setTargetingMode(string mode) {
         targetingMode = mode;
+        if (targetingMode.Equals("Default")) {
+            transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = crystalMaterialDefault;
+        }
+        else if (targetingMode.Equals("LowestHP")) {
+            transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = crystalMaterialLowHP;
+        }
+        else if (targetingMode.Equals("HighestHP")) {
+            transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = crystalMaterialHighHP;
+        }
+        else if (targetingMode.Equals("Nearest")) {
+            transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = crystalMaterialNear;
+        }
+        else if (targetingMode.Equals("Farthest")) {
+            transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = crystalMaterialFar;
+        }
+
     }
 
     public string getTargetingMode() {

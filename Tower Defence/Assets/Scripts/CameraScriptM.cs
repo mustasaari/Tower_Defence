@@ -47,9 +47,9 @@ public class CameraScriptM : MonoBehaviour
             }
 
 
-            transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * 80f);
-            transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * 80f);
-            transform.Translate(Vector3.down * Input.mouseScrollDelta * 2f * Time.deltaTime * 80f);
+            transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * 80f / Time.timeScale);
+            transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * Time.deltaTime * 80f / Time.timeScale);
+            transform.Translate(Vector3.down * Input.mouseScrollDelta * 2f * Time.deltaTime * 80f / Time.timeScale);
 
             if (transform.position.x > 70) {
                 transform.position = new Vector3(70, transform.position.y, transform.position.z);

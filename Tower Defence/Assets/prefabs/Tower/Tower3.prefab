@@ -71839,6 +71839,15 @@ MonoBehaviour:
     type: 3}
   wheels: 000000000000000000000000
   lockedWheels: 
+  targetingMode: 
+  crystalMaterialDefault: {fileID: 2100000, guid: 6f38c1e9aa4c88e4db73635b4ff08346,
+    type: 2}
+  crystalMaterialLowHP: {fileID: 2100000, guid: fc0efb9211c30ed46ada2f76c78fb2fd,
+    type: 2}
+  crystalMaterialHighHP: {fileID: 2100000, guid: bb0865ceec47d624f8f88a235045d183,
+    type: 2}
+  crystalMaterialNear: {fileID: 2100000, guid: 2ebf458357824064f89cadff2c874248, type: 2}
+  crystalMaterialFar: {fileID: 2100000, guid: 41f4d85029eab134db6a58109d5af981, type: 2}
 --- !u!65 &1185139618
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74085,7 +74094,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 6d82d81618b7d2842bdc9d641720e5b0, type: 2}
+      objectReference: {fileID: 2100000, guid: 6f38c1e9aa4c88e4db73635b4ff08346, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2f7c5dfa2cbba040a174d0224e16f4c, type: 3}
 --- !u!1 &8298673952989722383 stripped
