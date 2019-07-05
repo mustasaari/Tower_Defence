@@ -39,6 +39,7 @@ public class GameManagerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Time.timeScale = 1;
         uiCanvas = GameObject.FindWithTag("UI");
         gamePhase = "Build";
         wave = 1;
