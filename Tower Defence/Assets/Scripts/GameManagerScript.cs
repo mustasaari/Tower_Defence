@@ -29,6 +29,8 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enemy2;
     public GameObject enemy3;
 
+    public AudioClip textPhaseAnnounce;
+
     //Specified in spawnMinions
     private GameObject spawndable;
     public float sleep = 0;
@@ -111,7 +113,10 @@ public class GameManagerScript : MonoBehaviour
         if (gamePhase.Equals("Build")) {
             TileScript.cursorActive = false;
             gamePhase = "Attack";
+
             uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " incoming!");
+            playAudio(textPhaseAnnounce, 0.65f);
+
             sleep = 500;    //some delay before first minion comes
             //musteringPoints = 10 + (wave * (wave + wave + wave) );
             musteringPoints = 5 + (wave * wave);
@@ -191,6 +196,7 @@ public class GameManagerScript : MonoBehaviour
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
             uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
+            playAudio(textPhaseAnnounce, 0.8f);
             wave++;
             //money += 50;
             buildableTowers += 1;
@@ -282,6 +288,11 @@ public class GameManagerScript : MonoBehaviour
     public static void messageToUI(string message) {
         uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
     }
+
+    public static void messageToUIAlert(string message) {
+        uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounceAlert(message);
+    }
+
     public void setGameSpeed(float speed){
         desiredgamespeed = speed;
     }
@@ -300,5 +311,12 @@ public class GameManagerScript : MonoBehaviour
         Time.timeScale = 1;
         uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(false);
         pauseToggle = !pauseToggle;
+    }
+
+    private void playAudio(AudioClip aud, float pitch) {
+        GetComponent<AudioSource>().clip = aud;
+        GetComponent<AudioSource>().pitch = pitch;
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().Play();
     }
 }

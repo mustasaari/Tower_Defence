@@ -6,11 +6,15 @@ using UnityEngine.UI;
 public class TextAnnouncer : MonoBehaviour
 {
 
+    public Color color1;
+    public Color color2;
+
     Text textComp;
     bool announcing;
     bool fadein;
 
     float a = 0;
+    float speed;
 
     // Start is called before the first frame update
     void Start()
@@ -24,13 +28,13 @@ public class TextAnnouncer : MonoBehaviour
     void Update()
     {
         if (announcing) {
-            transform.localScale += transform.localScale * 0.1f * Time.deltaTime;
+            transform.localScale += transform.localScale * 0.1f * Time.deltaTime *speed;
 
             if (fadein) {
-                a += 1f * Time.deltaTime;
+                a += 1f * Time.deltaTime * speed;
             }
             else {
-                a -= 1f * Time.deltaTime;
+                a -= 1f * Time.deltaTime * speed;
             }
 
             if (fadein && a >= 2f) {
@@ -45,10 +49,28 @@ public class TextAnnouncer : MonoBehaviour
     }
 
     public void startAnnounce(string t) {
+        textComp.color = color1;
+        speed = 1;
+        textComp.fontSize = 32;
         announcing = true;
         fadein = true;
         a = 0;
         textComp.text = t;
         transform.localScale = new Vector3(1,1,1);
+        
     }
+
+    public void startAnnounceAlert(string t) {
+        textComp.color = color2;
+        speed = 1.5f;
+        textComp.fontSize = 18;
+        announcing = true;
+        fadein = true;
+        a = 0;
+        textComp.text = t;
+        transform.localScale = new Vector3(1, 1, 1);
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().Play();
+    }
+
 }
