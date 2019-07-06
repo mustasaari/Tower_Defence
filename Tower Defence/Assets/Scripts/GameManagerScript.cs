@@ -74,6 +74,11 @@ public class GameManagerScript : MonoBehaviour
                 Time.timeScale = 0;
                 uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(true);
                 pauseToggle = !pauseToggle;
+
+                AudioSource[] allAudioSources = FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
+                foreach (AudioSource audioS in allAudioSources) {
+                    audioS.Pause(); // ???
+                }
             }
         }
         if (Input.GetKeyDown(KeyCode.Return)) {
@@ -91,7 +96,10 @@ public class GameManagerScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
         }
-        checkDesiredGameSpeed();
+
+        if (!pauseToggle) {
+            checkDesiredGameSpeed();
+        }
     }
 
     public static string getGamePhase() {

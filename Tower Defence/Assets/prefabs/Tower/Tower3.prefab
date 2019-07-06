@@ -71838,6 +71838,8 @@ MonoBehaviour:
   laserPrefab: {fileID: 0}
   laserPrefab2: {fileID: 2351333036289382990, guid: d8a0bc1c256dce8479ba728ea6b1c77d,
     type: 3}
+  shootSoundGameObject: {fileID: 3513989035368715858, guid: 1305a12981cc10b43b16d63e1c319aec,
+    type: 3}
   wheels: 000000000000000000000000
   lockedWheels: 
   targetingMode: 

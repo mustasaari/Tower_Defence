@@ -17,6 +17,8 @@ public class TowerScript : MonoBehaviour
     public GameObject laserPrefab;
     public GameObject laserPrefab2;
 
+    public GameObject shootSoundGameObject;
+
     public int[] wheels = new int[3];
     public bool[] lockedWheels;
     GameObject[] slotMachineWheels;
@@ -171,6 +173,8 @@ public class TowerScript : MonoBehaviour
         // Debug.Log(this + " Bang! " + target);
         reloadTimer = 100f;
         drawBullet();
+
+        Instantiate(shootSoundGameObject, transform.position, transform.rotation);
 
         Color debugColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));  //DEBUG COLOR to see what tower does what
 
