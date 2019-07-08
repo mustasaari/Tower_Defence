@@ -64,6 +64,13 @@ public class GameManagerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(leafHP == 0){
+            GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();
+            // uiCanvas.GetComponent<CanvasScript>().startPhaseOut();
+            // transform.GetComponent<LoadSceneOnClick>().LoadByIndex(2);
+
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(pauseToggle)

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 
 public class CanvasScript : MonoBehaviour
 {
-
     private Text wave;
     private Text life;
     private Text money;
