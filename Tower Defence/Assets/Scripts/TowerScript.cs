@@ -9,8 +9,9 @@ public class TowerScript : MonoBehaviour
     public int attackDMG = 10;
     public float baseRange = 5f;
     public float range = 10f;
-    public float reloadTimer = 100f;
+    public float reloadTimer = 0f;
     public float attackSpeedBonus = 10;
+    public float critical = 0;
     int areaOfEffectRadius;
 
     public GameObject target;
@@ -64,7 +65,6 @@ public class TowerScript : MonoBehaviour
     void Update()
     {
         checkReload();
-
 
         //Update tower looks when all wheels have stopped :/
         if (slotMachineWheels[0].GetComponent<SlotWheelScript>().getRotationReady() && slotMachineWheels[1].GetComponent<SlotWheelScript>().getRotationReady() && slotMachineWheels[2].GetComponent<SlotWheelScript>().getRotationReady()) {
@@ -174,11 +174,16 @@ public class TowerScript : MonoBehaviour
         reloadTimer = 100f;
         drawBullet();
 
+        int dmgToDeal = attackDMG;
+        if (Random.Range(1,101) < critical) {
+            dmgToDeal = attackDMG * 2;
+        }
+
         Instantiate(shootSoundGameObject, transform.position, transform.rotation);
 
         Color debugColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));  //DEBUG COLOR to see what tower does what
 
-        target.GetComponent<EnemyScript>().takeDMG(attackDMG, areaOfEffectRadius, debugColor);
+        target.GetComponent<EnemyScript>().takeDMG(dmgToDeal, areaOfEffectRadius, debugColor);
         drawDebugLine();
     }
 
@@ -243,6 +248,10 @@ public class TowerScript : MonoBehaviour
 
     public void setAoERadius(int aoe) {
         this.areaOfEffectRadius = aoe;
+    }
+
+    public void setCritical(float crt) {
+        critical = crt;
     }
 
     public void setWheels(int[] x) {

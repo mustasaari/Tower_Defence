@@ -18,6 +18,7 @@ public class SlotMachineScript : MonoBehaviour
     float attackSpeedToSend ;
     int moneyToSend;
     int aoeToSend;
+    int critToSend;
 
     int rollCost;
 
@@ -135,6 +136,7 @@ public class SlotMachineScript : MonoBehaviour
         attackSpeedToSend = 10;
         moneyToSend = 0;
         aoeToSend = 0;
+        critToSend = 0;
 
         //wheels[0] = 5; //set wheels manually for testing
         //wheels[1] = 4;
@@ -148,6 +150,15 @@ public class SlotMachineScript : MonoBehaviour
                 }
                 if (wheels[i] == 2) {   //   2 == RANGE
                     rangeToSend = rangeToSend * 2f;
+                    if (critToSend == 0) {
+                        critToSend = 10;
+                    }
+                    else if (critToSend == 10) {
+                        critToSend = 30;
+                    }
+                    else if(critToSend == 30) {
+                        critToSend = 90;
+                    }
                 }
                 if (wheels[i] == 3) {   //   3 == SPEED
                     attackSpeedToSend = attackSpeedToSend * 2f;
@@ -175,6 +186,7 @@ public class SlotMachineScript : MonoBehaviour
             towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(moneyToSend);
             towerToBeEdited.GetComponent<TowerScript>().setWheels(wheels);
             towerToBeEdited.GetComponent<TowerScript>().setAoERadius(aoeToSend);
+            towerToBeEdited.GetComponent<TowerScript>().setCritical(critToSend);
 
             //update ui removed to own method
 
@@ -213,7 +225,7 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void updateUI() {
-        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend;
+        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend +"\nCritical : " +critToSend;
     }
 
     public void deleteTower() {
