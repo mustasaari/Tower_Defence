@@ -84,7 +84,7 @@ public class EnemyScript : MonoBehaviour
             GameManagerScript.removeMinionFromField();
         }
 
-        if (transform.position.z < -80 && hasFinished) {
+        if (transform.position.z < -100 && hasFinished) {
             destroyMinion();
         }
 
