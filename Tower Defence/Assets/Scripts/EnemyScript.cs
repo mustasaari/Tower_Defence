@@ -20,10 +20,13 @@ public class EnemyScript : MonoBehaviour
 
     private int maxHP;
 
+    private bool hasFinished;
+
     // Start is called before the first frame update
     void Start()
     {
 		direction = "Down";
+        hasFinished = false;
 		calculator = 10f;
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
         maxHP = health;
@@ -73,15 +76,25 @@ public class EnemyScript : MonoBehaviour
 
         transform.rotation = Quaternion.LookRotation(newDir);
 
-        if (transform.position.z < -70) {
+        //if minion has reached it's goal, change minion state
+        if (transform.position.z < -50 && !hasFinished) {
             GameManagerScript.eatLeafHP();
+            //destroyMinion();
+            hasFinished = true;
+            GameManagerScript.removeMinionFromField();
+        }
+
+        if (transform.position.z < -80 && hasFinished) {
             destroyMinion();
         }
 
     }
 
     public void destroyMinion() {
-        GameManagerScript.removeMinionFromField();
+
+        if (!hasFinished) {
+            GameManagerScript.removeMinionFromField();
+        }
         Destroy(gameObject);
     }
 
@@ -131,5 +144,9 @@ public class EnemyScript : MonoBehaviour
 
     public int getHealth() {
         return health;
+    }
+
+    public bool hasMinionFinished() {
+        return hasFinished;
     }
 }
