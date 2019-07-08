@@ -56,6 +56,7 @@ public class CanvasScript : MonoBehaviour
         if (phas) {
             transform.GetChild(6).gameObject.SetActive(false);
             transform.GetChild(10).gameObject.SetActive(true);
+            transform.GetChild(10).GetChild(0).gameObject.GetComponent<Button>().Select();
         }
         else {
             transform.GetChild(6).gameObject.SetActive(true);
