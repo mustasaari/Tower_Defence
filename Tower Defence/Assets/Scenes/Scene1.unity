@@ -2304,11 +2304,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610614012}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a3f1b8f9dbb875840b142c4e78aa7958,
-        type: 3}
-      propertyPath: m_Name
-      value: mushroom5
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a3f1b8f9dbb875840b142c4e78aa7958,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2378,6 +2373,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 177.6126
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a3f1b8f9dbb875840b142c4e78aa7958,
+        type: 3}
+      propertyPath: m_Name
+      value: mushroom5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f1b8f9dbb875840b142c4e78aa7958, type: 3}
@@ -8949,6 +8949,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -15579,6 +15584,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -21171,7 +21181,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 75b6a48ae9f18504a800a9b2d417b70c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 75b6a48ae9f18504a800a9b2d417b70c,
         type: 3}
@@ -29316,11 +29326,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610614012}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a3f1b8f9dbb875840b142c4e78aa7958,
-        type: 3}
-      propertyPath: m_Name
-      value: mushroom5 (1)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a3f1b8f9dbb875840b142c4e78aa7958,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29390,6 +29395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 120.11402
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a3f1b8f9dbb875840b142c4e78aa7958,
+        type: 3}
+      propertyPath: m_Name
+      value: mushroom5 (1)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f1b8f9dbb875840b142c4e78aa7958, type: 3}
@@ -31822,6 +31832,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Left
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -43842,11 +43857,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610614012}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 7e104e535de8d3d45a53ba1e602dddc5,
-        type: 3}
-      propertyPath: m_Name
-      value: mushroom8
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 7e104e535de8d3d45a53ba1e602dddc5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -43916,6 +43926,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 216.21
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 7e104e535de8d3d45a53ba1e602dddc5,
+        type: 3}
+      propertyPath: m_Name
+      value: mushroom8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7e104e535de8d3d45a53ba1e602dddc5, type: 3}
@@ -44509,6 +44524,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Left
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -46745,16 +46765,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610614012}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 022a7992dd663044a82dbafbe40e5bf5,
-        type: 3}
-      propertyPath: m_Name
-      value: plant1 (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 022a7992dd663044a82dbafbe40e5bf5,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 022a7992dd663044a82dbafbe40e5bf5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -46824,6 +46834,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 55.62412
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 022a7992dd663044a82dbafbe40e5bf5,
+        type: 3}
+      propertyPath: m_Name
+      value: plant1 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 022a7992dd663044a82dbafbe40e5bf5,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 022a7992dd663044a82dbafbe40e5bf5,
         type: 3}
@@ -54410,6 +54430,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Left
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -73811,6 +73836,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -79080,6 +79110,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Left
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -79165,6 +79200,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3134620807401470, guid: 4f493737eb6d35e40b42592690dea2b8,
         type: 3}
+    - target: {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
+        type: 3}
+      propertyPath: enemyWalkDirection
+      value: Right
+      objectReference: {fileID: 0}
     - target: {fileID: 2261633095868176326, guid: 2dff93f1d66a7a74590fc1f72b94ebe2,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -79756,11 +79796,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 610614012}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a3f1b8f9dbb875840b142c4e78aa7958,
-        type: 3}
-      propertyPath: m_Name
-      value: mushroom5 (2)
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a3f1b8f9dbb875840b142c4e78aa7958,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -79830,6 +79865,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 186.1757
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a3f1b8f9dbb875840b142c4e78aa7958,
+        type: 3}
+      propertyPath: m_Name
+      value: mushroom5 (2)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3f1b8f9dbb875840b142c4e78aa7958, type: 3}

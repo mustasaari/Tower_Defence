@@ -70,7 +70,7 @@ public class TileScript : MonoBehaviour
 	public void resetDistance() {
 		if (isBottomRowTile) {
 			DistanceFromBottom = 1;
-			enemyWalkDirection = "Down";
+			//enemyWalkDirection = "Down";
 		} else {
 			DistanceFromBottom = 0; // unset
 		}
