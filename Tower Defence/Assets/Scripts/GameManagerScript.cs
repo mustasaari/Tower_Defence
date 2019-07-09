@@ -37,7 +37,7 @@ public class GameManagerScript : MonoBehaviour
     int musteringPoints;
     static int activeMinionsOnField;
     bool pauseToggle;
-    float desiredgamespeed;
+    static float desiredgamespeed;
 
     // Start is called before the first frame update
     void Start()
@@ -75,7 +75,12 @@ public class GameManagerScript : MonoBehaviour
         {
             if(pauseToggle)
             {
-                Time.timeScale = 1;
+                if(gamePhase.Equals("Attack")){
+                    Time.timeScale = desiredgamespeed;
+                }
+                else{
+                    Time.timeScale = 1;
+                }
                 uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(false);
                 pauseToggle = !pauseToggle;
             }
@@ -311,7 +316,10 @@ public class GameManagerScript : MonoBehaviour
         else if(desiredgamespeed < Time.timeScale - 0.05f){
             Time.timeScale -= 0.05f;
         }
-        Debug.Log(Time.timeScale);
+    }
+
+    public static float getDesiredGameSpeed(){
+        return desiredgamespeed;
     }
 
     public void resumeGame(){

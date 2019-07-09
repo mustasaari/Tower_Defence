@@ -52,7 +52,15 @@ public class CanvasScript : MonoBehaviour
         if(transform.GetChild(9).gameObject.active){
             transform.GetChild(9).gameObject.SetActive(b);
         }
-        transform.GetChild(10).gameObject.SetActive(!b);
+        if(GameManagerScript.getGamePhase().Equals("Attack")){
+            transform.GetChild(10).gameObject.SetActive(!b);
+            if(!b){
+                int speed = Mathf.FloorToInt(GameManagerScript.getDesiredGameSpeed()) - 1;
+                transform.GetChild(10).GetChild(speed).gameObject.SetActive(true);
+                transform.GetChild(10).GetChild(speed).gameObject.GetComponent<Button>().Select();
+                Debug.Log("GameSpeed: " + speed);
+            }
+        }
     }
 
     public void setAttackPhase(bool phas) {
