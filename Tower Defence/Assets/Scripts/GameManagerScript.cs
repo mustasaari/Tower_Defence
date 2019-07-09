@@ -323,7 +323,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public void resumeGame(){
-        Time.timeScale = 1;
+        Time.timeScale = desiredgamespeed;
         uiCanvas.GetComponent<CanvasScript>().enablePauseObjects(false);
         pauseToggle = !pauseToggle;
     }
