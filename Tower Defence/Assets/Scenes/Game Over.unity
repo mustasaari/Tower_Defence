@@ -215,7 +215,6 @@ GameObject:
   - component: {fileID: 207198456}
   - component: {fileID: 207198455}
   - component: {fileID: 207198454}
-  - component: {fileID: 207198453}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: UI
@@ -223,18 +222,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &207198453
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 207198452}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111c20499387d654fa8f54f13a063ac5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &207198454
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -622,7 +609,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ff47a599bb4f21e4bbad197b9904334e, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2261633095868176324, guid: 2dff93f1d66a7a74590fc1f72b94ebe2, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2dff93f1d66a7a74590fc1f72b94ebe2, type: 3}
 --- !u!1 &887030762
 GameObject:
