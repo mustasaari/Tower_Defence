@@ -161,16 +161,16 @@ public class GameManagerScript : MonoBehaviour
             //Testing Enemy spawngin. Needs to be reworked in future! -------------------------------------------------HOX HOX HOX!
             int rndEnemy = Random.Range(1, 20 + wave);  //Starst from 1-20
             //SpeedFly level 1      1-15   
-            if(rndEnemy >= 1 && rndEnemy <= 15){
+            if(rndEnemy >= 1 && rndEnemy <= 12){
                 spawndable = enemy1;
                 sleep = 300;
             }
             //LadyBug level 1       16 - 30
-            else if (rndEnemy >= 16 && rndEnemy <= 30){
+            else if (rndEnemy >= 13 && rndEnemy <= 26){
                 sleep = 600;
                 spawndable = enemy2;
-            }
-            else if( rndEnemy >= 31 && rndEnemy <= 999 ) {
+            } //Beetle level 1
+            else if( rndEnemy >= 27 && rndEnemy <= 999 ) {
                 sleep = 600;
                 spawndable = enemy3;
             }
