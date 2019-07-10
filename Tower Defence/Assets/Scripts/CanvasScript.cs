@@ -47,21 +47,28 @@ public class CanvasScript : MonoBehaviour
         transform.GetChild(9).gameObject.SetActive(b);  //PausePanel
         transform.GetChild(8).gameObject.SetActive(b);  //AlphaLayer
         if(GameManagerScript.getGamePhase().Equals("Build")){
-            transform.GetChild(7).gameObject.SetActive(!b);  //Launchwave
+            // transform.GetChild(7).gameObject.SetActive(!b);  //Launchwave
         }
         if(transform.GetChild(10).gameObject.active){
             transform.GetChild(10).gameObject.SetActive(b);
         }
         if(GameManagerScript.getGamePhase().Equals("Attack")){
-            transform.GetChild(11).gameObject.SetActive(!b);
-            transform.GetChild(11).GetChild(0).gameObject.GetComponent<Image>().color = Color.white;
-            transform.GetChild(11).GetChild(1).gameObject.GetComponent<Image>().color = Color.white;
-            transform.GetChild(11).GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+            // transform.GetChild(11).gameObject.SetActive(!b);
+            int speed = Mathf.FloorToInt(GameManagerScript.getDesiredGameSpeed()) - 1;
             if(!b){
-                int speed = Mathf.FloorToInt(GameManagerScript.getDesiredGameSpeed()) - 1;
-                // transform.GetChild(10).GetChild(speed).gameObject.SetActive(true);
                 transform.GetChild(11).GetChild(speed).gameObject.GetComponent<Image>().color = Color.green;
-                Debug.Log("GameSpeed: " + speed);
+                transform.GetChild(11).GetChild(0).gameObject.GetComponent<Button>().interactable = true;
+                transform.GetChild(11).GetChild(1).gameObject.GetComponent<Button>().interactable = true;
+                transform.GetChild(11).GetChild(2).gameObject.GetComponent<Button>().interactable = true;
+            }
+            else{   //paused -> speed buttons not interactable.
+                transform.GetChild(11).GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+                transform.GetChild(11).GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+                transform.GetChild(11).GetChild(2).gameObject.GetComponent<Button>().interactable = false;
+                transform.GetChild(11).GetChild(0).gameObject.GetComponent<Image>().color = Color.white;
+                transform.GetChild(11).GetChild(1).gameObject.GetComponent<Image>().color = Color.white;
+                transform.GetChild(11).GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+                transform.GetChild(11).GetChild(speed).gameObject.GetComponent<Image>().color = Color.green;
             }
         }
     }
