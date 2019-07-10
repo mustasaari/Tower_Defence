@@ -126,7 +126,7 @@ public class GameManagerScript : MonoBehaviour
             TileScript.cursorActive = false;
             gamePhase = "Attack";
 
-            uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " incoming!");
+            uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " incoming!");
             playAudio(textPhaseAnnounce, 0.65f);
 
             sleep = 500;    //some delay before first minion comes
@@ -207,7 +207,7 @@ public class GameManagerScript : MonoBehaviour
         //Check for wave end condition
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
-            uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
+            uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
             playAudio(textPhaseAnnounce, 0.8f);
             wave++;
             //money += 50;
@@ -288,7 +288,7 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public static void showEnemyHP(int hp, int maxhp, string name) {
-        uiCanvas.transform.GetChild(5).gameObject.GetComponent<EnemyHPIndicator>().show(hp, maxhp, name);
+        uiCanvas.transform.GetChild(6).gameObject.GetComponent<EnemyHPIndicator>().show(hp, maxhp, name);
     }
 
     void CalculateActiveMinionsOnFieldInvokeRepeating() {
@@ -298,11 +298,11 @@ public class GameManagerScript : MonoBehaviour
     }
 
     public static void messageToUI(string message) {
-        uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
+        uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounce(message);
     }
 
     public static void messageToUIAlert(string message) {
-        uiCanvas.transform.GetChild(4).gameObject.GetComponent<TextAnnouncer>().startAnnounceAlert(message);
+        uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounceAlert(message);
     }
 
     public void setGameSpeed(float speed){
