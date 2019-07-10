@@ -54,10 +54,13 @@ public class CanvasScript : MonoBehaviour
         }
         if(GameManagerScript.getGamePhase().Equals("Attack")){
             transform.GetChild(10).gameObject.SetActive(!b);
+            transform.GetChild(10).GetChild(0).gameObject.GetComponent<Image>().color = Color.white;
+            transform.GetChild(10).GetChild(1).gameObject.GetComponent<Image>().color = Color.white;
+            transform.GetChild(10).GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
             if(!b){
                 int speed = Mathf.FloorToInt(GameManagerScript.getDesiredGameSpeed()) - 1;
-                transform.GetChild(10).GetChild(speed).gameObject.SetActive(true);
-                transform.GetChild(10).GetChild(speed).gameObject.GetComponent<Button>().Select();
+                // transform.GetChild(10).GetChild(speed).gameObject.SetActive(true);
+                transform.GetChild(10).GetChild(speed).gameObject.GetComponent<Image>().color = Color.green;
                 Debug.Log("GameSpeed: " + speed);
             }
         }
@@ -67,11 +70,19 @@ public class CanvasScript : MonoBehaviour
         if (phas) {
             transform.GetChild(6).gameObject.SetActive(false);
             transform.GetChild(10).gameObject.SetActive(true);
-            transform.GetChild(10).GetChild(0).gameObject.GetComponent<Button>().Select();
+            transform.GetChild(10).GetChild(0).gameObject.GetComponent<Image>().color = Color.green;
         }
         else {
             transform.GetChild(6).gameObject.SetActive(true);
             transform.GetChild(10).gameObject.SetActive(false);
         }
+    }
+    public void setSelectedButton(float b){
+        transform.GetChild(10).GetChild(0).gameObject.GetComponent<Image>().color = Color.white;
+        transform.GetChild(10).GetChild(1).gameObject.GetComponent<Image>().color = Color.white;
+        transform.GetChild(10).GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+
+        int select = Mathf.FloorToInt(b) - 1;
+        transform.GetChild(10).GetChild(select).gameObject.GetComponent<Image>().color = Color.green;
     }
 }

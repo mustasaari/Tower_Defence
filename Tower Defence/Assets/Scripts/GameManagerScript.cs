@@ -307,6 +307,7 @@ public class GameManagerScript : MonoBehaviour
 
     public void setGameSpeed(float speed){
         desiredgamespeed = speed;
+        uiCanvas.GetComponent<CanvasScript>().setSelectedButton(speed);
     }
 
     public void checkDesiredGameSpeed(){
