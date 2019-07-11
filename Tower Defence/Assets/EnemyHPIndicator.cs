@@ -26,7 +26,7 @@ public class EnemyHPIndicator : MonoBehaviour
         if (newalpha > 0) {
             newalpha -= 0.05f;  //reduce component visibility
 
-            GetComponent<Image>().color = new Color(1, 1, 1, newalpha);
+            GetComponent<Image>().color = new Color(0, 0, 0, newalpha);
             transform.GetChild(1).gameObject.GetComponent<Text>().color = new Color(0, 0, 0, newalpha);
             transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(1, 0, 0, newalpha);
         }

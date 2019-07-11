@@ -7,7 +7,10 @@ public class TextAnnouncer : MonoBehaviour
 {
 
     public Color color1;
+    public int size1;
+
     public Color color2;
+    public int size2;
 
     Text textComp;
     bool announcing;
@@ -51,7 +54,7 @@ public class TextAnnouncer : MonoBehaviour
     public void startAnnounce(string t) {
         textComp.color = color1;
         speed = 1;
-        textComp.fontSize = 32;
+        textComp.fontSize = size1;
         announcing = true;
         fadein = true;
         a = 0;
@@ -63,7 +66,7 @@ public class TextAnnouncer : MonoBehaviour
     public void startAnnounceAlert(string t) {
         textComp.color = color2;
         speed = 1.5f;
-        textComp.fontSize = 18;
+        textComp.fontSize = size2;
         announcing = true;
         fadein = true;
         a = 0;
