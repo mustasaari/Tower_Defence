@@ -71,6 +71,26 @@ public class GameManagerScript : MonoBehaviour
 
         }
 
+        if(Input.GetKeyDown(KeyCode.Alpha5)) {
+            QualitySettings.SetQualityLevel(0, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha6)) {
+            QualitySettings.SetQualityLevel(1, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha7)) {
+            QualitySettings.SetQualityLevel(2, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha8)) {
+            QualitySettings.SetQualityLevel(3, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9)) {
+            QualitySettings.SetQualityLevel(4, true);
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0)) {
+            QualitySettings.SetQualityLevel(5, true);
+        }
+
+
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if(pauseToggle)
