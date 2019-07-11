@@ -23,6 +23,7 @@ public class TextAnnouncer : MonoBehaviour
     void Start()
     {
         textComp = GetComponent<Text>();
+        textComp.color = new Color(0, 0, 0, 0);
         //textComp.color = new Color(1, 0, 0, 0.5f);
         //startAnnounce("Wave incoming");
     }

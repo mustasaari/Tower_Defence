@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class EnemyHPIndicator : MonoBehaviour
 {
 
+    public Color barColor;
+    public Color frameColor;
+
     float childyscale;
     float childzscale;
     float childxscale;
@@ -26,9 +29,9 @@ public class EnemyHPIndicator : MonoBehaviour
         if (newalpha > 0) {
             newalpha -= 0.05f;  //reduce component visibility
 
-            GetComponent<Image>().color = new Color(0, 0, 0, newalpha);
+            GetComponent<Image>().color = new Color(frameColor.r, frameColor.g, frameColor.b, newalpha);
             transform.GetChild(1).gameObject.GetComponent<Text>().color = new Color(0, 0, 0, newalpha);
-            transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(1, 0, 0, newalpha);
+            transform.GetChild(0).gameObject.GetComponent<Image>().color = new Color(barColor.r, barColor.g, barColor.b, newalpha);
         }
     }
 
