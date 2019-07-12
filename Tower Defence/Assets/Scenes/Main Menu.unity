@@ -31014,7 +31014,7 @@ BoxCollider:
   m_GameObject: {fileID: 784931195}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 3.1503139, z: 1.8109512}
   m_Center: {x: 0, y: 2.2727904, z: -0.40547562}
@@ -66491,6 +66491,7 @@ GameObject:
   - component: {fileID: 1387211847}
   - component: {fileID: 1387211846}
   - component: {fileID: 1387211845}
+  - component: {fileID: 1387211848}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -66515,8 +66516,8 @@ Camera:
   m_GameObject: {fileID: 1387211844}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 1, g: 1, b: 1, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -66563,6 +66564,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -16.749, y: -25.625002, z: 1.5380001}
+--- !u!95 &1387211848
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1387211844}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d769d5aba49d1534ead5035fc840c179, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1388866265
 GameObject:
   m_ObjectHideFlags: 0
@@ -160616,7 +160636,7 @@ BoxCollider:
   m_GameObject: {fileID: 5863524163000250749}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 3.1503139, z: 1.8109512}
   m_Center: {x: 0, y: 2.2727904, z: -0.40547562}
