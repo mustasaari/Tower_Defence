@@ -173,8 +173,8 @@ public class GameManagerScript : MonoBehaviour
             */
 
             int maxSpawn = wave;
-            if(wave > 10 ) {
-                maxSpawn = 10;
+            if(wave > 5 ) { //10 muutettu
+                maxSpawn = 5;   //10 muutettu
             }
 
             int rnd = Random.Range(0, maxSpawn);
@@ -253,7 +253,7 @@ public class GameManagerScript : MonoBehaviour
             //update spawnpoint
             bool doUntil = false;
 
-            if (wave < 11) {
+            if (wave < 6) { //11 kumitettu
 
                 while (!doUntil) {
                     int rnd = Random.Range(0, 10); // 0-9
@@ -314,7 +314,17 @@ public class GameManagerScript : MonoBehaviour
 
     void CalculateActiveMinionsOnFieldInvokeRepeating() {
         if (gamePhase.Equals("Attack")) {
-            activeMinionsOnField = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+            GameObject[] minions = GameObject.FindGameObjectsWithTag("Enemy");
+            //activeMinionsOnField = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            activeMinionsOnField = minions.Length;
+
+            //remove finished minions
+            foreach (GameObject minion in minions) {
+                if (minion.GetComponent<EnemyScript>().hasMinionFinished()) {
+                    activeMinionsOnField--;
+                }
+            }
         }
     }
 
