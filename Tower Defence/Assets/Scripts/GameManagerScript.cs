@@ -59,6 +59,7 @@ public class GameManagerScript : MonoBehaviour
         int rnd = Random.Range(0, 10);
         spawns[rnd].transform.GetChild(0).GetComponent<Digger>().activateDigger();
         activatedSpawns[0] = spawns[rnd];
+        Debug.Log("Test: " + transform.GetComponent<DataController>().GetHighestPlayerScore());
     }
 
     // Update is called once per frame
