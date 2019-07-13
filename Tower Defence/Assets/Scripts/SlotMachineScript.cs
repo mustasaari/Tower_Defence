@@ -8,7 +8,7 @@ public class SlotMachineScript : MonoBehaviour
 
     public GameObject towerDestroyAnimation;
 
-    int amountOfWheelSymbolsInGame = 5;     // 1damage 2range 3speed 4money  5AoE
+    int amountOfWheelSymbolsInGame = 6;     // 1damage 2range 3speed 4money  5AoE   6Poison
     int[] wheels = new int[3];
     bool[] lockedWheels;
     bool cameraEnabled;
@@ -19,6 +19,7 @@ public class SlotMachineScript : MonoBehaviour
     int moneyToSend;
     int aoeToSend;
     int critToSend;
+    int poisonToSend;
 
     int rollCost;
 
@@ -114,7 +115,7 @@ public class SlotMachineScript : MonoBehaviour
         for (int i = 0; i < 3; i++) {   //set wheels to random values
 
             if (lockedWheels[i] == false) {
-                wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money    and +1 because rnd cant get that far
+                wheels[i] = Random.Range(1, amountOfWheelSymbolsInGame + 1);     // 1dmf 2range 3speed 4money 5aoe 6poison    and +1 because rnd cant get that far
                 transform.GetChild(i + 1).gameObject.GetComponent<SlotWheelScript>().startSpin(wheels[i]);
                 GameObject.FindGameObjectWithTag("SlotMachineArm").GetComponent<Animator>().Play("SlotArmAnimation", 0, 0.0f);
             }
@@ -137,6 +138,7 @@ public class SlotMachineScript : MonoBehaviour
         moneyToSend = 0;
         aoeToSend = 0;
         critToSend = 0;
+        poisonToSend = 0;
 
         //wheels[0] = 5; //set wheels manually for testing
         //wheels[1] = 4;
@@ -177,6 +179,17 @@ public class SlotMachineScript : MonoBehaviour
                 if (wheels[i] == 5) {
                     aoeToSend += 10;
                 }
+                if (wheels[i] == 6) {
+                    if (poisonToSend == 0) {
+                        poisonToSend = 1;
+                    }
+                    else if (poisonToSend == 1) {
+                        poisonToSend = 3;
+                    }
+                    else if (poisonToSend == 3) {
+                        poisonToSend = 6;
+                    }
+                }
             }
 
             //send to tower
@@ -187,6 +200,7 @@ public class SlotMachineScript : MonoBehaviour
             towerToBeEdited.GetComponent<TowerScript>().setWheels(wheels);
             towerToBeEdited.GetComponent<TowerScript>().setAoERadius(aoeToSend);
             towerToBeEdited.GetComponent<TowerScript>().setCritical(critToSend);
+            towerToBeEdited.GetComponent<TowerScript>().setPoison(poisonToSend);
 
             //update ui removed to own method
 
@@ -225,7 +239,7 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void updateUI() {
-        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend +"\nCritical : " +critToSend;
+        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend +"\nCritical : " +critToSend +"\n poison : " +poisonToSend;
     }
 
     public void deleteTower() {

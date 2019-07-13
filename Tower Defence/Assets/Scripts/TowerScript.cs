@@ -12,6 +12,7 @@ public class TowerScript : MonoBehaviour
     public float reloadTimer = 0f;
     public float attackSpeedBonus = 10;
     public float critical = 0;
+    public int poison = 0;
     int areaOfEffectRadius;
 
     public GameObject target;
@@ -183,7 +184,7 @@ public class TowerScript : MonoBehaviour
 
         Color debugColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));  //DEBUG COLOR to see what tower does what
 
-        target.GetComponent<EnemyScript>().takeDMG(dmgToDeal, areaOfEffectRadius, debugColor);
+        target.GetComponent<EnemyScript>().takeDMG(dmgToDeal, areaOfEffectRadius, poison, debugColor);
         drawDebugLine();
     }
 
@@ -252,6 +253,10 @@ public class TowerScript : MonoBehaviour
 
     public void setCritical(float crt) {
         critical = crt;
+    }
+
+    public void setPoison(int psn) {
+        poison = psn;
     }
 
     public void setWheels(int[] x) {
@@ -334,6 +339,9 @@ public class TowerScript : MonoBehaviour
             if (wheels[i] != 5) {
                 transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(4).gameObject.SetActive(false);
             }
+            if (wheels[i] != 6) {
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(5).gameObject.SetActive(false);
+            }
 
 
         }
@@ -363,6 +371,9 @@ public class TowerScript : MonoBehaviour
             }
             else if (wheels[i] == 5) {   //Area of effect
                 transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(4).gameObject.SetActive(true);      //base     //floor     
+            }
+            else if (wheels[i] == 6) {   //Poison
+                transform.GetChild(0).gameObject.transform.GetChild(i).gameObject.transform.GetChild(5).gameObject.SetActive(true);      //base     //floor     
             }
 
 

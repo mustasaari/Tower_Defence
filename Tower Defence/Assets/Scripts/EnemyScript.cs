@@ -20,6 +20,8 @@ public class EnemyScript : MonoBehaviour
 
     private int maxHP;
 
+    private int poisonStacks = 0;
+
     private bool hasFinished;
 
     // Start is called before the first frame update
@@ -40,6 +42,8 @@ public class EnemyScript : MonoBehaviour
         else {
             rotSpeed = 1f;
         }
+
+        InvokeRepeating("CalculateDamageOverTimeEffects", 1, 2);
     }
 
     // Update is called once per frame
@@ -98,7 +102,7 @@ public class EnemyScript : MonoBehaviour
         Destroy(gameObject);
     }
 
-    public void takeDMG(int dmg, int aoe, Color debugColor)
+    public void takeDMG(int dmg, int aoe, int poison, Color debugColor)
     {
         if (aoe > 0) {  //AOE stuff begins
 
@@ -106,7 +110,7 @@ public class EnemyScript : MonoBehaviour
 
             foreach(RaycastHit hit in objects) {
                 if (hit.transform.gameObject.tag == "Enemy" && hit.transform.gameObject != this.gameObject) {
-                    hit.transform.gameObject.GetComponent<EnemyScript>().takeDMG(dmg, 0, debugColor);   //do not pass aoe on
+                    hit.transform.gameObject.GetComponent<EnemyScript>().takeDMG(dmg, 0, poison, debugColor);   //do not pass aoe on
                 }
             }
 
@@ -121,6 +125,7 @@ public class EnemyScript : MonoBehaviour
             }
         }               //AOE stuff ends
 
+        poisonStacks += poison;
         GameObject txt = Instantiate(dmgText, transform.position, transform.rotation);
         txt.GetComponent<dmgTextScript>().setNumber(dmg, debugColor);
         health -= dmg;
@@ -148,5 +153,16 @@ public class EnemyScript : MonoBehaviour
 
     public bool hasMinionFinished() {
         return hasFinished;
+    }
+
+    void CalculateDamageOverTimeEffects() {
+        if (poisonStacks > 0 && !hasFinished) {
+            health -= poisonStacks;
+
+            GameObject txt = Instantiate(dmgText, transform.position, transform.rotation);
+            txt.GetComponent<dmgTextScript>().setNumber(poisonStacks, Color.green);
+
+            checkHealth();
+        }
     }
 }
