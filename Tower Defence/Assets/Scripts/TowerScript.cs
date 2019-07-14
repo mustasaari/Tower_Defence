@@ -293,6 +293,8 @@ public class TowerScript : MonoBehaviour
             transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material = crystalMaterialFar;
         }
 
+        transform.GetChild(1).GetChild(1).gameObject.GetComponent<Light>().color = transform.GetChild(1).GetChild(0).gameObject.GetComponent<Renderer>().material.color;
+
     }
 
     public string getTargetingMode() {

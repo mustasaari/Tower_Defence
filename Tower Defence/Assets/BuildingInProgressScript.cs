@@ -32,7 +32,7 @@ public class BuildingInProgressScript : MonoBehaviour
 
             if (size > 1 && !GetComponent<AudioSource>().isPlaying ) {
                 GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
-                GetComponent<AudioSource>().pitch = (size/100) +0.5f;
+                GetComponent<AudioSource>().pitch = (size/100) + 0.75f;
                 GetComponent<AudioSource>().Play();
             }
         }
