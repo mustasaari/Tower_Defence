@@ -16,6 +16,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject aoeEffectPrefab1;
     public GameObject aoeEffectPrefab2;
     public GameObject aoeEffectPrefab3;
+    public GameObject poisonEffectPrefab;
     public GameObject dmgText;
 
     private int maxHP;
@@ -157,6 +158,11 @@ public class EnemyScript : MonoBehaviour
 
     void CalculateDamageOverTimeEffects() {
         if (poisonStacks > 0 && !hasFinished) {
+
+            if (poisonStacks >= health) {
+                Instantiate(poisonEffectPrefab, transform.position, transform.rotation);
+            }
+
             health -= poisonStacks;
 
             GameObject txt = Instantiate(dmgText, transform.position, transform.rotation);

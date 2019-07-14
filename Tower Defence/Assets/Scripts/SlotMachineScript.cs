@@ -85,6 +85,9 @@ public class SlotMachineScript : MonoBehaviour
         //send zoom command to camera
         GameObject camera = GameObject.FindGameObjectWithTag("CameraRig");
         camera.GetComponent<CameraScriptM>().towerZoomIn(towerToBeEdited);
+
+        //tell instruction component that user has opened slot machine
+        GameObject.FindGameObjectWithTag("Instructions").GetComponent<InstructionsScript>().userHasOpenedSlotmachine();
     }
 
     private void OnMouseOver() {
@@ -105,11 +108,14 @@ public class SlotMachineScript : MonoBehaviour
         //disable came tower zoom
         GameObject camera = GameObject.FindGameObjectWithTag("CameraRig");
         camera.GetComponent<CameraScriptM>().towerZoomOut();
+
+        //Tell instructions component that user has closed slotmachine
+        GameObject.FindGameObjectWithTag("Instructions").GetComponent<InstructionsScript>().userHasClosedSlotmachine();
     }
 
     public void rollAll() {
 
-        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f) /1.5f;
         GetComponent<AudioSource>().Play();
 
         for (int i = 0; i < 3; i++) {   //set wheels to random values
@@ -129,6 +135,9 @@ public class SlotMachineScript : MonoBehaviour
         //towerToBeEdited.GetComponent<TowerScript>().setAttackDMG(10); //reset dmg to base
         applyResults();
         GameManagerScript.reduceMoney(rollCost);
+
+        //Tell instructions component that user has rolled slotmachine
+        GameObject.FindGameObjectWithTag("Instructions").GetComponent<InstructionsScript>().userHasRolledSlotmachine();
     }
 
     public void applyResults() {

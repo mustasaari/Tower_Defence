@@ -28,6 +28,8 @@ public class Digger : MonoBehaviour
     public void activateDigger() {
         activated = true;
         transform.parent.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().Play();
     }
 
     public bool getActivated() {

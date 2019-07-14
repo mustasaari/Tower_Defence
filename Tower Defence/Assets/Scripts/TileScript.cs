@@ -161,6 +161,10 @@ public class TileScript : MonoBehaviour
 				status = "Free";
 				transform.parent.GetComponent<GridScript>().generateDistances();
 			}
+            //Not enough towers alert
+            else if (GameManagerScript.getTowers() == 0 && Input.GetMouseButtonDown(0) && status.Equals("Selected") && !isBottomRowTile && !isTopRowTile && !EventSystem.current.IsPointerOverGameObject()) {
+                GameManagerScript.messageToUIAlert("Not enough towers");
+            }
 
             //1.7
 			//SetTile selected if when leaving from UI Element.

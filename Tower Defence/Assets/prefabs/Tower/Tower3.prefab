@@ -76604,7 +76604,7 @@ MonoBehaviour:
   attackDMG: 10
   baseRange: 5
   range: 10
-  reloadTimer: 100
+  reloadTimer: 0
   attackSpeedBonus: 10
   critical: 0
   poison: 0

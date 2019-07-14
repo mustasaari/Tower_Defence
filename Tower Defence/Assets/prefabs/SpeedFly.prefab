@@ -70,6 +70,8 @@ MonoBehaviour:
     type: 3}
   aoeEffectPrefab3: {fileID: 2988728182637776445, guid: b2bb33af9dd6fde45b7bea7e8086f612,
     type: 3}
+  poisonEffectPrefab: {fileID: 8005574675944053066, guid: 3ede5f1728e2b134ca101581d15117e6,
+    type: 3}
   dmgText: {fileID: 1269665793904038872, guid: fce28f806a1371847abba128ca4d9f40, type: 3}
 --- !u!1001 &1972781430245615418
 PrefabInstance:
@@ -83,16 +85,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: fastrobot3
       objectReference: {fileID: 0}
-    - target: {fileID: -6686056005834992781, guid: 32f478c7ad6658c4e8c531b923083ecc,
-        type: 3}
-      propertyPath: m_ReflectionProbeUsage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 32f478c7ad6658c4e8c531b923083ecc,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 17f4dd13d28466e4e9b002fc15f59c61, type: 2}
     - target: {fileID: -4216859302048453862, guid: 32f478c7ad6658c4e8c531b923083ecc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -162,6 +154,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2.32
+      objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 32f478c7ad6658c4e8c531b923083ecc,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 17f4dd13d28466e4e9b002fc15f59c61, type: 2}
+    - target: {fileID: -6686056005834992781, guid: 32f478c7ad6658c4e8c531b923083ecc,
+        type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32f478c7ad6658c4e8c531b923083ecc, type: 3}

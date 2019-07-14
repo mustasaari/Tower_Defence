@@ -35,7 +35,7 @@ public class SlotWheelScript : MonoBehaviour
         }
         else {
             if (!rotationReady) {
-                GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+                GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f) /1.5f;
                 GetComponent<AudioSource>().Play();
             }
 

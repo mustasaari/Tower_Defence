@@ -29,7 +29,7 @@ public class TargetingCrystalScript : MonoBehaviour
             GameObject.FindGameObjectWithTag("SlotMachine").GetComponent<SlotMachineScript>().setTargetingFromCrystal(setTargetingTo);
             GameObject.FindGameObjectWithTag("TargetingCrystalSelector").transform.position = transform.position;
 
-            GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+            GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f) /1.5f;
             GetComponent<AudioSource>().Play();
         }
     }

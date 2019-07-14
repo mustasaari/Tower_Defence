@@ -363,7 +363,7 @@ public class GameManagerScript : MonoBehaviour
     private void playAudio(AudioClip aud, float pitch) {
         GetComponent<AudioSource>().clip = aud;
         GetComponent<AudioSource>().pitch = pitch;
-        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f) /2f;
         GetComponent<AudioSource>().Play();
     }
 }

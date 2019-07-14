@@ -73,7 +73,7 @@ public class TextAnnouncer : MonoBehaviour
         a = 0;
         textComp.text = t;
         transform.localScale = new Vector3(1, 1, 1);
-        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f) /2f;
         GetComponent<AudioSource>().Play();
     }
 

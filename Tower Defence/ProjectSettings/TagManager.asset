@@ -17,6 +17,7 @@ TagManager:
   - RollCostInfoDisplay
   - TargetingCrystalSelector
   - SkillTooltip
+  - Instructions
   layers:
   - Default
   - TransparentFX
