@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VolumeControl : MonoBehaviour {
 
@@ -17,5 +18,10 @@ public class VolumeControl : MonoBehaviour {
 		PlayerPrefs.SetFloat("SFXvolume", SFXvolume.value);
 		PlayerPrefs.SetFloat("Musicvolume", Musicvolume.value);
 		PlayerPrefs.Save();
+
+		if (Input.GetKeyDown(KeyCode.S)) {
+            Debug.Log("this comes from volumecontrol script");
+    		SceneManager.LoadScene("Shop");
+        }
 	}
 }
