@@ -7,6 +7,8 @@ public class Digger : MonoBehaviour
 
     bool activated = false;
 
+    public GameObject routeSprite;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,9 +32,16 @@ public class Digger : MonoBehaviour
         transform.parent.transform.GetChild(1).GetComponent<ParticleSystem>().Play();
         GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
         GetComponent<AudioSource>().Play();
+        InvokeRepeating("routeSprites", 3, 3);
     }
 
     public bool getActivated() {
         return activated;
+    }
+
+    void routeSprites() {
+        if (GameManagerScript.getGamePhase().Equals("Build")) {
+            Instantiate(routeSprite, transform.position, transform.rotation);
+        }
     }
 }

@@ -738,6 +738,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &48773960
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -9066,6 +9068,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &214415118
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11837,6 +11841,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &345423475
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12967,7 +12973,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 97df166125c05f949b54e97085e76d72, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -13352,6 +13358,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &432069186
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14505,7 +14513,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 97df166125c05f949b54e97085e76d72, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -24385,6 +24393,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &823054819
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -26031,7 +26041,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 97df166125c05f949b54e97085e76d72, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -31398,7 +31408,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 97df166125c05f949b54e97085e76d72, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 16
     m_FontStyle: 0
     m_BestFit: 0
@@ -33583,6 +33593,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &1176137197
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -39331,6 +39343,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &1223935311
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -49570,6 +49584,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &1523992417
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -50726,6 +50742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cf9abafa5e106449af521916d2f00e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nickNameInput: {fileID: 0}
 --- !u!1 &1582299640 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: ed071fa16435fdc49a1e19afda2639e6,
@@ -51726,6 +51743,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &1659418498
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67638,6 +67657,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c392c20497a6c042a39b07c72ae4b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  routeSprite: {fileID: 1844879236015496369, guid: 10c8f795083c45948abc93d7d4f22eaf,
+    type: 3}
 --- !u!23 &1752220287
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -82940,7 +82961,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

@@ -30,6 +30,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enemy3;
 
     public AudioClip textPhaseAnnounce;
+    public static int moneyPerTurn = 1;
 
     //Specified in spawnMinions
     private GameObject spawndable;
@@ -249,6 +250,7 @@ public class GameManagerScript : MonoBehaviour
             wave++;
             //money += 50;
             buildableTowers += 1;
+            money += 1;
             Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
             TileScript.cursorActive = true;
 
@@ -381,5 +383,16 @@ public class GameManagerScript : MonoBehaviour
         GetComponent<AudioSource>().pitch = pitch;
         GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f) /2f;
         GetComponent<AudioSource>().Play();
+    }
+
+    public static void calculateIncomePerTurn() {
+        GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
+        int income = 0;
+        foreach (GameObject tower in towers) {
+            income += tower.GetComponent<TowerScript>().getMoneyProduction();
+        }
+        Debug.Log("Towers found : " + towers.Length);
+        moneyPerTurn = income + 1;
+        uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
 }

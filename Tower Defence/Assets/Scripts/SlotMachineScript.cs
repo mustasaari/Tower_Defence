@@ -245,10 +245,12 @@ public class SlotMachineScript : MonoBehaviour
         //towerToBeEdited.GetComponent<TowerScript>().setRange(20);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackSpeedBonus(20);
         //towerToBeEdited.GetComponent<TowerScript>().setMoneyProduction(1);
+        GameManagerScript.calculateIncomePerTurn();
     }
 
     public void updateUI() {
         GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend +"\nCritical : " +critToSend +"\n poison : " +poisonToSend;
+        GameManagerScript.calculateIncomePerTurn();
     }
 
     public void deleteTower() {

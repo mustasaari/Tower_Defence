@@ -20,7 +20,7 @@ public class CanvasScript : MonoBehaviour
 
         wave.text= "" + GameManagerScript.getWave();
         life.text= "" + GameManagerScript.getLeafHP();
-        money.text= "" + GameManagerScript.getMoney();
+        money.text= "+1  " + GameManagerScript.getMoney();
         towers.text = "" + GameManagerScript.getTowers();
         
     }
@@ -38,7 +38,7 @@ public class CanvasScript : MonoBehaviour
         life.text= "" + l;
     }
     public void updateMoney(int m){
-        money.text= "" + m;
+        money.text= "+" +GameManagerScript.moneyPerTurn +"  " +m;
     }
     public void updateTowers(int t){
         towers.text = "" + t;
