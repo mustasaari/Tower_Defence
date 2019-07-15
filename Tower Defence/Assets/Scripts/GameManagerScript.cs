@@ -59,6 +59,7 @@ public class GameManagerScript : MonoBehaviour
         int rnd = Random.Range(0, 10);
         spawns[rnd].transform.GetChild(0).GetComponent<Digger>().activateDigger();
         activatedSpawns[0] = spawns[rnd];
+        transform.GetComponent<DataController>().SubmitNewPlayerScore(2);
         Debug.Log("Test: " + transform.GetComponent<DataController>().GetHighestPlayerScore());
     }
 
@@ -73,10 +74,13 @@ public class GameManagerScript : MonoBehaviour
             xpMoney += wave * 100;
             PlayerPrefs.SetInt("Money", xpMoney);
 
+            if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
+                PlayerPrefs.SetInt("holder", wave);
+            }
+
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();
             // uiCanvas.GetComponent<CanvasScript>().startPhaseOut();
             // transform.GetComponent<LoadSceneOnClick>().LoadByIndex(2);
-
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha5)) {
