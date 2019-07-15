@@ -19,8 +19,8 @@ public class VolumeControl : MonoBehaviour {
 		PlayerPrefs.SetFloat("Musicvolume", Musicvolume.value);
 		PlayerPrefs.Save();
 
-		if (Input.GetKeyDown(KeyCode.S)) {
-            Debug.Log("this comes from volumecontrol script");
+		if (Input.GetKeyDown(KeyCode.H)) {
+            Debug.Log("this comes from volumecontrol script H");
     		SceneManager.LoadScene("Shop");
         }
 	}

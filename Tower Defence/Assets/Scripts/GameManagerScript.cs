@@ -47,7 +47,7 @@ public class GameManagerScript : MonoBehaviour
         uiCanvas = GameObject.FindWithTag("UI");
         gamePhase = "Build";
         wave = 1;
-        leafHP = 100;
+        leafHP = 10 + PlayerPrefs.GetInt("BonusLife", 0);
         activeMinionsOnField = 0;
         money = 10;
         buildableTowers = 3;
@@ -66,6 +66,13 @@ public class GameManagerScript : MonoBehaviour
     void Update()
     {
         if(leafHP == 0){
+
+            leafHP--;
+            //GameOver - Add XP Money
+            int xpMoney = PlayerPrefs.GetInt("Money", 0);
+            xpMoney += wave * 100;
+            PlayerPrefs.SetInt("Money", xpMoney);
+
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();
             // uiCanvas.GetComponent<CanvasScript>().startPhaseOut();
             // transform.GetComponent<LoadSceneOnClick>().LoadByIndex(2);
@@ -127,6 +134,11 @@ public class GameManagerScript : MonoBehaviour
             money += 10;
             uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+
+            //add also experiance
+            int xpMoney = PlayerPrefs.GetInt("Money", 0);
+            xpMoney += 1000;
+            PlayerPrefs.SetInt("Money", xpMoney);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
