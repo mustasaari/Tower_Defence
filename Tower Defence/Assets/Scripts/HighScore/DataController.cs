@@ -1,79 +1,88 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using System.Collections;
-using System.IO;                                                        // The System.IO namespace contains functions related to loading and saving files
 
 public class DataController : MonoBehaviour 
 {
-    private PlayerProgress playerProgress;
+    // private PlayerProgress playerProgress;
 
-    private string gameDataFileName = "data.json";
+    public Text nickNameInput;
 
     void Start()
     {
-        LoadGameData();
-        LoadPlayerProgress();
+        // Create a temporary reference to the current scene.
+        Scene currentScene = SceneManager.GetActiveScene();
+        // Retrieve the name of this scene.s
+        string sceneName = currentScene.name;
+
+        if(sceneName.Equals("Game Over") && checkIfNewHighScore(PlayerPrefs.GetInt("holder"))){
+            
+        }
     }
 
     public void SubmitNewPlayerScore(int newScore)
     {
-        // If newScore is greater than playerProgress.highestScore, update playerProgress with the new value and call SavePlayerProgress()
-        if(newScore > playerProgress.highestScore)
-        {
-            playerProgress.highestScore = newScore;
-            SavePlayerProgress();
+        // If newScore is greater than playerProgress.top1, update playerProgress with the new value and call SavePlayerProgress()
+        if(newScore > PlayerPrefs.GetInt("top3")){
+            if(newScore > PlayerPrefs.GetInt("top2")){
+                if(newScore > PlayerPrefs.GetInt("top1")){
+                    SavePlayerProgress("top1", newScore);
+                }
+                else{
+                    SavePlayerProgress("top2", newScore);
+                }
+            }
+            else{
+                SavePlayerProgress("top3", newScore);
+            }
         }
+        PlayerPrefs.Save();
+    }
+
+    public void askPlayerNickName(){
+        string nn = nickNameInput.text;
+        //holder for wave nro.
+        SubmitNewPlayerScore(PlayerPrefs.GetInt("holder"));
+    }
+
+    public bool checkIfNewHighScore(int checkScore){
+        if(checkScore > PlayerPrefs.GetInt("top3")){
+            return true;
+        }
+        return false;
     }
 
     public int GetHighestPlayerScore()
     {
-        return playerProgress.highestScore;
-    }
-
-    private void LoadGameData()
-    {
-        // Path.Combine combines strings into a file path
-        // Application.StreamingAssets points to Assets/StreamingAssets in the Editor, and the StreamingAssets folder in a build
-        string filePath = Path.Combine(Application.streamingAssetsPath, gameDataFileName);
-
-        if(File.Exists(filePath))
-        {
-            // Read the json from the file into a string
-            string dataAsJson = File.ReadAllText(filePath);
-
-            Debug.Log(dataAsJson);
-
-
-            // // Pass the json to JsonUtility, and tell it to create a GameData object from it
-            // GameData loadedData = JsonUtility.FromJson<GameData>(dataAsJson);
-
-            // // Retrieve the allRoundData property of loadedData
-            // allRoundData = loadedData.allRoundData;
-        }
-        else
-        {
-            Debug.LogError("Cannot load game data!");
-            Debug.Log("HS: " + PlayerPrefs.GetInt("highestScore"));
-        }
+        return PlayerPrefs.GetInt("top1");
     }
 
     // This function could be extended easily to handle any additional data we wanted to store in our PlayerProgress object
-    private void LoadPlayerProgress()
-    {
-        // Create a new PlayerProgress object
-        playerProgress = new PlayerProgress();
+    // private void LoadPlayerProgress()
+    // {
+    //     // Create a new PlayerProgress object
+    //     playerProgress = new PlayerProgress();
 
-        // If PlayerPrefs contains a key called "highestScore", set the value of playerProgress.highestScore using the value associated with that key
-        if(PlayerPrefs.HasKey("highestScore"))
-        {
-            playerProgress.highestScore = PlayerPrefs.GetInt("highestScore");
-        }
-    }
+    //     // If PlayerPrefs contains a key called "top1", set the value of playerProgress.highestScore using the value associated with that key
+    //     if(PlayerPrefs.HasKey("top1"))
+    //     {
+    //         playerProgress.top1 = PlayerPrefs.GetInt("top1");
+    //     }
+    //     if(PlayerPrefs.HasKey("top2"))
+    //     {
+    //         playerProgress.top2 = PlayerPrefs.GetInt("top2");
+    //     }
+    //     if(PlayerPrefs.HasKey("top3"))
+    //     {
+    //         playerProgress.top3 = PlayerPrefs.GetInt("top3");
+    //     }
+    // }
 
     // This function could be extended easily to handle any additional data we wanted to store in our PlayerProgress object
-    private void SavePlayerProgress()
+    private void SavePlayerProgress(string place, int score)
     {
-        // Save the value playerProgress.highestScore to PlayerPrefs, with a key of "highestScore"
-        PlayerPrefs.SetInt("highestScore", playerProgress.highestScore);
+        // eg. Save the value playerProgress.top1 to PlayerPrefs, with a key of "top1"
+        PlayerPrefs.SetInt(place, score);
     }
 }
