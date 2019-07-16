@@ -9,6 +9,8 @@ public class DataController : MonoBehaviour
 
     public GameObject hsPanel;
 
+    private bool newHighScore;
+
     void Start()
     {
         // Create a temporary reference to the current scene.
@@ -19,10 +21,15 @@ public class DataController : MonoBehaviour
         if(sceneName.Equals("Main Menu")){
             initHSpanel();
         }
+        if(sceneName.Equals("Game Over") && PlayerPrefs.GetString("newHS").Equals("newHS")){
+            PlayerPrefs.SetString("newHS", "null");
+            newHighScoreTrigger();
+        }
     }
 
     public void SubmitNewPlayerScore(int newScore)
     {
+        newHighScore = true;
         // If newScore is greater than playerProgress.top1, update playerProgress with the new value and call SavePlayerProgress()
         if(newScore > PlayerPrefs.GetInt("top3")){
             if(newScore > PlayerPrefs.GetInt("top2")){
@@ -34,7 +41,6 @@ public class DataController : MonoBehaviour
                         SavePlayerProgress("top3", PlayerPrefs.GetInt("top2"));
                         PlayerPrefs.SetString("top3Date", PlayerPrefs.GetString("top2Date"));
                         }
-
                         SavePlayerProgress("top2", PlayerPrefs.GetInt("top1"));
                         PlayerPrefs.SetString("top2Date", PlayerPrefs.GetString("top1Date"));
                     }
@@ -67,14 +73,6 @@ public class DataController : MonoBehaviour
         return false;
     }
 
-    public int [] GetHighScores(){
-        int [] topList = new int [2];
-        topList[0] = PlayerPrefs.GetInt("top1");
-        topList[1] = PlayerPrefs.GetInt("top2");
-        topList[2] = PlayerPrefs.GetInt("top3");
-        return topList;
-    }
-
     public int GetHighestPlayerScore()
     {
         return PlayerPrefs.GetInt("top1");
@@ -96,5 +94,12 @@ public class DataController : MonoBehaviour
 
         hsPanel.transform.GetChild(2).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top3Date");
         hsPanel.transform.GetChild(2).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top3").ToString();
+    }
+
+    private void newHighScoreTrigger(){
+        hsPanel.SetActive(true);
+        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed x enemies and survived to x wave.";
+        hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
+        newHighScore = false;
     }
 }

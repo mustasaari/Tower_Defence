@@ -76,6 +76,7 @@ public class GameManagerScript : MonoBehaviour
 
             if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
                 transform.GetComponent<DataController>().SubmitNewPlayerScore(wave);
+                PlayerPrefs.SetString("newHS", "newHS");
             }
 
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();
