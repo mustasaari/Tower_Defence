@@ -20,8 +20,14 @@ public class ShopScript : MonoBehaviour
         transform.GetChild(2).gameObject.GetComponent<Text>().text = money.ToString();
 
         //set Life upgrade numbers
-        transform.GetChild(3).GetChild(0).gameObject.GetComponent<Text>().text = "Upgrade (+1) " + ((lifeLevel+1) * 1000) +" coins";
-        transform.GetChild(4).gameObject.GetComponent<Text>().text = "Current bonus : +" +(lifeLevel);
+        //transform.GetChild(3).GetChild(0).gameObject.GetComponent<Text>().text = "Upgrade (+1) " + ((lifeLevel+1) * 1000) +" coins";
+        //transform.GetChild(4).gameObject.GetComponent<Text>().text = "Current bonus : +" +(lifeLevel);
+
+
+        //purchase life text
+        transform.GetChild(3).GetChild(1).gameObject.GetComponent<Text>().text = "Current bonus : +" +(lifeLevel) +"\n Next level cost " + ((lifeLevel+1) * 1000) +" xp  ( +1 )";
+        //purchase life button
+        //transform.GetChild(3).GetChild(2).GetChild(0).gameObject.GetComponent<Text>().text = "Upgrade (+1) " + ((lifeLevel+1) * 1000) +" coins";
     }
 
     // Update is called once per frame
