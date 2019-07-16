@@ -11,10 +11,6 @@ public class DataController : MonoBehaviour
 
     void Start()
     {
-        SubmitNewPlayerScore(2);
-        SubmitNewPlayerScore(1);
-        SubmitNewPlayerScore(3);
-
         // Create a temporary reference to the current scene.
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.s
