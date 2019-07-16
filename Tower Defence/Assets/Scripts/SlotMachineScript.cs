@@ -263,7 +263,7 @@ public class SlotMachineScript : MonoBehaviour
             closeSlotMachine();
         }
         else {
-            GameManagerScript.messageToUI("Not enough resources");
+            GameManagerScript.messageToUI("Not enough crystal coins");
         }
     }
 
@@ -292,7 +292,7 @@ public class SlotMachineScript : MonoBehaviour
             }
         }
         else {
-            GameManagerScript.messageToUIAlert("Not enough resources");
+            GameManagerScript.messageToUIAlert("Not enough crystal coins");
         }
     }
 

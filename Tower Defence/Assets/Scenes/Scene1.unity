@@ -40332,6 +40332,7 @@ GameObject:
   - component: {fileID: 1288956417}
   - component: {fileID: 1288956416}
   - component: {fileID: 1288956415}
+  - component: {fileID: 1288956418}
   m_Layer: 0
   m_Name: Roll Cost
   m_TagString: RollCostInfoDisplay
@@ -40406,12 +40407,24 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1288956414}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.32, y: 4.4191666, z: -0.08}
+  m_LocalPosition: {x: -0.32, y: 4.37, z: -0.08}
   m_LocalScale: {x: 0.08333335, y: 0.083333336, z: 0.08333335}
   m_Children: []
   m_Father: {fileID: 5006512736148836297}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1288956418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1288956414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7412396fe059e740bc01a36e109f49d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1294989849
 GameObject:
   m_ObjectHideFlags: 0

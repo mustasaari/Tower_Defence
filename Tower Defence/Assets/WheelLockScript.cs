@@ -46,6 +46,8 @@ public class WheelLockScript : MonoBehaviour
             else {
                 wheelLocked = true;
             }
+
+            GameObject.FindGameObjectWithTag("RollCostInfoDisplay").GetComponent<RollCostScript>().bounce();
         }
     }
 

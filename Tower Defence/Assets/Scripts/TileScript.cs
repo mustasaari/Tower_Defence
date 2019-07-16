@@ -163,7 +163,7 @@ public class TileScript : MonoBehaviour
 			}
             //Not enough towers alert
             else if (GameManagerScript.getTowers() == 0 && Input.GetMouseButtonDown(0) && status.Equals("Selected") && !isBottomRowTile && !isTopRowTile && !EventSystem.current.IsPointerOverGameObject()) {
-                GameManagerScript.messageToUIAlert("Not enough towers");
+                GameManagerScript.messageToUIAlert("Not enough available towers");
             }
 
             //1.7

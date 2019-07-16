@@ -19,6 +19,9 @@ public class InstructionsScript : MonoBehaviour
     bool slotmachineRolled = false;
     bool slotMachineClosed = false;
 
+    bool cameraMoved = false;
+    bool cameraRotated = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,21 +32,22 @@ public class InstructionsScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        wave += Time.deltaTime;
-        //transAlpha = (Mathf.Sin(2f * wave) + 1.5f) / 1.5f;
-
-        //transAlpha = (Mathf.Sin(2f * wave) + height) / 2f;
-
-        //GetComponent<Text>().text = transAlpha.ToString();
-
         if (hide && height > -3 ) {
             height -= 0.05f;
         }
         else if (!hide && height < 1.5f) {
             height += 0.05f;
         }
-
         GetComponent<Text>().color = new Color(1, 1, 1, transAlpha + height);
+
+        if (!cameraRotated || !cameraMoved) {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)) {
+                cameraMoved = true;
+            }
+            if (Input.GetMouseButtonDown(1)) {
+                cameraRotated = true;
+            }
+        }
     }
 
     void calculateThings() {
@@ -79,26 +83,68 @@ public class InstructionsScript : MonoBehaviour
         else if (instructionsPhase == 7) {
             if (!slotmachineRolled && !slotMachineClosed) {
                 hide = false;
-                GetComponent<Text>().text = "Pull red lever to randomize towers properties. \n Zoom back to normal view by clicking on the tower again.";
+                GetComponent<Text>().text = "Pull red lever to randomize towers properties. \n You can also lock wheels but then the roll cost increases.";
             }
             else {
                 hide = true;
                 instructionsPhase++;
             }
         }
-        else if (instructionsPhase < 8) {
+        else if (instructionsPhase < 9) {
             instructionsPhase++;
         }
-        else if (instructionsPhase >= 8 && instructionsPhase <= 16) {
-            if (slotMachineClosed) {
+        else if (instructionsPhase == 9) {
+            if (slotmachineRolled && !slotMachineClosed) {
                 hide = false;
-                GetComponent<Text>().text = "When you are ready with building click \"Launch\" on the left to start the attack";
+                GetComponent<Text>().text = "Zoom back to normal view by clicking on the tower again.";
+            }
+            else {
+                hide = true;
                 instructionsPhase++;
             }
         }
-        else if (instructionsPhase == 17) {
-            hide = true;
+        else if (instructionsPhase < 11) {
+            instructionsPhase++;
         }
+        else if (instructionsPhase >= 11 && instructionsPhase <= 19) {
+            if (slotMachineClosed) {
+                hide = false;
+                GetComponent<Text>().text = "When you are ready with building click \"Launch\" on the left to start the attack.";
+                instructionsPhase++;
+            }
+        }
+        else if (instructionsPhase == 20) {
+            hide = true;
+            instructionsPhase++;
+        }
+        else if (instructionsPhase < 24) {
+            instructionsPhase++;
+        }
+        else if (instructionsPhase == 25) {
+            if (!cameraMoved) {
+                hide = false;
+                GetComponent<Text>().text = "You can move the camera with W, A, S, and D keys.";
+            }
+            else {
+                hide = true;
+                instructionsPhase++;
+            }
+        }
+        else if (instructionsPhase < 27) {
+            instructionsPhase++;
+        }
+        else if (instructionsPhase == 27) {
+            if (!cameraRotated) {
+                hide = false;
+                GetComponent<Text>().text = "You can rotate the camera by holding down right mouse button. \n Zoom in and out with mouse wheel.";
+            }
+            else {
+                hide = true;
+                instructionsPhase++;
+            }
+        }
+
+
     }
 
     public void userHasOpenedSlotmachine() {

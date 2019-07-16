@@ -22,6 +22,7 @@ public class SlotArmHandle : MonoBehaviour
     private void OnMouseOver() {
         if (Input.GetMouseButtonDown(0)) {
             slotmachine.GetComponent<SlotMachineScript>().rollTheWheel();
+            GameObject.FindGameObjectWithTag("RollCostInfoDisplay").GetComponent<RollCostScript>().bounce();
         }
     }
 }
