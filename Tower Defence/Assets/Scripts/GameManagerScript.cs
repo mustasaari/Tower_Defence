@@ -60,8 +60,7 @@ public class GameManagerScript : MonoBehaviour
         int rnd = Random.Range(0, 10);
         spawns[rnd].transform.GetChild(0).GetComponent<Digger>().activateDigger();
         activatedSpawns[0] = spawns[rnd];
-        // transform.GetComponent<DataController>().SubmitNewPlayerScore(2);
-        Debug.Log("Test: " + transform.GetComponent<DataController>().GetHighestPlayerScore());
+        // Debug.Log("Test: " + transform.GetComponent<DataController>().GetHighestPlayerScore());
     }
 
     // Update is called once per frame
@@ -76,7 +75,7 @@ public class GameManagerScript : MonoBehaviour
             PlayerPrefs.SetInt("Money", xpMoney);
 
             if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
-                PlayerPrefs.SetInt("holder", wave);
+                transform.GetComponent<DataController>().SubmitNewPlayerScore(wave);
             }
 
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();
