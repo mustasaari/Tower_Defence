@@ -70,9 +70,9 @@ public class GameManagerScript : MonoBehaviour
 
             leafHP--;
             //GameOver - Add XP Money
-            int xpMoney = PlayerPrefs.GetInt("Money", 0);
+            int xpMoney = PlayerPrefs.GetInt("Experience", 0);
             xpMoney += wave * 100;
-            PlayerPrefs.SetInt("Money", xpMoney);
+            PlayerPrefs.SetInt("Experience", xpMoney);
 
             if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
                 transform.GetComponent<DataController>().SubmitNewPlayerScore(wave);
@@ -141,9 +141,9 @@ public class GameManagerScript : MonoBehaviour
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
 
             //add also experiance
-            int xpMoney = PlayerPrefs.GetInt("Money", 0);
+            int xpMoney = PlayerPrefs.GetInt("Experience", 0);
             xpMoney += 1000;
-            PlayerPrefs.SetInt("Money", xpMoney);
+            PlayerPrefs.SetInt("Experience", xpMoney);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
             Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);

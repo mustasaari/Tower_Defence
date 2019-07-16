@@ -15,7 +15,7 @@ public class ShopScript : MonoBehaviour
     void Start()
     {
         lifeLevel = PlayerPrefs.GetInt("BonusLife", 0);
-        money = PlayerPrefs.GetInt("Money", 0);
+        money = PlayerPrefs.GetInt("Experience", 0);
         //all available money
         transform.GetChild(2).gameObject.GetComponent<Text>().text = money.ToString();
 
@@ -48,7 +48,7 @@ public class ShopScript : MonoBehaviour
             transform.GetChild(4).gameObject.GetComponent<Text>().text = "Current bonus : +" +(lifeLevel);
             transform.GetChild(2).gameObject.GetComponent<Text>().text = money.ToString();
             PlayerPrefs.SetInt("BonusLife", lifeLevel);
-            PlayerPrefs.SetInt("Money", money);
+            PlayerPrefs.SetInt("Experience", money);
         }
         else {
             Debug.Log("Not Enough Money");
