@@ -39,10 +39,12 @@ public class GameManagerScript : MonoBehaviour
     static int activeMinionsOnField;
     bool pauseToggle;
     static float desiredgamespeed;
+    static int exp;
 
     // Start is called before the first frame update
     void Start()
     {
+        exp = 0;
         desiredgamespeed = 1;
         Time.timeScale = 1;
         uiCanvas = GameObject.FindWithTag("UI");
@@ -50,7 +52,7 @@ public class GameManagerScript : MonoBehaviour
         wave = 1;
         leafHP = 10 + PlayerPrefs.GetInt("BonusLife", 0);
         activeMinionsOnField = 0;
-        money = 10;
+        money = 10 + PlayerPrefs.GetInt("BonusMoney", 0);
         buildableTowers = 3;
         pauseToggle = false;
         InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 2);
@@ -69,10 +71,6 @@ public class GameManagerScript : MonoBehaviour
         if(leafHP == 0){
 
             leafHP--;
-            //GameOver - Add XP Money
-            int xpMoney = PlayerPrefs.GetInt("Experience", 0);
-            xpMoney += wave * 100;
-            PlayerPrefs.SetInt("Experience", xpMoney);
 
             if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
                 transform.GetComponent<DataController>().SubmitNewPlayerScore(wave);
@@ -394,5 +392,12 @@ public class GameManagerScript : MonoBehaviour
         Debug.Log("Towers found : " + towers.Length);
         moneyPerTurn = income + 1;
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
+    }
+
+    public static void increaseExp(){
+        exp++;
+    }
+    public static int getExp(){
+        return exp;
     }
 }

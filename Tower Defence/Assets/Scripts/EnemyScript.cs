@@ -98,6 +98,7 @@ public class EnemyScript : MonoBehaviour
     public void destroyMinion() {
 
         if (!hasFinished) {
+            GameManagerScript.increaseExp();
             GameManagerScript.removeMinionFromField();
         }
         Destroy(gameObject);

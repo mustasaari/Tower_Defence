@@ -10,6 +10,7 @@ public class DataController : MonoBehaviour
     public GameObject hsPanel;
 
     private bool newHighScore;
+    private int submittedWave;
 
     void Start()
     {
@@ -21,15 +22,20 @@ public class DataController : MonoBehaviour
         if(sceneName.Equals("Main Menu")){
             initHSpanel();
         }
-        if(sceneName.Equals("Game Over") && PlayerPrefs.GetString("newHS").Equals("newHS")){
-            PlayerPrefs.SetString("newHS", "null");
-            newHighScoreTrigger();
+        if(sceneName.Equals("Game Over")){
+            if(PlayerPrefs.GetString("newHS").Equals("newHS")){
+                PlayerPrefs.SetString("newHS", "null");
+                newHighScoreTrigger();
+            }
+            int a = PlayerPrefs.GetInt("Experience", 0);
+            PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
         }
     }
 
     public void SubmitNewPlayerScore(int newScore)
     {
         newHighScore = true;
+        PlayerPrefs.SetInt("survivedWaves", newScore);
         // If newScore is greater than playerProgress.top1, update playerProgress with the new value and call SavePlayerProgress()
         if(newScore > PlayerPrefs.GetInt("top3")){
             if(newScore > PlayerPrefs.GetInt("top2")){
@@ -98,8 +104,12 @@ public class DataController : MonoBehaviour
 
     private void newHighScoreTrigger(){
         hsPanel.SetActive(true);
-        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed x enemies and survived to x wave.";
+        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getExp() + " enemies and survived "+ PlayerPrefs.GetInt("survivedWaves") +" waves.";
         hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
         newHighScore = false;
+    }
+
+    public void reInitSubmittedWave(){
+        PlayerPrefs.SetInt("survivedWaves", 0);
     }
 }
