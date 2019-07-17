@@ -52,7 +52,7 @@ public class GameManagerScript : MonoBehaviour
         uiCanvas = GameObject.FindWithTag("UI");
         gamePhase = "Build";
         wave = 1;
-        leafHP = 10 + PlayerPrefs.GetInt("BonusLife", 0);
+        leafHP = 1 + PlayerPrefs.GetInt("BonusLife", 0);
         activeMinionsOnField = 0;
         money = 10 + PlayerPrefs.GetInt("BonusMoney", 0);
         buildableTowers = 3;
@@ -82,6 +82,18 @@ public class GameManagerScript : MonoBehaviour
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();
             // uiCanvas.GetComponent<CanvasScript>().startPhaseOut();
             // transform.GetComponent<LoadSceneOnClick>().LoadByIndex(2);
+
+            //End animations & explosions
+            Time.timeScale = 1f;
+            desiredgamespeed = 1f;
+            GameObject.Find("LevelChanger").GetComponent<Animator>().speed = 0.2f;
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().enabled = false;
+            GameObject.FindGameObjectWithTag("DeathCamera").GetComponent<Camera>().enabled = true;
+            GameObject.FindGameObjectWithTag("EnvironmentGround").GetComponent<MeshCollider>().enabled = true;
+            GameObject[] crystals = GameObject.FindGameObjectsWithTag("Crystal");
+            foreach (GameObject crystal in crystals) {
+                crystal.GetComponent<CrystalDestroyer>().destroyCrystal();
+            }
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha5)) {
@@ -245,8 +257,10 @@ public class GameManagerScript : MonoBehaviour
         //Check for wave end condition
         if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
             gamePhase = "Build";
-            uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
-            playAudio(textPhaseAnnounce, 0.8f);
+            if (leafHP > 0) {
+                uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
+                playAudio(textPhaseAnnounce, 0.8f);
+            }
             wave++;
             //money += 50;
             buildableTowers += 1;

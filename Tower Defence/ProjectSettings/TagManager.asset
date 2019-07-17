@@ -18,6 +18,9 @@ TagManager:
   - TargetingCrystalSelector
   - SkillTooltip
   - Instructions
+  - DeathCamera
+  - Crystal
+  - EnvironmentGround
   layers:
   - Default
   - TransparentFX
