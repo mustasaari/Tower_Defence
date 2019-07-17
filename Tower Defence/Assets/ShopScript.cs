@@ -36,17 +36,17 @@ public class ShopScript : MonoBehaviour
 
 
         //purchase life text
-        transform.GetChild(3).GetChild(1).gameObject.GetComponent<Text>().text = "Current bonus : +" +(lifeLevel) +"\n Next level cost " + ((lifeLevel+1) * 1000) +" xp  ( +1 )";
+        transform.GetChild(3).GetChild(1).gameObject.GetComponent<Text>().text = "Starting health bonus : +" +(lifeLevel) +"\n Next level cost " + ((lifeLevel+1) * 1000) +" xp  ( +1 )";
         //purchase money text
-        transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "Current bonus : +" +(moneyLevel) +"\n Next level cost " + ((moneyLevel+1) * 1000) +" xp  ( +1 )";
+        transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "Starting coin bonus : +" +(moneyLevel) +"\n Next level cost " + ((moneyLevel+1) * 1000) +" xp  ( +1 )";
         //critical damage multiplier
-        transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Current multiplier : +" +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + ((criticalDamageLevel+1)*(criticalDamageLevel+1))*1000 +" xp  ( +0.25 )";
+        transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Critical damage multiplier : " +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + ((criticalDamageLevel+1)*(criticalDamageLevel+1))*1000 +" xp  ( +0.25 )";
         //tower bonus damage
-        transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Current damage bonus : +" +bonusDamageLevel +"\n Next level cost " + ((bonusDamageLevel * bonusDamageLevel + 1) *1000) +" xp  ( +1 )";
+        transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Tower damage bonus : +" +bonusDamageLevel +"\n Next level cost " + ((bonusDamageLevel * bonusDamageLevel + 1) *1000) +" xp  ( +1 )";
         //tower bonus speed
-        transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Current speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + ((bonusSpeedLevel * bonusSpeedLevel + 1) *1000) +" xp  ( +1 )";
+        transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Tower speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + ((bonusSpeedLevel * bonusSpeedLevel + 1) *1000) +" xp  ( +1 )";
         //tower bonus range
-        transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Current range bonus : +" +bonusRangeLevel +"\n Next level cost " + ((bonusRangeLevel * bonusRangeLevel + 1) *1000) +" xp  ( +1 )";
+        transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Tower range bonus : +" +bonusRangeLevel +"\n Next level cost " + ((bonusRangeLevel * bonusRangeLevel + 1) *1000) +" xp  ( +1 )";
     }
 
     // Update is called once per frame
@@ -65,7 +65,7 @@ public class ShopScript : MonoBehaviour
             lifeLevel++;
 
             //set upgrade text to correspond new situation
-            transform.GetChild(3).GetChild(1).gameObject.GetComponent<Text>().text = "Current bonus : +" +(lifeLevel) +"\n Next level cost " + ((lifeLevel+1) * 1000) +" xp  ( +1 )";
+            transform.GetChild(3).GetChild(1).gameObject.GetComponent<Text>().text = "Starting health bonus : +" +(lifeLevel) +"\n Next level cost " + ((lifeLevel+1) * 1000) +" xp  ( +1 )";
             //update overall experience
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
@@ -84,7 +84,7 @@ public class ShopScript : MonoBehaviour
             moneyLevel++;
 
             //set upgrade text to correspond new situation
-            transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "Current bonus : +" +(moneyLevel) +"\n Next level cost " + ((moneyLevel+1) * 1000) +" xp  ( +1 )";
+            transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "Starting coin bonus : +" +(moneyLevel) +"\n Next level cost " + ((moneyLevel+1) * 1000) +" xp  ( +1 )";
             //update overall experience
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
@@ -109,7 +109,7 @@ public class ShopScript : MonoBehaviour
             criticalDamageLevel++;
              cost = ((criticalDamageLevel+1)*(criticalDamageLevel+1)) * 1000;
 
-            transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Current multiplier : +" +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + cost +" xp  ( +0.25 )";
+            transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Critical damage multiplier : +" +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + cost +" xp  ( +0.25 )";
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
             PlayerPrefs.SetInt("BonusCritDMG", criticalDamageLevel);
@@ -125,7 +125,7 @@ public class ShopScript : MonoBehaviour
             bonusDamageLevel++;
             cost = (bonusDamageLevel * bonusDamageLevel +1) *1000;
 
-            transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Current damage bonus : +" +bonusDamageLevel +"\n Next level cost " + cost +" xp  ( +1 )";
+            transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Tower damage bonus : +" +bonusDamageLevel +"\n Next level cost " + cost +" xp  ( +1 )";
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
             PlayerPrefs.SetInt("BonusDamage", bonusDamageLevel);
@@ -141,7 +141,7 @@ public class ShopScript : MonoBehaviour
             bonusSpeedLevel++;
             cost = (bonusSpeedLevel * bonusSpeedLevel +1) *1000;
 
-            transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Current speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + cost +" xp  ( +1 )";
+            transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Tower speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + cost +" xp  ( +1 )";
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
             PlayerPrefs.SetInt("BonusSpeed", bonusSpeedLevel);
@@ -157,7 +157,7 @@ public class ShopScript : MonoBehaviour
             bonusRangeLevel++;
             cost = (bonusRangeLevel * bonusRangeLevel +1) *1000;
 
-            transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Current range bonus : +" +bonusRangeLevel +"\n Next level cost " + cost +" xp  ( +1 )";
+            transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Tower range bonus : +" +bonusRangeLevel +"\n Next level cost " + cost +" xp  ( +1 )";
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
             PlayerPrefs.SetInt("BonusRange", bonusRangeLevel);
