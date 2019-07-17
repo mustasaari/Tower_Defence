@@ -24,6 +24,8 @@ public class SlotMachineScript : MonoBehaviour
     int rollCost;
 
     int towersBonusDamage;
+    int towersBonusSpeed;
+    int towersBonusRange;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +35,8 @@ public class SlotMachineScript : MonoBehaviour
         rollCost = 1;
         //checkRollCost();
         towersBonusDamage = PlayerPrefs.GetInt("BonusDamage",0);
+        towersBonusSpeed = PlayerPrefs.GetInt("BonusSpeed", 0);
+        towersBonusRange = PlayerPrefs.GetInt("BonusRange",0);
     }
 
     // Update is called once per frame
@@ -145,8 +149,8 @@ public class SlotMachineScript : MonoBehaviour
 
     public void applyResults() {
         attackToSend = 10 + towersBonusDamage;
-        rangeToSend = 10;
-        attackSpeedToSend = 10;
+        rangeToSend = 10 + towersBonusRange;
+        attackSpeedToSend = 10 + towersBonusSpeed;
         moneyToSend = 0;
         aoeToSend = 0;
         critToSend = 0;

@@ -13,6 +13,8 @@ public class ShopScript : MonoBehaviour
     public int moneyLevel;
     public int criticalDamageLevel;
     public int bonusDamageLevel;
+    public int bonusSpeedLevel;
+    int bonusRangeLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,8 @@ public class ShopScript : MonoBehaviour
         moneyLevel = PlayerPrefs.GetInt("BonusMoney", 0);
         criticalDamageLevel = PlayerPrefs.GetInt("BonusCritDMG", 0);
         bonusDamageLevel = PlayerPrefs.GetInt("BonusDamage",0);
+        bonusSpeedLevel = PlayerPrefs.GetInt("BonusSpeed",0);
+        bonusRangeLevel = PlayerPrefs.GetInt("BonusRange", 0);
 
         xp = PlayerPrefs.GetInt("Experience", 0);
         //all available money
@@ -39,6 +43,10 @@ public class ShopScript : MonoBehaviour
         transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Current multiplier : +" +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + ((criticalDamageLevel+1)*(criticalDamageLevel+1))*1000 +" xp  ( +0.25 )";
         //tower bonus damage
         transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Current damage bonus : +" +bonusDamageLevel +"\n Next level cost " + ((bonusDamageLevel * bonusDamageLevel + 1) *1000) +" xp  ( +1 )";
+        //tower bonus speed
+        transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Current speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + ((bonusSpeedLevel * bonusSpeedLevel + 1) *1000) +" xp  ( +1 )";
+        //tower bonus range
+        transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Current range bonus : +" +bonusRangeLevel +"\n Next level cost " + ((bonusRangeLevel * bonusRangeLevel + 1) *1000) +" xp  ( +1 )";
     }
 
     // Update is called once per frame
@@ -121,6 +129,38 @@ public class ShopScript : MonoBehaviour
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
             PlayerPrefs.SetInt("BonusDamage", bonusDamageLevel);
+            PlayerPrefs.SetInt("Experience", xp);
+        }
+    }
+
+    public void buySpeed() {
+        int cost = (bonusSpeedLevel * bonusSpeedLevel +1) *1000;
+
+        if (xp >= cost) {
+            xp -= cost;
+            bonusSpeedLevel++;
+            cost = (bonusSpeedLevel * bonusSpeedLevel +1) *1000;
+
+            transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Current speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + cost +" xp  ( +1 )";
+            transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
+
+            PlayerPrefs.SetInt("BonusSpeed", bonusSpeedLevel);
+            PlayerPrefs.SetInt("Experience", xp);
+        }
+    }
+
+    public void buyRange() {
+        int cost = (bonusRangeLevel * bonusRangeLevel +1) * 1000;
+
+        if(xp >= cost) {
+            xp -= cost;
+            bonusRangeLevel++;
+            cost = (bonusRangeLevel * bonusRangeLevel +1) *1000;
+
+            transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Current range bonus : +" +bonusRangeLevel +"\n Next level cost " + cost +" xp  ( +1 )";
+            transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
+
+            PlayerPrefs.SetInt("BonusRange", bonusRangeLevel);
             PlayerPrefs.SetInt("Experience", xp);
         }
     }
