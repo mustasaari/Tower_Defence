@@ -36,6 +36,8 @@ public class TowerScript : MonoBehaviour
     public Material crystalMaterialNear;
     public Material crystalMaterialFar;
 
+    float criticalDamageBonusModifier;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,8 @@ public class TowerScript : MonoBehaviour
         lockedWheels[2] = false;
 
         checkAppearance();
+
+        criticalDamageBonusModifier = (float) PlayerPrefs.GetInt("BonusCritDMG",0);
 
     }
 
@@ -177,7 +181,8 @@ public class TowerScript : MonoBehaviour
 
         int dmgToDeal = attackDMG;
         if (Random.Range(1,101) < critical) {
-            dmgToDeal = attackDMG * 2;
+            float dmg = attackDMG * (2 + (criticalDamageBonusModifier /4));
+            dmgToDeal = (int) dmg;
         }
 
         Instantiate(shootSoundGameObject, transform.position, transform.rotation);
