@@ -73,8 +73,8 @@ public class GameManagerScript : MonoBehaviour
             leafHP--;
 
             if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
+                transform.GetComponent<DataController>().setnewHSBool(true);
                 transform.GetComponent<DataController>().SubmitNewPlayerScore(wave);
-                PlayerPrefs.SetString("newHS", "newHS");
             }
 
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToNextLevel();

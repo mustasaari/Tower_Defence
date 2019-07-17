@@ -11,6 +11,7 @@ public class DataController : MonoBehaviour
 
     private bool newHighScore;
     private int submittedWave;
+    private static bool newHS;
 
     void Start()
     {
@@ -23,8 +24,8 @@ public class DataController : MonoBehaviour
             initHSpanel();
         }
         if(sceneName.Equals("Game Over")){
-            if(PlayerPrefs.GetString("newHS").Equals("newHS")){
-                PlayerPrefs.SetString("newHS", "null");
+            if(newHS){
+                setnewHSBool(false);
                 newHighScoreTrigger();
             }
             int a = PlayerPrefs.GetInt("Experience", 0);
@@ -111,5 +112,9 @@ public class DataController : MonoBehaviour
 
     public void reInitSubmittedWave(){
         PlayerPrefs.SetInt("survivedWaves", 0);
+    }
+
+    public void setnewHSBool(bool a){
+        newHS = a;
     }
 }
