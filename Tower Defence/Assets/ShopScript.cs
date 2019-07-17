@@ -12,6 +12,7 @@ public class ShopScript : MonoBehaviour
     public int lifeLevel;
     public int moneyLevel;
     public int criticalDamageLevel;
+    public int bonusDamageLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class ShopScript : MonoBehaviour
         lifeLevel = PlayerPrefs.GetInt("BonusLife", 0);
         moneyLevel = PlayerPrefs.GetInt("BonusMoney", 0);
         criticalDamageLevel = PlayerPrefs.GetInt("BonusCritDMG", 0);
+        bonusDamageLevel = PlayerPrefs.GetInt("BonusDamage",0);
 
         xp = PlayerPrefs.GetInt("Experience", 0);
         //all available money
@@ -35,6 +37,8 @@ public class ShopScript : MonoBehaviour
         transform.GetChild(4).GetChild(1).gameObject.GetComponent<Text>().text = "Current bonus : +" +(moneyLevel) +"\n Next level cost " + ((moneyLevel+1) * 1000) +" xp  ( +1 )";
         //critical damage multiplier
         transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Current multiplier : +" +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + ((criticalDamageLevel+1)*(criticalDamageLevel+1))*1000 +" xp  ( +0.25 )";
+        //tower bonus damage
+        transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Current damage bonus : +" +bonusDamageLevel +"\n Next level cost " + ((bonusDamageLevel * bonusDamageLevel + 1) *1000) +" xp  ( +1 )";
     }
 
     // Update is called once per frame
@@ -101,6 +105,22 @@ public class ShopScript : MonoBehaviour
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
 
             PlayerPrefs.SetInt("BonusCritDMG", criticalDamageLevel);
+            PlayerPrefs.SetInt("Experience", xp);
+        }
+    }
+
+    public void buyDamage() {
+        int cost = (bonusDamageLevel * bonusDamageLevel +1) *1000;
+
+        if (xp >= cost) {
+            xp -= cost;
+            bonusDamageLevel++;
+            cost = (bonusDamageLevel * bonusDamageLevel +1) *1000;
+
+            transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Current damage bonus : +" +bonusDamageLevel +"\n Next level cost " + cost +" xp  ( +1 )";
+            transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
+
+            PlayerPrefs.SetInt("BonusDamage", bonusDamageLevel);
             PlayerPrefs.SetInt("Experience", xp);
         }
     }

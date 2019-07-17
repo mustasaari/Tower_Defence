@@ -63,7 +63,6 @@ public class TowerScript : MonoBehaviour
         checkAppearance();
 
         criticalDamageBonusModifier = (float) PlayerPrefs.GetInt("BonusCritDMG",0);
-
     }
 
     // Update is called once per frame
