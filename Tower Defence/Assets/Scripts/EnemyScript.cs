@@ -25,6 +25,8 @@ public class EnemyScript : MonoBehaviour
 
     private bool hasFinished;
 
+    public int xp;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -98,7 +100,7 @@ public class EnemyScript : MonoBehaviour
     public void destroyMinion() {
 
         if (!hasFinished) {
-            GameManagerScript.increaseExp();
+            GameManagerScript.increaseExp(xp);
             GameManagerScript.removeMinionFromField();
         }
         Destroy(gameObject);

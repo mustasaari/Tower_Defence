@@ -72,6 +72,7 @@ MonoBehaviour:
   poisonEffectPrefab: {fileID: 8005574675944053066, guid: 3ede5f1728e2b134ca101581d15117e6,
     type: 3}
   dmgText: {fileID: 1269665793904038872, guid: fce28f806a1371847abba128ca4d9f40, type: 3}
+  xp: 6
 --- !u!1001 &8883237447327178242
 PrefabInstance:
   m_ObjectHideFlags: 0

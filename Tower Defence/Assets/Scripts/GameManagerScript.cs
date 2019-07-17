@@ -40,10 +40,12 @@ public class GameManagerScript : MonoBehaviour
     bool pauseToggle;
     static float desiredgamespeed;
     static int exp;
+    static int kills;
 
     // Start is called before the first frame update
     void Start()
     {
+        kills = 0;
         exp = 0;
         desiredgamespeed = 1;
         Time.timeScale = 1;
@@ -394,10 +396,14 @@ public class GameManagerScript : MonoBehaviour
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
 
-    public static void increaseExp(){
-        exp++;
+    public static void increaseExp(int x){
+        exp += x;
+        kills++;
     }
     public static int getExp(){
         return exp;
+    }
+    public static int getKills(){
+        return kills;
     }
 }

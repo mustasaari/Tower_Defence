@@ -10,6 +10,8 @@ public class LevelChanger : MonoBehaviour {
 
 	private int LevelToLoad;
 
+	public GameObject datacont;
+
 	public void FadeToNextLevel () {
         FadeToLevel(2);
 	}
@@ -29,5 +31,14 @@ public class LevelChanger : MonoBehaviour {
 	public void OnFadeComplete(){
 
 		SceneManager.LoadScene(LevelToLoad);
+
+	}
+	public void OnFadeToGameOver(){
+		Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+
+		if(sceneName.Equals("Game Over")){
+			datacont.GetComponent<DataController>().fadeInComplete();
+		}
 	}
 }

@@ -12,6 +12,7 @@ public class DataController : MonoBehaviour
     private bool newHighScore;
     private int submittedWave;
     private static bool newHS;
+    private static bool fadeComp;
 
     void Start()
     {
@@ -28,8 +29,7 @@ public class DataController : MonoBehaviour
                 setnewHSBool(false);
                 newHighScoreTrigger();
             }
-            int a = PlayerPrefs.GetInt("Experience", 0);
-            PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
+            hsPanel.transform.parent.GetChild(2).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("Experience", 0).ToString();
         }
     }
 
@@ -105,7 +105,7 @@ public class DataController : MonoBehaviour
 
     private void newHighScoreTrigger(){
         hsPanel.SetActive(true);
-        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getExp() + " enemies and survived "+ PlayerPrefs.GetInt("survivedWaves") +" waves.";
+        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived "+ PlayerPrefs.GetInt("survivedWaves") +" waves.";
         hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
         newHighScore = false;
     }
@@ -116,5 +116,10 @@ public class DataController : MonoBehaviour
 
     public void setnewHSBool(bool a){
         newHS = a;
+    }
+    public void fadeInComplete(){
+        int a = PlayerPrefs.GetInt("Experience", 0);
+        hsPanel.transform.parent.GetChild(2).gameObject.GetComponent<Text>().text = Mathf.Lerp(a, GameManagerScript.getExp() + a, 1f).ToString();
+        PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
     }
 }
