@@ -51,7 +51,7 @@ public class DataController : MonoBehaviour
                         PlayerPrefs.SetString("top2Date", PlayerPrefs.GetString("top1Date"));
                     }
                     SavePlayerProgress("top1", newScore);
-                    PlayerPrefs.SetString("top1Date", System.DateTime.Now.ToString("MM/dd/yyyy"));
+                    PlayerPrefs.SetString("top1Date", System.DateTime.Now.ToString("dd/MM/yyyy"));
                 }
                 else{
                     //top2 to top3
@@ -61,12 +61,12 @@ public class DataController : MonoBehaviour
                         Debug.Log("top2 siirto -> 3");
                     }
                     SavePlayerProgress("top2", newScore);
-                    PlayerPrefs.SetString("top2Date", System.DateTime.Now.ToString("MM/dd/yyyy"));
+                    PlayerPrefs.SetString("top2Date", System.DateTime.Now.ToString("dd/MM/yyyy"));
                 }
             }
             else{
                 SavePlayerProgress("top3", newScore);
-                PlayerPrefs.SetString("top3Date", System.DateTime.Now.ToString("MM/dd/yyyy"));
+                PlayerPrefs.SetString("top3Date", System.DateTime.Now.ToString("dd/MM/yyyy"));
             }
         }
         PlayerPrefs.Save();
