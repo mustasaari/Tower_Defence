@@ -11,7 +11,7 @@ public class CrystalDestroyer : MonoBehaviour
     public int delay;
 
     bool todestroy = false;
-    int countdown = 0;
+    float countdown = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +28,12 @@ public class CrystalDestroyer : MonoBehaviour
             Destroy(gameObject);
         }
         else {
-            countdown--;
+            countdown = countdown - 1 * Time.deltaTime * 60;
         }
     }
 
     public void destroyCrystal() {
         todestroy = true;
-        countdown = Random.Range(30, 360);
         countdown = delay;
     }
 }
