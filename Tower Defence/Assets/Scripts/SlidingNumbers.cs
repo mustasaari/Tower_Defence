@@ -22,23 +22,31 @@ public class SlidingNumbers : MonoBehaviour
         desiredNumber += v;
     }
 
+    public void setCountNumbers(int start, int end){
+        currentNumber = start;
+        desiredNumber = end;
+    }
+
     void Update(){
         if(currentNumber != desiredNumber && startCount){
             if(initialNumber < desiredNumber){
                 currentNumber += (animTime * Time.deltaTime) * (desiredNumber - initialNumber);
                 if(currentNumber >= desiredNumber){
                     currentNumber = desiredNumber;
+                    setCountBool(false);
                 }
             }
             else{
                 currentNumber -= (animTime * Time.deltaTime) * (initialNumber - desiredNumber);
                 if(currentNumber <= desiredNumber){
                     currentNumber = desiredNumber;
+                    setCountBool(false);
                 }
             }
+            expCounter.text = currentNumber.ToString("0");
         }
     }
-    public static void setCountBool(){
-
+    public void setCountBool(bool a){
+        startCount = a;
     }
 }

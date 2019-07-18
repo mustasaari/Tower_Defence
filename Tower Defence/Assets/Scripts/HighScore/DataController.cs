@@ -118,8 +118,16 @@ public class DataController : MonoBehaviour
         newHS = a;
     }
     public void fadeInComplete(){
-        int a = PlayerPrefs.GetInt("Experience", 0);
-        hsPanel.transform.parent.GetChild(2).gameObject.GetComponent<Text>().text = Mathf.Lerp(a, GameManagerScript.getExp() + a, 1f).ToString();
-        PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
+
+        Scene currentScene = SceneManager.GetActiveScene();
+        // Retrieve the name of this scene.s
+        string sceneName = currentScene.name;
+
+        if(sceneName.Equals("Game Over")){
+            int a = PlayerPrefs.GetInt("Experience", 0);
+            PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
+            transform.GetComponent<SlidingNumbers>().setCountNumbers(a, PlayerPrefs.GetInt("Experience", 0));
+            transform.GetComponent<SlidingNumbers>().setCountBool(true);
+        }
     }
 }
