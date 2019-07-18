@@ -33,7 +33,7 @@ public class GameManagerScript : MonoBehaviour
     public static int moneyPerTurn = 1;
 
     //Specified in spawnMinions
-    private GameObject spawndable;
+    private GameObject spawnable;
     public float sleep = 0;
     int musteringPoints;
     static int activeMinionsOnField;
@@ -41,6 +41,9 @@ public class GameManagerScript : MonoBehaviour
     static float desiredgamespeed;
     static int exp;
     static int kills;
+
+    List<EnemySpawnData> listOfEnemies;
+    int spawnProgress;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +68,9 @@ public class GameManagerScript : MonoBehaviour
         spawns[rnd].transform.GetChild(0).GetComponent<Digger>().activateDigger();
         activatedSpawns[0] = spawns[rnd];
         // Debug.Log("Test: " + transform.GetComponent<DataController>().GetHighestPlayerScore());
+        listOfEnemies = new List<EnemySpawnData>(); //new spawnsystem
+        listOfEnemies.Add(new EnemySpawnData(wave)); //new spawnsystem
+        spawnProgress = 0; //new spawnsystem
     }
 
     // Update is called once per frame
@@ -201,16 +207,17 @@ public class GameManagerScript : MonoBehaviour
             spawns[maxSpawn-2].transform.GetChild(0).GetComponent<Digger>().activateDigger(); //play digger animation
             */
 
-            int maxSpawn = wave;
-            if(wave > 5 ) { //10 muutettu
-                maxSpawn = 5;   //10 muutettu
-            }
+            //int maxSpawn = wave; 18.7
+            //if(wave > 5 ) { //10 muutettu
+            //    maxSpawn = 5;   //10 muutettu
+            //} 18.7
 
-            int rnd = Random.Range(0, maxSpawn);
+            //int rnd = Random.Range(0, maxSpawn);
 
             //Testing Enemy spawngin. Needs to be reworked in future! -------------------------------------------------HOX HOX HOX!
-            int rndEnemy = Random.Range(1, 20 + wave);  //Starst from 1-20
-            //SpeedFly level 1      1-15   
+            //int rndEnemy = Random.Range(1, 20 + wave);  //Starst from 1-20
+            //SpeedFly level 1      1-15  
+            /* 
             if(rndEnemy >= 1 && rndEnemy <= 12){
                 spawndable = enemy1;
                 sleep = 300;
@@ -243,8 +250,26 @@ public class GameManagerScript : MonoBehaviour
             }
             else{
                 musteringPoints = 0;
-            }
+            }*/
             //------------------------------Nopee korjaus------------------------------
+            if (spawnProgress < listOfEnemies.Count) { //new spawnsystem
+                if (listOfEnemies[spawnProgress].getEnemyNumber() == 1) {
+                    spawnable = enemy1; //speedfly
+                    sleep = 600f;
+                } 
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 2) {
+                    spawnable = enemy2; //ladybug
+                    sleep = 600f;
+                }
+                            else if (listOfEnemies[spawnProgress].getEnemyNumber() == 3) {
+                    spawnable = enemy3; //beetle
+                    sleep = 600f;
+                }
+
+                Instantiate(spawnable, activatedSpawns[listOfEnemies[spawnProgress].getSpwnPoint()].transform.position, Quaternion.identity);
+                spawnProgress++;
+                activeMinionsOnField++; //new spawnsystem
+            }
         }
 
         //Enemy Spawn speed over waves
@@ -255,7 +280,13 @@ public class GameManagerScript : MonoBehaviour
         }
         
         //Check for wave end condition
-        if (musteringPoints < 1 && gamePhase.Equals("Attack") && activeMinionsOnField == 0) {
+        if (gamePhase.Equals("Attack") && activeMinionsOnField == 0 && spawnProgress == listOfEnemies.Count) {
+
+            spawnProgress = 0;  //new spawnsystem
+            //for (int i = 0; i < wave ;i++) { //new spawnsystem
+                listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
+            //} //new spawnsystem
+
             gamePhase = "Build";
             if (leafHP > 0) {
                 uiCanvas.transform.GetChild(5).gameObject.GetComponent<TextAnnouncer>().startAnnounce("Wave " + wave + " complete!");
@@ -419,5 +450,45 @@ public class GameManagerScript : MonoBehaviour
     }
     public static int getKills(){
         return kills;
+    }
+}
+
+public class EnemySpawnData {
+
+    private int enemyType;  // 1=speedfly  2=ladybug   3=beetle  4=elite speedf  5=elite ladybug  6=elite beetle
+    private int spawnNumber;
+
+    public EnemySpawnData(int wave) {
+
+        //determine spawnpoint
+        int maxSpawn = wave;
+        if( maxSpawn > 5 ) { //5 is max number of spawns, change if increase spawnpoints
+            maxSpawn = 5;
+        }
+        spawnNumber = Random.Range(0, maxSpawn);
+
+        //determine enemy
+        int maxEnemyMod = wave;
+        if (maxEnemyMod > 80) {
+            maxEnemyMod = 80;
+        }
+        int enemyRoll = Random.Range(1, 20 + maxEnemyMod);
+        if (enemyRoll >= 1 && enemyRoll <= 9) {
+            enemyType = 1;
+        }
+        else if (enemyRoll >= 10 && enemyRoll <= 20) {
+            enemyType = 2;
+        }
+        else if (enemyRoll >= 10 && enemyRoll <= 100) {
+            enemyType = 3;
+        }
+    }
+
+    public int getSpwnPoint() {
+        return spawnNumber;
+    }
+
+    public int getEnemyNumber() {
+        return enemyType;
     }
 }
