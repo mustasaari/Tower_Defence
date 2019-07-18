@@ -24,7 +24,7 @@ public class CrystalDestroyer : MonoBehaviour
     {
         if (todestroy && countdown <= 0) {
             Instantiate(crystalDebris, transform.position, transform.rotation);
-            Instantiate(blueSmoke, transform.position + new Vector3(0,0,+10), transform.rotation);
+            Instantiate(blueSmoke, transform.position + new Vector3(0,-10,+10), transform.rotation);
             Destroy(gameObject);
         }
         else {

@@ -52,7 +52,7 @@ public class GameManagerScript : MonoBehaviour
         uiCanvas = GameObject.FindWithTag("UI");
         gamePhase = "Build";
         wave = 1;
-        leafHP = 1 + PlayerPrefs.GetInt("BonusLife", 0);
+        leafHP = 10 + PlayerPrefs.GetInt("BonusLife", 0);
         activeMinionsOnField = 0;
         money = 10 + PlayerPrefs.GetInt("BonusMoney", 0);
         buildableTowers = 3;
