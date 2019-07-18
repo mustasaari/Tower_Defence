@@ -49,4 +49,7 @@ public class SlidingNumbers : MonoBehaviour
     public void setCountBool(bool a){
         startCount = a;
     }
+    public bool getCountBool(){
+        return startCount;
+    }
 }

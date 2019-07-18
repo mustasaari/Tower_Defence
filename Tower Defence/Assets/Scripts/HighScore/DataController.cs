@@ -8,7 +8,7 @@ public class DataController : MonoBehaviour
     // private PlayerProgress playerProgress;
 
     public GameObject hsPanel;
-
+    public GameObject expPanel;
     private bool newHighScore;
     private int submittedWave;
     private static bool newHS;
@@ -29,7 +29,8 @@ public class DataController : MonoBehaviour
                 setnewHSBool(false);
                 newHighScoreTrigger();
             }
-            hsPanel.transform.parent.GetChild(2).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("Experience", 0).ToString();
+            hsPanel.transform.parent.GetChild(2).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("Experience", 0).ToString();
+            hsPanel.transform.parent.GetChild(2).GetChild(1).gameObject.GetComponent<Text>().text = "0";
         }
     }
 
@@ -124,10 +125,61 @@ public class DataController : MonoBehaviour
         string sceneName = currentScene.name;
 
         if(sceneName.Equals("Game Over")){
+            //get all exp
             int a = PlayerPrefs.GetInt("Experience", 0);
+            //set all exp + roundxp to prefs
             PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
-            transform.GetComponent<SlidingNumbers>().setCountNumbers(a, PlayerPrefs.GetInt("Experience", 0));
-            transform.GetComponent<SlidingNumbers>().setCountBool(true);
+            //roundXp
+            expPanel.transform.GetChild(1).GetComponent<SlidingNumbers>().setCountNumbers(0, (PlayerPrefs.GetInt("Experience", 0) - a));
+            expPanel.transform.GetChild(1).transform.GetComponent<SlidingNumbers>().setCountBool(true);
+
+            //unity doesn't like when you touch it's single thread -> laggy
+            // System.Threading.Thread.Sleep(2000);
+
+            //start allxp count when roundXp is ready
+            if(expPanel.transform.GetChild(1).GetComponent<SlidingNumbers>().getCountBool()){
+                //AllXp
+                expPanel.transform.GetChild(0).GetComponent<SlidingNumbers>().setCountNumbers(a, PlayerPrefs.GetInt("Experience", 0));
+                expPanel.transform.GetChild(0).transform.GetComponent<SlidingNumbers>().setCountBool(true);
+            }
         }
     }
+
+    //------------------------------WAIT TEST------------------------------------------------
+    // public void startRoundXPCount(){
+    //     expPanel.transform.GetChild(1).GetComponent<SlidingNumbers>().setCountNumbers(0, (PlayerPrefs.GetInt("Experience", 0) - roundXP));
+    //     expPanel.transform.GetChild(1).transform.GetComponent<SlidingNumbers>().setCountBool(true);
+    // }
+
+    // public void startallXPCount(){
+    //     expPanel.transform.GetChild(0).GetComponent<SlidingNumbers>().setCountNumbers(roundXP, PlayerPrefs.GetInt("Experience", 0));
+    //     expPanel.transform.GetChild(0).transform.GetComponent<SlidingNumbers>().setCountBool(true);
+    // }
+
+    // IEnumerator startXPcounterRoutine(){
+    //     startRoundXPCount();
+    //     //wait first xp counter
+    //     yield return new WaitForSeconds(4);
+    //     startallXPCount();
+    // }
+
+    //------------------------------WAIT TEST------------------------------------------------
+    // IEnumerator startXPcounterRoutine(){
+    //     int a = PlayerPrefs.GetInt("Experience", 0);
+    //     //set all exp + roundxp to prefs
+    //     PlayerPrefs.SetInt("Experience", GameManagerScript.getExp() + a);
+    //     //roundXp
+    //     expPanel.transform.GetChild(1).GetComponent<SlidingNumbers>().setCountNumbers(0, (PlayerPrefs.GetInt("Experience", 0) - a));
+    //     expPanel.transform.GetChild(1).transform.GetComponent<SlidingNumbers>().setCountBool(true);
+
+    //     //wait first xp counter
+    //     yield return new WaitForSeconds(2);
+
+    //     //start allxp count when roundXp is ready
+    //     if(expPanel.transform.GetChild(1).GetComponent<SlidingNumbers>().getCountBool()){
+    //         //AllXp
+    //         expPanel.transform.GetChild(0).GetComponent<SlidingNumbers>().setCountNumbers(a, PlayerPrefs.GetInt("Experience", 0));
+    //         expPanel.transform.GetChild(0).transform.GetComponent<SlidingNumbers>().setCountBool(true);
+    //     }
+    // }
 }
