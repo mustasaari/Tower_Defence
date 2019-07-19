@@ -28,6 +28,9 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
+    public GameObject enemy4;
+    public GameObject enemy5;
+    public GameObject enemy6;
 
     public AudioClip textPhaseAnnounce;
     public static int moneyPerTurn = 1;
@@ -261,8 +264,20 @@ public class GameManagerScript : MonoBehaviour
                     spawnable = enemy2; //ladybug
                     sleep = 600f;
                 }
-                            else if (listOfEnemies[spawnProgress].getEnemyNumber() == 3) {
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 3) {
                     spawnable = enemy3; //beetle
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 4) {
+                    spawnable = enemy4; //fly elite
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 5) {
+                    spawnable = enemy5; //ladybug elite
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 6) {
+                    spawnable = enemy6; //beetle
                     sleep = 600f;
                 }
 
@@ -284,7 +299,11 @@ public class GameManagerScript : MonoBehaviour
 
             spawnProgress = 0;  //new spawnsystem
             //for (int i = 0; i < wave ;i++) { //new spawnsystem
-                listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
+            listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
+            //Enemy roster maximum size
+            //if (listOfEnemies.Count > 20) {
+            //    listOfEnemies.RemoveAt(0);
+            //}
             //} //new spawnsystem
 
             gamePhase = "Build";
@@ -296,7 +315,7 @@ public class GameManagerScript : MonoBehaviour
             //money += 50;
             buildableTowers += 1;
             money += 1;
-            Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
+            //Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
             TileScript.cursorActive = true;
 
             GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
@@ -472,15 +491,23 @@ public class EnemySpawnData {
         if (maxEnemyMod > 80) {
             maxEnemyMod = 80;
         }
-        int enemyRoll = Random.Range(1, 20 + maxEnemyMod);
-        if (enemyRoll >= 1 && enemyRoll <= 9) {
+        int enemyRoll = Random.Range(1 + maxEnemyMod, 20 + maxEnemyMod);  //1,20+maxenemymod
+        Debug.Log("Enemy Rolled : " +enemyRoll);
+        if (enemyRoll >= 1 && enemyRoll <= 9) { //fly
             enemyType = 1;
         }
-        else if (enemyRoll >= 10 && enemyRoll <= 20) {
+        else if (enemyRoll >= 10 && enemyRoll <= 20) {  //ladybug
             enemyType = 2;
         }
-        else if (enemyRoll >= 10 && enemyRoll <= 100) {
+        else if (enemyRoll >= 25 && enemyRoll <= 30) {  //beetle
             enemyType = 3;
+        }
+        else {                                      //elite CAN spawn in round 11
+            enemyType = Random.Range(4,7);
+        }
+
+        if (enemyType >= 7) {
+            Debug.Log("SOOOOS!!!! ERROR in enemyspawning");
         }
     }
 

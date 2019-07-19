@@ -108,7 +108,10 @@ public class TowerScript : MonoBehaviour
 
     public void targetInRange()
     {
-        float dist = Vector3.Distance(target.transform.position, this.transform.position);
+        Vector3 targetPosition = new Vector3(target.transform.position.x, 0, target.transform.position.z);
+
+        //float dist = Vector3.Distance(target.transform.position, this.transform.position);
+        float dist = Vector3.Distance(targetPosition, this.transform.position);
         if(dist <= range && !target.GetComponent<EnemyScript>().hasMinionFinished())
         {
             //jos target oikealla etäisyydellä -> Ammu.

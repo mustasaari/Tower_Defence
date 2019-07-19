@@ -19,6 +19,10 @@ public class EnemyScript : MonoBehaviour
     public GameObject poisonEffectPrefab;
     public GameObject dmgText;
 
+    public bool isEliteSpeedFly;
+    public bool isEliteLadybug;
+    public bool isEliteBeetle;
+
     private int maxHP;
 
     private int poisonStacks = 0;
@@ -34,6 +38,18 @@ public class EnemyScript : MonoBehaviour
         hasFinished = false;
 		calculator = 10f;
 		transform.rotation = Quaternion.LookRotation(Vector3.back);
+
+        if (isEliteBeetle) {
+            health += ((GameManagerScript.getWave() * GameManagerScript.getWave()) / 4 );
+        }
+        if (isEliteSpeedFly) {
+            health += GameManagerScript.getWave() * 2;
+        }
+        if (isEliteLadybug) {
+            health += GameManagerScript.getWave() * 2;
+            speed += (float) GameManagerScript.getWave() / 20f;
+        }
+
         maxHP = health;
         //Debug.Log(gameObject.transform.name);
         if(gameObject.transform.name == "SpeedFly(Clone)"){
@@ -43,7 +59,7 @@ public class EnemyScript : MonoBehaviour
             rotSpeed = 1.5f;
         }
         else {
-            rotSpeed = 1f;
+            rotSpeed = 3f + speed/10;
         }
 
         InvokeRepeating("CalculateDamageOverTimeEffects", 1, 2);
@@ -81,6 +97,23 @@ public class EnemyScript : MonoBehaviour
 		}
 		if (direction.Equals("Right")) {
             newDir = Vector3.RotateTowards(transform.forward, Vector3.right, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
+        }
+
+        //elitespeedfly goes down
+        if (isEliteSpeedFly) {
+            if (!hasFinished) { //lennä suoraan kunnes lopussa
+                newDir = Vector3.RotateTowards(transform.forward, Vector3.back, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
+            }
+
+            if (transform.position.y < 15 && !hasFinished) {
+                transform.Translate(Vector3.up * Time.deltaTime *10f);
+                //GetComponent<BoxCollider>().center = new Vector3(0, -transform.position.y +2.5f, 0);
+            }
+            else if (transform.position.y > 0.5 && hasFinished) {
+                transform.Translate(Vector3.down * Time.deltaTime *10f);
+                //GetComponent<BoxCollider>().center = new Vector3(0, -transform.position.y +2.5f, 0);
+            }
+
         }
 
         transform.rotation = Quaternion.LookRotation(newDir);
@@ -174,6 +207,12 @@ public class EnemyScript : MonoBehaviour
             txt.GetComponent<dmgTextScript>().setNumber(poisonStacks, Color.green);
 
             checkHealth();
+        }
+        //elite beetle health regen
+        int regen = GameManagerScript.getWave() - 10;
+        if (regen < 0) regen = 0;
+        if (health + regen <= maxHP && isEliteBeetle) {
+            health += regen;
         }
     }
 }

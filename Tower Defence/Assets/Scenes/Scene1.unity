@@ -51899,6 +51899,9 @@ MonoBehaviour:
   enemy1: {fileID: 6427738172573618113, guid: 4f6170548b64b5a46a9c263d4c351fc9, type: 3}
   enemy2: {fileID: 1401035011850875160, guid: 50551ba3538f40e4f84077cc8bc0a714, type: 3}
   enemy3: {fileID: 4603387823411657118, guid: c4659a0e24e602942b769307e0c29468, type: 3}
+  enemy4: {fileID: 5986302700138284126, guid: 2fabdc69e1803344f9a029d9ac7f3457, type: 3}
+  enemy5: {fileID: 8431774102440492062, guid: 20d90c5b34ac7d443870bb6b304be553, type: 3}
+  enemy6: {fileID: 4842416158846953754, guid: 20d8a003edb5def45bfcdf95e2565aec, type: 3}
   textPhaseAnnounce: {fileID: 8300000, guid: 6211a2a12f71e2c4eac9190a4352352c, type: 3}
   sleep: 0
 --- !u!4 &1579555877
