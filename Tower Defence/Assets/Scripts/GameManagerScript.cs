@@ -296,7 +296,8 @@ public class GameManagerScript : MonoBehaviour
         //HighScores :
         //2.7 Mikko - Wave 17 - vaikeus 2f
         if (gamePhase.Equals("Attack")){
-            sleep -= (100 + (wave * wave * 2f)) * Time.deltaTime;
+            //sleep -= (100 + (wave * wave * 2f)) * Time.deltaTime; //19.7 asti
+            sleep -= (100 + (wave * wave)) * Time.deltaTime;
         }
         
         //Check for wave end condition

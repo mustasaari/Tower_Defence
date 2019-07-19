@@ -416,8 +416,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.1503139, z: 1.8109512}
-  m_Center: {x: 0, y: 2.2727904, z: -0.40547562}
+  m_Size: {x: 2.1879883, y: 3.1503139, z: 3.657526}
+  m_Center: {x: 0.020323753, y: 2.2727904, z: 0.5178118}
 --- !u!114 &2031265020243047696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2027,11 +2027,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: bumblebee
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 8cba4e0f478e94d41ba32d9578d42cc0,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: e01f47c4704ecae44bfc8cb11a88b50e, type: 2}
     - target: {fileID: -4216859302048453862, guid: 8cba4e0f478e94d41ba32d9578d42cc0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2102,6 +2097,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2.0055127
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: 8cba4e0f478e94d41ba32d9578d42cc0,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: e01f47c4704ecae44bfc8cb11a88b50e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cba4e0f478e94d41ba32d9578d42cc0, type: 3}
 --- !u!4 &745814810414553653 stripped
