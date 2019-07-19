@@ -31,6 +31,7 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enemy4;
     public GameObject enemy5;
     public GameObject enemy6;
+    public GameObject enemy7Bumblebee;
 
     public AudioClip textPhaseAnnounce;
     public static int moneyPerTurn = 1;
@@ -280,6 +281,10 @@ public class GameManagerScript : MonoBehaviour
                     spawnable = enemy6; //beetle
                     sleep = 600f;
                 }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 7) {
+                    spawnable = enemy7Bumblebee; //bumblebee
+                    sleep = 600f;
+                }
 
                 Instantiate(spawnable, activatedSpawns[listOfEnemies[spawnProgress].getSpwnPoint()].transform.position, Quaternion.identity);
                 spawnProgress++;
@@ -299,7 +304,16 @@ public class GameManagerScript : MonoBehaviour
 
             spawnProgress = 0;  //new spawnsystem
             //for (int i = 0; i < wave ;i++) { //new spawnsystem
-            listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
+            EnemySpawnData newEnemy = new EnemySpawnData(wave + 1);
+
+            //If new enemy is Beetle, insert it to beginnig of list. Else add to end
+            if (newEnemy.getEnemyNumber() == 3) {
+                listOfEnemies.Insert(0, newEnemy);
+            }
+            else {
+                listOfEnemies.Add(newEnemy);
+            }
+            //listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
             //Enemy roster maximum size
             //if (listOfEnemies.Count > 20) {
             //    listOfEnemies.RemoveAt(0);
@@ -499,14 +513,23 @@ public class EnemySpawnData {
         else if (enemyRoll >= 10 && enemyRoll <= 20) {  //ladybug
             enemyType = 2;
         }
-        else if (enemyRoll >= 25 && enemyRoll <= 30) {  //beetle
-            enemyType = 3;
+        else if (enemyRoll >= 21 && enemyRoll <= 30) {  //beetle & bumblebee
+            int rnd = Random.Range(0, 2);
+            if (rnd == 0) {
+                enemyType = 3;
+            }
+            else {
+                enemyType = 7;
+            }
         }
+        //else if (enemyRoll >= 31 && enemyRoll <= 40) {
+        //    enemyType = 7;  //bumblebee
+        //}
         else {                                      //elite CAN spawn in round 11
             enemyType = Random.Range(4,7);
         }
 
-        if (enemyType >= 7) {
+        if (enemyType >= 8) {
             Debug.Log("SOOOOS!!!! ERROR in enemyspawning");
         }
     }

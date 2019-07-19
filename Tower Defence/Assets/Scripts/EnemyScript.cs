@@ -20,6 +20,7 @@ public class EnemyScript : MonoBehaviour
     public GameObject dmgText;
 
     public bool isEliteSpeedFly;
+    public bool isEliteBumblebee;
     public bool isEliteLadybug;
     public bool isEliteBeetle;
 
@@ -44,6 +45,7 @@ public class EnemyScript : MonoBehaviour
         }
         if (isEliteSpeedFly) {
             health += GameManagerScript.getWave() * 2;
+            speed += (float)GameManagerScript.getWave() / 20f;
         }
         if (isEliteLadybug) {
             health += GameManagerScript.getWave() * 2;
@@ -100,7 +102,7 @@ public class EnemyScript : MonoBehaviour
         }
 
         //elitespeedfly goes down
-        if (isEliteSpeedFly) {
+        if (isEliteBumblebee) {
             if (!hasFinished) { //lennä suoraan kunnes lopussa
                 newDir = Vector3.RotateTowards(transform.forward, Vector3.back, rotSpeed * Time.deltaTime, rotSpeed * Time.deltaTime);
             }
