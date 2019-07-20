@@ -29,4 +29,9 @@ public class VolumeControl : MonoBehaviour {
 		}
 			Debug.Log("SFX changed");
 	}
+
+    public void dropdownChanged(int value) {
+        Debug.Log("Value" + value);
+        QualitySettings.SetQualityLevel(value, true);
+    }
 }
