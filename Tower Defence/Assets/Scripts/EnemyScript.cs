@@ -61,7 +61,7 @@ public class EnemyScript : MonoBehaviour
             rotSpeed = 1.5f;
         }
         else {
-            rotSpeed = 3f + speed/10;
+            rotSpeed = speed / 3;
         }
 
         InvokeRepeating("CalculateDamageOverTimeEffects", 1, 2);
