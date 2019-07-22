@@ -28,6 +28,10 @@ public class GameManagerScript : MonoBehaviour
     public GameObject enemy1;
     public GameObject enemy2;
     public GameObject enemy3;
+    public GameObject enemy4;
+    public GameObject enemy5;
+    public GameObject enemy6;
+    public GameObject enemy7Bumblebee;
 
     public AudioClip textPhaseAnnounce;
     public static int moneyPerTurn = 1;
@@ -261,8 +265,24 @@ public class GameManagerScript : MonoBehaviour
                     spawnable = enemy2; //ladybug
                     sleep = 600f;
                 }
-                            else if (listOfEnemies[spawnProgress].getEnemyNumber() == 3) {
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 3) {
                     spawnable = enemy3; //beetle
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 4) {
+                    spawnable = enemy4; //fly elite
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 5) {
+                    spawnable = enemy5; //ladybug elite
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 6) {
+                    spawnable = enemy6; //beetle
+                    sleep = 600f;
+                }
+                else if (listOfEnemies[spawnProgress].getEnemyNumber() == 7) {
+                    spawnable = enemy7Bumblebee; //bumblebee
                     sleep = 600f;
                 }
 
@@ -276,7 +296,8 @@ public class GameManagerScript : MonoBehaviour
         //HighScores :
         //2.7 Mikko - Wave 17 - vaikeus 2f
         if (gamePhase.Equals("Attack")){
-            sleep -= (100 + (wave * wave * 2f)) * Time.deltaTime;
+            //sleep -= (100 + (wave * wave * 2f)) * Time.deltaTime; //19.7 asti
+            sleep -= (100 + (wave * wave)) * Time.deltaTime;
         }
         
         //Check for wave end condition
@@ -284,7 +305,20 @@ public class GameManagerScript : MonoBehaviour
 
             spawnProgress = 0;  //new spawnsystem
             //for (int i = 0; i < wave ;i++) { //new spawnsystem
-                listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
+            EnemySpawnData newEnemy = new EnemySpawnData(wave + 1);
+
+            //If new enemy is Beetle, insert it to beginnig of list. Else add to end
+            if (newEnemy.getEnemyNumber() == 3) {
+                listOfEnemies.Insert(0, newEnemy);
+            }
+            else {
+                listOfEnemies.Add(newEnemy);
+            }
+            //listOfEnemies.Add(new EnemySpawnData(wave + 1)); //new spawnsystem
+            //Enemy roster maximum size
+            //if (listOfEnemies.Count > 20) {
+            //    listOfEnemies.RemoveAt(0);
+            //}
             //} //new spawnsystem
 
             gamePhase = "Build";
@@ -296,7 +330,7 @@ public class GameManagerScript : MonoBehaviour
             //money += 50;
             buildableTowers += 1;
             money += 1;
-            Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
+            //Debug.Log("Mustring : " + musteringPoints + "    Wave : " + wave);
             TileScript.cursorActive = true;
 
             GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
@@ -472,15 +506,32 @@ public class EnemySpawnData {
         if (maxEnemyMod > 80) {
             maxEnemyMod = 80;
         }
-        int enemyRoll = Random.Range(1, 20 + maxEnemyMod);
-        if (enemyRoll >= 1 && enemyRoll <= 9) {
+        int enemyRoll = Random.Range(1 + maxEnemyMod, 20 + maxEnemyMod);  //1,20+maxenemymod
+        Debug.Log("Enemy Rolled : " +enemyRoll);
+        if (enemyRoll >= 1 && enemyRoll <= 9) { //fly
             enemyType = 1;
         }
-        else if (enemyRoll >= 10 && enemyRoll <= 20) {
+        else if (enemyRoll >= 10 && enemyRoll <= 20) {  //ladybug
             enemyType = 2;
         }
-        else if (enemyRoll >= 10 && enemyRoll <= 100) {
-            enemyType = 3;
+        else if (enemyRoll >= 21 && enemyRoll <= 30) {  //beetle & bumblebee
+            int rnd = Random.Range(0, 2);
+            if (rnd == 0) {
+                enemyType = 3;
+            }
+            else {
+                enemyType = 7;
+            }
+        }
+        //else if (enemyRoll >= 31 && enemyRoll <= 40) {
+        //    enemyType = 7;  //bumblebee
+        //}
+        else {                                      //elite CAN spawn in round 11
+            enemyType = Random.Range(4,7);
+        }
+
+        if (enemyType >= 8) {
+            Debug.Log("SOOOOS!!!! ERROR in enemyspawning");
         }
     }
 

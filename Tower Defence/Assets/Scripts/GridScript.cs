@@ -62,7 +62,7 @@ public class GridScript : MonoBehaviour
     public void spawnObstacles() {
 
         //Generate nonbuildable tiles
-        int rounds = 10;
+        int rounds = 11;
         for (int i = 0; i < rounds; i++) {
             int rndTile = Random.Range(0, 100);
             GameObject spawnTo = tiles[rndTile];
@@ -76,6 +76,7 @@ public class GridScript : MonoBehaviour
         }
 
         //Generate Occupied tiles
+        rounds = 9;
         for (int i = 0; i < rounds; i++) {
             int rndTile = Random.Range(0, 100);
             GameObject spawnTo = tiles[rndTile];
