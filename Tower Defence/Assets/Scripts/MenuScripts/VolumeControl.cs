@@ -10,7 +10,7 @@ public class VolumeControl : MonoBehaviour {
 
 	void Start(){
 		SFXvolume.value = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
-		Musicvolume.value = PlayerPrefs.GetFloat("Musicvolume", 0.35f);
+		Musicvolume.value = PlayerPrefs.GetFloat("Musicvolume", 0.5f);
 
 		SFXvolume.onValueChanged.AddListener(delegate {SFXValueChangeCheck(); });
 	}
