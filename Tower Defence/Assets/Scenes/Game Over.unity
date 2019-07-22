@@ -2266,7 +2266,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   expCounter: {fileID: 1925080751}
-  animTime: 1.5
+  animTime: 0.5
 --- !u!1 &2115669541
 GameObject:
   m_ObjectHideFlags: 0
