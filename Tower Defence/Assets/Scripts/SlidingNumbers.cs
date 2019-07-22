@@ -11,22 +11,15 @@ public class SlidingNumbers : MonoBehaviour
     private float initialNumber;
     private float currentNumber;
     private bool startCount;
-    private bool audioplaying;
-    public AudioSource aud;
-
-    void Start(){
-        audioplaying = false;
-    }
 
     void Update(){
         if(currentNumber != desiredNumber && startCount){
-            startPlayingMusic();
+            // startPlayingMusic();
             if(initialNumber < desiredNumber){
                 currentNumber += (animTime * Time.deltaTime) * (desiredNumber - initialNumber);
                 if(currentNumber >= desiredNumber){
                     currentNumber = desiredNumber;
-                    audioplaying = true;
-                    stopPlayingMusic();
+                    transform.parent.GetComponent<AudioSource>().Stop();
                     setCountBool(false);
                 }
             }
@@ -34,8 +27,7 @@ public class SlidingNumbers : MonoBehaviour
                 currentNumber -= (animTime * Time.deltaTime) * (initialNumber - desiredNumber);
                 if(currentNumber <= desiredNumber){
                     currentNumber = desiredNumber;
-                    audioplaying = true;
-                    stopPlayingMusic();
+                    transform.parent.GetComponent<AudioSource>().Stop();
                     setCountBool(false);
                 }
             }
@@ -64,14 +56,5 @@ public class SlidingNumbers : MonoBehaviour
 
     public bool getCountBool(){
         return startCount;
-    }
-
-    public void startPlayingMusic(){
-        aud.volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
-        aud.Play();
-    }
-
-    public void stopPlayingMusic(){
-        aud.Stop();
     }
 }

@@ -21,6 +21,8 @@ public class DataController : MonoBehaviour
         // Retrieve the name of this scene.s
         string sceneName = currentScene.name;
 
+        expPanel.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+
         if(sceneName.Equals("Main Menu")){
             initHSpanel();
         }
@@ -60,7 +62,6 @@ public class DataController : MonoBehaviour
                     if(PlayerPrefs.HasKey("top2")){
                         SavePlayerProgress("top3", PlayerPrefs.GetInt("top2"));
                         PlayerPrefs.SetString("top3Date", PlayerPrefs.GetString("top2Date"));
-                        Debug.Log("top2 siirto -> 3");
                     }
                     SavePlayerProgress("top2", newScore);
                     PlayerPrefs.SetString("top2Date", System.DateTime.Now.ToString("dd/MM/yyyy"));
@@ -134,25 +135,22 @@ public class DataController : MonoBehaviour
         }
     }
 
-    //------------------------------WAIT TEST------------------------------------------------
     public void startRoundXPCount(int roundXP){
+        expPanel.GetComponent<AudioSource>().Play();
         expPanel.transform.GetChild(1).GetComponent<SlidingNumbers>().setCountNumbers(0, (PlayerPrefs.GetInt("Experience", 0) - roundXP));
         expPanel.transform.GetChild(1).transform.GetComponent<SlidingNumbers>().setCountBool(true);
-        Debug.Log("Lasken round XP");
     }
 
     public void startallXPCount(int roundXP){
+        expPanel.GetComponent<AudioSource>().Play();
         expPanel.transform.GetChild(0).GetComponent<SlidingNumbers>().setCountNumbers(roundXP, PlayerPrefs.GetInt("Experience", 0));
         expPanel.transform.GetChild(0).transform.GetComponent<SlidingNumbers>().setCountBool(true);
-        Debug.Log("Lasken kaikki XP");
     }
 
     IEnumerator startXPcounterRoutine(int a){
         startRoundXPCount(a);
         //wait first xp counter
-        Debug.Log("Odotan 4 sec");
-        yield return new WaitForSeconds(2);
-        Debug.Log("Odotettut");
+        yield return new WaitForSeconds(3);
         startallXPCount(a);
     }
 
