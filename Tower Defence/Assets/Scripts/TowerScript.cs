@@ -180,16 +180,18 @@ public class TowerScript : MonoBehaviour
         // Debug.Log(this + " Bang! " + target);
         reloadTimer = 100f;
         drawBullet();
+        Color debugColor = Color.white;
 
         int dmgToDeal = attackDMG;
         if (Random.Range(1,101) < critical) {
             float dmg = attackDMG * (2 + (criticalDamageBonusModifier /4));
             dmgToDeal = (int) dmg;
+            debugColor = Color.red;
         }
 
         Instantiate(shootSoundGameObject, transform.position, transform.rotation);
 
-        Color debugColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));  //DEBUG COLOR to see what tower does what
+        //debugColor = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));  //DEBUG COLOR to see what tower does what
 
         target.GetComponent<EnemyScript>().takeDMG(dmgToDeal, areaOfEffectRadius, poison, debugColor);
         drawDebugLine();
