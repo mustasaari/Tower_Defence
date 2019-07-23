@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class MusicVolume : MonoBehaviour {
 
-	void Update () {
+
+    void Start() {
 		GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Musicvolume");
+	}
+
+	void Update () {
+		//GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("Musicvolume");
 	}
 }
