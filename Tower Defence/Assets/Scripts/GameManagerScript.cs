@@ -148,6 +148,7 @@ public class GameManagerScript : MonoBehaviour
                 foreach (AudioSource audioS in allAudioSources) {
                     audioS.Pause(); // ???
                 }
+                GameObject.Find("MusicPlayer").GetComponent<AudioSource>().UnPause();
             }
         }
         if (Input.GetKeyDown(KeyCode.Return)) {
@@ -194,6 +195,7 @@ public class GameManagerScript : MonoBehaviour
             musteringPoints = 5 + (wave * wave);
             Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
             uiCanvas.GetComponent<CanvasScript>().setAttackPhase(true);
+            GameObject.Find("MusicPlayer").GetComponent<MusicPlayerScript>().playAttackMusic();
         }
     }
 
@@ -345,6 +347,7 @@ public class GameManagerScript : MonoBehaviour
             uiCanvas.GetComponent<CanvasScript>().updateWave(wave);
             uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
             uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+            GameObject.Find("MusicPlayer").GetComponent<MusicPlayerScript>().playBuildMusic();
             setGameSpeed(1);
 
             //update spawnpoint

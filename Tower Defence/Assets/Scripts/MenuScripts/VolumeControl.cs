@@ -13,15 +13,15 @@ public class VolumeControl : MonoBehaviour {
 		Musicvolume.value = PlayerPrefs.GetFloat("Musicvolume", 0.5f);
 
 		SFXvolume.onValueChanged.AddListener(delegate {SFXValueChangeCheck(); });
+		Musicvolume.onValueChanged.AddListener(delegate {MusicValueChangeCheck(); });
 	}
 
 	void Update (){
-		PlayerPrefs.SetFloat("SFXvolume", SFXvolume.value);
-		PlayerPrefs.SetFloat("Musicvolume", Musicvolume.value);
 		PlayerPrefs.Save();
 	}
 
 	public void SFXValueChangeCheck() {
+		PlayerPrefs.SetFloat("SFXvolume", SFXvolume.value);
 		if (!GetComponent<AudioSource>().isPlaying ) {
 			PlayerPrefs.SetFloat("SFXvolume", SFXvolume.value);
 			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
@@ -34,4 +34,9 @@ public class VolumeControl : MonoBehaviour {
         Debug.Log("Value" + value);
         QualitySettings.SetQualityLevel(value, true);
     }
+
+	public void MusicValueChangeCheck() {
+		PlayerPrefs.SetFloat("Musicvolume", Musicvolume.value);
+		GameObject.Find("MusicPlayer").GetComponent<MusicPlayerScript>().setMusicVolume(Musicvolume.value);
+	}
 }

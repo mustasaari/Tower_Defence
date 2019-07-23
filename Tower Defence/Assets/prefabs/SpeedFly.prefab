@@ -45,8 +45,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 3.1503139, z: 1.8109512}
-  m_Center: {x: 0, y: 2.2727904, z: -0.40547562}
+  m_Size: {x: 1, y: 3.1776848, z: 2.690979}
+  m_Center: {x: 0, y: 2.286476, z: 0.03453827}
 --- !u!114 &6427738172573618142
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -73,6 +73,10 @@ MonoBehaviour:
   poisonEffectPrefab: {fileID: 8005574675944053066, guid: 3ede5f1728e2b134ca101581d15117e6,
     type: 3}
   dmgText: {fileID: 1269665793904038872, guid: fce28f806a1371847abba128ca4d9f40, type: 3}
+  isEliteSpeedFly: 0
+  isEliteBumblebee: 0
+  isEliteLadybug: 0
+  isEliteBeetle: 0
   xp: 1
 --- !u!1001 &1972781430245615418
 PrefabInstance:
