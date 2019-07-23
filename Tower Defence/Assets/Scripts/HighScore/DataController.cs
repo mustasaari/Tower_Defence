@@ -5,8 +5,6 @@ using System.Collections;
 
 public class DataController : MonoBehaviour 
 {
-    // private PlayerProgress playerProgress;
-
     public GameObject hsPanel;
     public GameObject expPanel;
     private bool newHighScore;
@@ -20,9 +18,7 @@ public class DataController : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.s
         string sceneName = currentScene.name;
-
-        expPanel.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
-
+        
         if(sceneName.Equals("Main Menu")){
             initHSpanel();
         }
@@ -126,6 +122,8 @@ public class DataController : MonoBehaviour
         string sceneName = currentScene.name;
 
         if(sceneName.Equals("Game Over")){
+
+            expPanel.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
             //get all exp
             int a = PlayerPrefs.GetInt("Experience", 0);
             //set all exp + roundxp to prefs
