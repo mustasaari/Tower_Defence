@@ -121,7 +121,7 @@ public class DataController : MonoBehaviour
         // Retrieve the name of this scene.s
         string sceneName = currentScene.name;
 
-        if(sceneName.Equals("Game Over")){
+        if(sceneName.Equals("Game Over") && GameManagerScript.getExp() > 0){
 
             expPanel.GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
             //get all exp

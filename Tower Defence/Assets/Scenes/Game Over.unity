@@ -4245,7 +4245,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bbc4bc0aa1c02ce46b441993a7c00461, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -4257,7 +4257,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: nakyy jos ei toimi
+  m_Text: "N\xE4kyy jos Ei toimi"
 --- !u!222 &927871909
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8926,7 +8926,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bbc4bc0aa1c02ce46b441993a7c00461, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
@@ -8938,7 +8938,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: nakyy jos ei toimi
+  m_Text: "N\xE4kyy jos Ei toimi"
 --- !u!222 &1925080752
 CanvasRenderer:
   m_ObjectHideFlags: 0
