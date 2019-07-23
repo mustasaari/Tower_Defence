@@ -18,7 +18,7 @@ public class DataController : MonoBehaviour
         Scene currentScene = SceneManager.GetActiveScene();
         // Retrieve the name of this scene.s
         string sceneName = currentScene.name;
-        
+
         if(sceneName.Equals("Main Menu")){
             initHSpanel();
         }
@@ -91,14 +91,14 @@ public class DataController : MonoBehaviour
     }
 
     private void initHSpanel(){
-        hsPanel.transform.GetChild(0).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top1Date");
-        hsPanel.transform.GetChild(0).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top1").ToString();
+        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top1Date");
+        hsPanel.transform.GetChild(1).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top1").ToString();
 
-        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top2Date");
-        hsPanel.transform.GetChild(1).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top2").ToString();
+        hsPanel.transform.GetChild(2).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top2Date");
+        hsPanel.transform.GetChild(2).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top2").ToString();
 
-        hsPanel.transform.GetChild(2).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top3Date");
-        hsPanel.transform.GetChild(2).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top3").ToString();
+        hsPanel.transform.GetChild(3).GetChild(0).gameObject.GetComponent<Text>().text = PlayerPrefs.GetString("top3Date");
+        hsPanel.transform.GetChild(3).GetChild(1).gameObject.GetComponent<Text>().text = PlayerPrefs.GetInt("top3").ToString();
     }
 
     private void newHighScoreTrigger(){
