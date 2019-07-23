@@ -33537,12 +33537,12 @@ PrefabInstance:
         type: 3}
       propertyPath: SFXvolume
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1886676033}
     - target: {fileID: 8668885842559031162, guid: 3ec044aacc1f4cb499570ad4d2fe36b3,
         type: 3}
       propertyPath: Musicvolume
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1261757756}
     - target: {fileID: 8668885842559031141, guid: 3ec044aacc1f4cb499570ad4d2fe36b3,
         type: 3}
       propertyPath: m_LocalPosition.x
