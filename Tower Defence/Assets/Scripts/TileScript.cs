@@ -153,7 +153,7 @@ public class TileScript : MonoBehaviour
 			}
 
 			//childcount added to if-statemant because clicking occupied-mushroom-tile caused trying to open slotmachine
-			else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied")  && GameManagerScript.gamePhase.Equals("Build") && transform.childCount > 0 ) {
+			else if (Input.GetMouseButtonDown(0) && status.Equals("Occupied")  && GameManagerScript.gamePhase.Equals("Build") && transform.childCount > 0 && !EventSystem.current.IsPointerOverGameObject()) {
 				openSlotMachine();
 			}
 			else if (GameManagerScript.gamePhase.Equals("Attack") && status.Equals("Selected")){
