@@ -1742,7 +1742,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8907d8b78e577be4ebd8776b7b5276ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Ladybug
+  name: Ladybug Elite
   direction: 
   health: 80
   speed: 4
@@ -1757,6 +1757,7 @@ MonoBehaviour:
     type: 3}
   dmgText: {fileID: 1269665793904038872, guid: fce28f806a1371847abba128ca4d9f40, type: 3}
   isEliteSpeedFly: 0
+  isEliteBumblebee: 0
   isEliteLadybug: 1
   isEliteBeetle: 0
   xp: 3

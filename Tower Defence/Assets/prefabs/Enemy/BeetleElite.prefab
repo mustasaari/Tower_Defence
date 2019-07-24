@@ -269,7 +269,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00bee75662e19c8499edf9a8d9f894f9, type: 2}
+  - {fileID: 2100000, guid: 10c5b625780c0f141b35bcc0f582ae4a, type: 2}
   - {fileID: -239302050275881172, guid: 7f301b7a2b8c1be4889d7fc83c379fbf, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -737,7 +737,7 @@ Transform:
   m_GameObject: {fileID: 4842416158846953754}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 14.9, y: 0, z: -25.36}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0470889, y: 1.0470889, z: 1.0470889}
   m_Children:
   - {fileID: 4822263011762480540}
   m_Father: {fileID: 0}
@@ -768,7 +768,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8907d8b78e577be4ebd8776b7b5276ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Beetle
+  name: Beetle Elite
   direction: 
   health: 320
   speed: 4
@@ -783,6 +783,7 @@ MonoBehaviour:
     type: 3}
   dmgText: {fileID: 1269665793904038872, guid: fce28f806a1371847abba128ca4d9f40, type: 3}
   isEliteSpeedFly: 0
+  isEliteBumblebee: 0
   isEliteLadybug: 0
   isEliteBeetle: 1
   xp: 6
@@ -1166,7 +1167,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 00bee75662e19c8499edf9a8d9f894f9, type: 2}
+  - {fileID: 2100000, guid: 10c5b625780c0f141b35bcc0f582ae4a, type: 2}
   - {fileID: 2100000, guid: e709d8bfc13c4ba4798672e87a83ae26, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

@@ -1131,11 +1131,11 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 065c79c8853c7f64b874c7cb8afe1cb2, type: 2}
+  - {fileID: 2100000, guid: 005f1dd7f61d3e5468b91d03bf90a6e9, type: 2}
   - {fileID: -2244931677291714179, guid: 32f478c7ad6658c4e8c531b923083ecc, type: 3}
   - {fileID: 2100000, guid: 424759e92e3049d4ba7fc0861a623d14, type: 2}
-  - {fileID: 2100000, guid: eac2a893af17ce04c81902b484df270e, type: 2}
-  - {fileID: 2100000, guid: 00bee75662e19c8499edf9a8d9f894f9, type: 2}
+  - {fileID: 2100000, guid: e74fcea4f9e5d894e8034c558b89a804, type: 2}
+  - {fileID: 2100000, guid: dea86782485fe554582c8824bf247b4f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8907d8b78e577be4ebd8776b7b5276ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Speedfly
+  name: Speedfly Elite
   direction: 
   health: 40
   speed: 8

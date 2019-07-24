@@ -310,7 +310,7 @@ public class GameManagerScript : MonoBehaviour
             EnemySpawnData newEnemy = new EnemySpawnData(wave + 1);
 
             //If new enemy is Beetle, insert it to beginnig of list. Else add to end
-            if (newEnemy.getEnemyNumber() == 3) {
+            if (newEnemy.getEnemyNumber() == 3 || newEnemy.getEnemyNumber() == 6) {
                 listOfEnemies.Insert(0, newEnemy);
             }
             else {
