@@ -256,7 +256,7 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void updateUI() {
-        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nMoney per wave : " + moneyToSend +"\nAoE diameter : " +aoeToSend +"\nCritical : " +critToSend +"\n poison : " +poisonToSend;
+        GetComponentInChildren<TextMesh>().text = "Damage : " + (int)attackToSend + "\nSpeed : " + (int)attackSpeedToSend + "\nRange : " + (int)rangeToSend + "\nCoins per wave : " + moneyToSend +"\nExplosion diameter : " +aoeToSend +"\nCritical chance : " +critToSend +"\nPoison : " +poisonToSend;
         GameManagerScript.calculateIncomePerTurn();
     }
 
