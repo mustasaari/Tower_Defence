@@ -47,6 +47,8 @@ public class ShopScript : MonoBehaviour
         transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Tower speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + ((bonusSpeedLevel * bonusSpeedLevel + 1) *1000) +" xp  ( +1 )";
         //tower bonus range
         transform.GetChild(8).GetChild(1).gameObject.GetComponent<Text>().text = "Tower range bonus : +" +bonusRangeLevel +"\n Next level cost " + ((bonusRangeLevel * bonusRangeLevel + 1) *1000) +" xp  ( +1 )";
+
+        checkDisables();
     }
 
     // Update is called once per frame
@@ -76,6 +78,7 @@ public class ShopScript : MonoBehaviour
         else {
             Debug.Log("Not Enough Money");
         }
+        checkDisables();
     }
 
     public void buyMoney() {
@@ -95,6 +98,7 @@ public class ShopScript : MonoBehaviour
         else {
             Debug.Log("Not Enough Money");
         }
+        checkDisables();
     }
 
     public void returnToMainMenu() {
@@ -115,6 +119,7 @@ public class ShopScript : MonoBehaviour
             PlayerPrefs.SetInt("BonusCritDMG", criticalDamageLevel);
             PlayerPrefs.SetInt("Experience", xp);
         }
+        checkDisables();
     }
 
     public void buyDamage() {
@@ -131,6 +136,7 @@ public class ShopScript : MonoBehaviour
             PlayerPrefs.SetInt("BonusDamage", bonusDamageLevel);
             PlayerPrefs.SetInt("Experience", xp);
         }
+        checkDisables();
     }
 
     public void buySpeed() {
@@ -147,6 +153,7 @@ public class ShopScript : MonoBehaviour
             PlayerPrefs.SetInt("BonusSpeed", bonusSpeedLevel);
             PlayerPrefs.SetInt("Experience", xp);
         }
+        checkDisables();
     }
 
     public void buyRange() {
@@ -162,6 +169,28 @@ public class ShopScript : MonoBehaviour
 
             PlayerPrefs.SetInt("BonusRange", bonusRangeLevel);
             PlayerPrefs.SetInt("Experience", xp);
+        }
+        checkDisables();
+    }
+
+    public void checkDisables() {
+        if (xp < (lifeLevel+1) * 1000) {
+            transform.GetChild(3).GetChild(2).GetComponent<Button>().interactable = false;
+        }
+        if (xp < (moneyLevel+1) * 1000) {
+            transform.GetChild(4).GetChild(2).GetComponent<Button>().interactable = false;
+        }
+        if (xp < ((criticalDamageLevel+1)*(criticalDamageLevel + 1)) * 1000) {
+            transform.GetChild(5).GetChild(2).GetComponent<Button>().interactable = false;
+        }
+        if (xp < (bonusDamageLevel * bonusDamageLevel +1) *1000) {
+            transform.GetChild(6).GetChild(2).GetComponent<Button>().interactable = false;
+        }
+        if (xp < (bonusSpeedLevel * bonusSpeedLevel +1) *1000) {
+            transform.GetChild(7).GetChild(2).GetComponent<Button>().interactable = false;
+        }
+        if (xp < (bonusRangeLevel * bonusRangeLevel +1) * 1000) {
+            transform.GetChild(8).GetChild(2).GetComponent<Button>().interactable = false;
         }
     }
 }
