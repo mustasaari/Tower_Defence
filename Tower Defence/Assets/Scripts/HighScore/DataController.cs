@@ -103,7 +103,7 @@ public class DataController : MonoBehaviour
 
     private void newHighScoreTrigger(){
         hsPanel.SetActive(true);
-        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived "+ PlayerPrefs.GetInt("survivedWaves") +" waves.";
+        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived "+ (PlayerPrefs.GetInt("survivedWaves") - 1) +" waves.";
         hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
         newHighScore = false;
     }

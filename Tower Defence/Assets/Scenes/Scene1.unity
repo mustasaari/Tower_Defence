@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311912, g: 0.3807398, b: 0.3587271, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -28202,7 +28202,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1043669152}
         m_MethodName: dropdownChanged
         m_Mode: 0
         m_Arguments:
@@ -33551,6 +33551,11 @@ PrefabInstance:
       propertyPath: Musicvolume
       value: 
       objectReference: {fileID: 2035731096}
+    - target: {fileID: 8668885842559031162, guid: 3ec044aacc1f4cb499570ad4d2fe36b3,
+        type: 3}
+      propertyPath: grapQuality
+      value: 
+      objectReference: {fileID: 980300941}
     - target: {fileID: 8668885842559031141, guid: 3ec044aacc1f4cb499570ad4d2fe36b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -33608,6 +33613,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ec044aacc1f4cb499570ad4d2fe36b3, type: 3}
+--- !u!114 &1043669152 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8668885842559031162, guid: 3ec044aacc1f4cb499570ad4d2fe36b3,
+    type: 3}
+  m_PrefabInstance: {fileID: 1043669151}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 429809756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6620f824feff2824ea38e513b8e41d43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1044173436 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 89cefdbfd70e96243b3d12d25095aa26,

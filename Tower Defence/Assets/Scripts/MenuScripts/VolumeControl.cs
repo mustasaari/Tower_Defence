@@ -7,10 +7,12 @@ public class VolumeControl : MonoBehaviour {
 
 	public Slider SFXvolume;
 	public Slider Musicvolume;
+	public Dropdown grapQuality;
 
 	void Start(){
 		SFXvolume.value = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
 		Musicvolume.value = PlayerPrefs.GetFloat("Musicvolume", 0.5f);
+		grapQuality.value = QualitySettings.GetQualityLevel();
 
 		SFXvolume.onValueChanged.AddListener(delegate {SFXValueChangeCheck(); });
 		Musicvolume.onValueChanged.AddListener(delegate {MusicValueChangeCheck(); });
