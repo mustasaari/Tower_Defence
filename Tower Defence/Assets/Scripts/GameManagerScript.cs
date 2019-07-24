@@ -104,6 +104,7 @@ public class GameManagerScript : MonoBehaviour
             foreach (GameObject crystal in crystals) {
                 crystal.GetComponent<CrystalDestroyer>().destroyCrystal();
             }
+            GameObject.Find("MusicPlayer").GetComponent<MusicPlayerScript>().stopMusic();
         }
 
         if(Input.GetKeyDown(KeyCode.Alpha5)) {
