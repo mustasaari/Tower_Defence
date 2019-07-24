@@ -45,7 +45,7 @@ public class CanvasScript : MonoBehaviour
     }
     public void enablePauseObjects(bool b){
         transform.GetChild(9).gameObject.SetActive(b);  //PausePanel
-        // transform.GetChild(8).gameObject.SetActive(b);  //AlphaLayer
+        transform.GetChild(8).gameObject.SetActive(b);  //AlphaLayer
         if(GameManagerScript.getGamePhase().Equals("Build")){
             // transform.GetChild(7).gameObject.SetActive(!b);  //Launchwave
         }
