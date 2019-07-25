@@ -3255,6 +3255,7 @@ GameObject:
   - component: {fileID: 665761727}
   - component: {fileID: 665761726}
   - component: {fileID: 665761725}
+  - component: {fileID: 665761728}
   m_Layer: 5
   m_Name: Restart
   m_TagString: Untagged
@@ -3303,7 +3304,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -3375,6 +3376,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 665761723}
   m_CullTransparentMesh: 0
+--- !u!114 &665761728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665761723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff80c27f4f9af438d9ac5b2593196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: {fileID: 8300000, guid: 85227e10056aa6048aef3bfae2ce648d, type: 3}
 --- !u!1 &685878835
 GameObject:
   m_ObjectHideFlags: 0
@@ -6025,6 +6039,7 @@ GameObject:
   - component: {fileID: 1243119917}
   - component: {fileID: 1243119916}
   - component: {fileID: 1243119915}
+  - component: {fileID: 1243119918}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -6073,7 +6088,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6145,6 +6160,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243119913}
   m_CullTransparentMesh: 0
+--- !u!114 &1243119918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1243119913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff80c27f4f9af438d9ac5b2593196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: {fileID: 8300000, guid: 85227e10056aa6048aef3bfae2ce648d, type: 3}
 --- !u!1 &1249791169
 GameObject:
   m_ObjectHideFlags: 0
@@ -6669,6 +6697,7 @@ GameObject:
   - component: {fileID: 1400322291}
   - component: {fileID: 1400322290}
   - component: {fileID: 1400322289}
+  - component: {fileID: 1400322292}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -6717,7 +6746,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.6313726, g: 0.6313726, b: 0.6313726, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -6811,6 +6840,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400322287}
   m_CullTransparentMesh: 0
+--- !u!114 &1400322292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400322287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eff80c27f4f9af438d9ac5b2593196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseOverAudio: {fileID: 8300000, guid: 85227e10056aa6048aef3bfae2ce648d, type: 3}
 --- !u!1 &1411482101
 GameObject:
   m_ObjectHideFlags: 0
