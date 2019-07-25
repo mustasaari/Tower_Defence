@@ -23,7 +23,7 @@ public class MusicPlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void setMusicVolume(float vol) {
