@@ -8,6 +8,10 @@ public class VolumeControl : MonoBehaviour {
 	public Slider SFXvolume;
 	public Slider Musicvolume;
 	public Dropdown grapQuality;
+	public Dropdown resolutionDropdown;
+
+	Resolution[] resolutions;
+	List<string> dropdownItems;
 
 	void Start(){
 		SFXvolume.value = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
@@ -16,6 +20,14 @@ public class VolumeControl : MonoBehaviour {
 
 		SFXvolume.onValueChanged.AddListener(delegate {SFXValueChangeCheck(); });
 		Musicvolume.onValueChanged.AddListener(delegate {MusicValueChangeCheck(); });
+
+		resolutions = Screen.resolutions;
+		dropdownItems = new List<string>();
+
+		foreach (Resolution resolution in resolutions) {
+			dropdownItems.Add(resolution.width +" x " +resolution.height); 
+		}
+		resolutionDropdown.AddOptions(dropdownItems);
 	}
 
 	void Update (){
