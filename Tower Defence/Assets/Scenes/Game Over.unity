@@ -5185,7 +5185,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: round Exp
+  m_Text: Round Experience
 --- !u!222 &1091687170
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14338,7 +14338,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: All Exp
+  m_Text: All Experience
 --- !u!222 &2115669545
 CanvasRenderer:
   m_ObjectHideFlags: 0
