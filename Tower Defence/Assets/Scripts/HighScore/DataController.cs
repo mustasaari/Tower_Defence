@@ -87,7 +87,7 @@ public class DataController : MonoBehaviour
     private void SavePlayerProgress(string place, int score)
     {
         // eg. Save the value playerProgress.top1 to PlayerPrefs, with a key of "top1"
-        PlayerPrefs.SetInt(place, score);
+        PlayerPrefs.SetInt(place, score - 1);
     }
 
     private void initHSpanel(){
