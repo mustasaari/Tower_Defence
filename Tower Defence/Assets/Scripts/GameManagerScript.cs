@@ -83,7 +83,7 @@ public class GameManagerScript : MonoBehaviour
         if(leafHP == 0){
 
             leafHP--;
-
+            uiCanvas.GetComponent<CanvasScript>().gameOverDisable();
             if(transform.GetComponent<DataController>().checkIfNewHighScore(wave)){
                 transform.GetComponent<DataController>().setnewHSBool(true);
                 transform.GetComponent<DataController>().SubmitNewPlayerScore(wave);

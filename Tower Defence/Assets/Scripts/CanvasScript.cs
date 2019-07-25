@@ -92,4 +92,20 @@ public class CanvasScript : MonoBehaviour
         int select = Mathf.FloorToInt(b) - 1;
         transform.GetChild(11).GetChild(select).gameObject.GetComponent<Image>().color = Color.green;
     }
+
+    public void gameOverDisable(){
+        int speed = Mathf.FloorToInt(GameManagerScript.getDesiredGameSpeed()) - 1;
+
+        transform.GetChild(11).GetChild(0).gameObject.GetComponent<Button>().interactable = false;
+        transform.GetChild(11).GetChild(1).gameObject.GetComponent<Button>().interactable = false;
+        transform.GetChild(11).GetChild(2).gameObject.GetComponent<Button>().interactable = false;
+        transform.GetChild(11).GetChild(0).gameObject.GetComponent<Image>().color = Color.white;
+        transform.GetChild(11).GetChild(1).gameObject.GetComponent<Image>().color = Color.white;
+        transform.GetChild(11).GetChild(2).gameObject.GetComponent<Image>().color = Color.white;
+        transform.GetChild(11).GetChild(speed).gameObject.GetComponent<Image>().color = Color.green;
+
+        transform.GetChild(7).gameObject.GetComponent<Button>().interactable = false;
+        transform.GetChild(7).gameObject.GetComponent<Image>().color = Color.white;
+    
+    }
 }
