@@ -9,6 +9,7 @@ public class CanvasScript : MonoBehaviour
     private Text life;
     private Text money;
     private Text towers;
+    private Text income;
 
     // Start is called before the first frame update
     void Start()
@@ -17,11 +18,13 @@ public class CanvasScript : MonoBehaviour
         life = GameObject.Find("Life").GetComponent<Text>();
         money = GameObject.Find("Money").GetComponent<Text>();
         towers = GameObject.Find("Towers").GetComponent<Text>();
+        income = GameObject.Find("Income").GetComponent<Text>();
 
         wave.text= "" + GameManagerScript.getWave();
         life.text= "" + GameManagerScript.getLeafHP();
         money.text= "+1  " + GameManagerScript.getMoney();
         towers.text = "" + GameManagerScript.getTowers();
+        income.text = "1";
         
     }
 
@@ -38,7 +41,8 @@ public class CanvasScript : MonoBehaviour
         life.text= "" + l;
     }
     public void updateMoney(int m){
-        money.text= "+" +GameManagerScript.moneyPerTurn +"  " +m;
+        money.text= "" +m;
+        income.text = "inc " + GameManagerScript.moneyPerTurn;
     }
     public void updateTowers(int t){
         towers.text = "" + t;
