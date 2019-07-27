@@ -42,7 +42,7 @@ public class CanvasScript : MonoBehaviour
     }
     public void updateMoney(int m){
         money.text= "" +m;
-        income.text = "inc " + GameManagerScript.moneyPerTurn;
+        income.text = "+" + GameManagerScript.moneyPerTurn;
     }
     public void updateTowers(int t){
         towers.text = "" + t;
