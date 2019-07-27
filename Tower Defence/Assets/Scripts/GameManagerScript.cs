@@ -64,7 +64,7 @@ public class GameManagerScript : MonoBehaviour
         money = 10 + PlayerPrefs.GetInt("BonusMoney", 0);
         buildableTowers = 3;
         pauseToggle = false;
-        InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 2);
+        InvokeRepeating("CalculateActiveMinionsOnFieldInvokeRepeating", 1, 4);
         //ToastText.Instance.Show3DTextToast("Text Message", 10);
 
         activatedSpawns = new GameObject[10];
@@ -304,7 +304,7 @@ public class GameManagerScript : MonoBehaviour
         }
         
         //Check for wave end condition
-        if (gamePhase.Equals("Attack") && activeMinionsOnField == 0 && spawnProgress == listOfEnemies.Count) {
+        if (gamePhase.Equals("Attack") && activeMinionsOnField == 0 && spawnProgress == listOfEnemies.Count && leafHP > 0) {
 
             spawnProgress = 0;  //new spawnsystem
             //for (int i = 0; i < wave ;i++) { //new spawnsystem
