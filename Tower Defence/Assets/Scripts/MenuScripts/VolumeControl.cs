@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class VolumeControl : MonoBehaviour {
 
@@ -74,8 +75,14 @@ public class VolumeControl : MonoBehaviour {
 
 		//Debug.Log("Filtered Resolutions : " +filteredResolutions.Length);
 
-		resolutionDropdown.AddOptions(dropdownItems);
-		resolutionDropdown.value = currentResolutionSelection;
+		Scene currentScene = SceneManager.GetActiveScene();
+        // Retrieve the name of this scene.s
+        string sceneName = currentScene.name;
+
+        if(sceneName.Equals("Main Menu")){
+			resolutionDropdown.AddOptions(dropdownItems);
+			resolutionDropdown.value = currentResolutionSelection;
+		}
 	}
 
 	void Update (){

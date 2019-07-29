@@ -26,7 +26,7 @@ public class DataController : MonoBehaviour
             hsPanel.SetActive(true);
             hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
             hsPanel.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Game Over";
-            hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived to wave "+ (PlayerPrefs.GetInt("survivedWaves"));
+            hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived to wave "+ GameManagerScript.getWave();
             
             if(newHS){
                 setnewHSBool(false);
@@ -92,7 +92,7 @@ public class DataController : MonoBehaviour
     private void SavePlayerProgress(string place, int score)
     {
         // eg. Save the value playerProgress.top1 to PlayerPrefs, with a key of "top1"
-        PlayerPrefs.SetInt(place, score - 1);
+        PlayerPrefs.SetInt(place, score);
     }
 
     private void initHSpanel(){
