@@ -1568,8 +1568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -131.98277}
-  m_SizeDelta: {x: 659.9999, y: 143.96555}
+  m_AnchoredPosition: {x: 480, y: -132.53763}
+  m_SizeDelta: {x: 660, y: 145.07527}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &303190240
 MonoBehaviour:
@@ -1964,7 +1964,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: bbc4bc0aa1c02ce46b441993a7c00461, type: 3}
+    m_Font: {fileID: 12800000, guid: 276acad1b14254945bcf9afd3067c51e, type: 3}
     m_FontSize: 40
     m_FontStyle: 0
     m_BestFit: 0
@@ -1974,9 +1974,9 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: You Survived 0 waves and killed 0 enemies.
 --- !u!222 &373282173
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5097,8 +5097,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -260.93314}
-  m_SizeDelta: {x: 659.9999, y: 73.93516}
+  m_AnchoredPosition: {x: 480, y: -261.80646}
+  m_SizeDelta: {x: 660, y: 73.462364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1074466165
 CanvasRenderer:
@@ -6462,7 +6462,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Over!
+  m_Text: Game Over
 --- !u!222 &1307827786
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6722,8 +6722,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 479.99994, y: -371.8683}
-  m_SizeDelta: {x: 659.9999, y: 107.93516}
+  m_AnchoredPosition: {x: 480, y: -372.2688}
+  m_SizeDelta: {x: 660, y: 107.462364}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1400322289
 MonoBehaviour:

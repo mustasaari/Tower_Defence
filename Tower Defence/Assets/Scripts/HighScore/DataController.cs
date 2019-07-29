@@ -23,6 +23,11 @@ public class DataController : MonoBehaviour
             initHSpanel();
         }
         if(sceneName.Equals("Game Over")){
+            hsPanel.SetActive(true);
+            hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
+            hsPanel.transform.GetChild(0).gameObject.GetComponent<Text>().text = "Game Over";
+            hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived to wave "+ (PlayerPrefs.GetInt("survivedWaves"));
+            
             if(newHS){
                 setnewHSBool(false);
                 newHighScoreTrigger();
@@ -102,9 +107,7 @@ public class DataController : MonoBehaviour
     }
 
     private void newHighScoreTrigger(){
-        hsPanel.SetActive(true);
-        hsPanel.transform.GetChild(1).GetChild(0).gameObject.GetComponent<Text>().text = "You killed " + GameManagerScript.getKills() + " enemies and survived "+ (PlayerPrefs.GetInt("survivedWaves") - 1) +" waves.";
-        hsPanel.transform.parent.GetChild(0).gameObject.SetActive(false);
+        hsPanel.transform.GetChild(0).gameObject.GetComponent<Text>().text = "New Highscore!";
         newHighScore = false;
     }
 
