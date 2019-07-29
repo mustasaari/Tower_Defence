@@ -56,7 +56,7 @@ public class ShopScript : MonoBehaviour
     {
         //Delete all playerprefs
         if (Input.GetKeyDown(KeyCode.J)) {
-            Debug.Log("PlayerPrefs Deleted");
+            // Debug.Log("PlayerPrefs Deleted");
             PlayerPrefs.DeleteAll();
         }
     }
@@ -76,7 +76,7 @@ public class ShopScript : MonoBehaviour
             PlayerPrefs.SetInt("Experience", xp);
         }
         else {
-            Debug.Log("Not Enough Money");
+            // Debug.Log("Not Enough Money");
         }
         checkDisables();
     }
@@ -96,7 +96,7 @@ public class ShopScript : MonoBehaviour
             PlayerPrefs.SetInt("Experience", xp);
         }
         else {
-            Debug.Log("Not Enough Money");
+            // Debug.Log("Not Enough Money");
         }
         checkDisables();
     }

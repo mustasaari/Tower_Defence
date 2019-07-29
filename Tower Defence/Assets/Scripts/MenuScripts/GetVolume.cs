@@ -5,7 +5,7 @@ using UnityEngine;
 public class GetVolume : MonoBehaviour{
 
 	public static void Start () {
-		Debug.Log(PlayerPrefs.GetFloat("SFXvolume"));
-		Debug.Log(PlayerPrefs.GetFloat("Musicvolume"));
+		// Debug.Log(PlayerPrefs.GetFloat("SFXvolume"));
+		// Debug.Log(PlayerPrefs.GetFloat("Musicvolume"));
 	}
 }

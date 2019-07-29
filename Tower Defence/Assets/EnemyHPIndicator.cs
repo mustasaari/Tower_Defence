@@ -36,7 +36,7 @@ public class EnemyHPIndicator : MonoBehaviour
     }
 
     public void show(int hp, int maxhp, string name) {
-        Debug.Log("HP : " + hp);
+        // Debug.Log("HP : " + hp);
         transform.GetChild(1).gameObject.GetComponent<Text>().text = name + " : " +hp + " / " + maxhp +" hp";
         transform.GetChild(0).gameObject.transform.localScale = new Vector3( (float) hp / (float)maxhp * childxscale, childyscale, childzscale);
 

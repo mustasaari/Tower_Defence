@@ -81,7 +81,7 @@ public class EnemyScript : MonoBehaviour
 				//Debug.Log("Did Hit " +hit.transform.gameObject.name +"  " +direction);
 			}
 			calculator = 10f;
-            Debug.Log("Scanned");
+            // Debug.Log("Scanned");
 		}
 
 		calculator -= 25 * Time.deltaTime;

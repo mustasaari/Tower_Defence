@@ -156,7 +156,7 @@ public class GameManagerScript : MonoBehaviour
             startAttack();
         }
         spawnMinions();
-        Debug.Log(gamePhase);
+        // Debug.Log(gamePhase);
 
         if (Input.GetKeyDown(KeyCode.Alpha1)) {
             buildableTowers += 5;
@@ -170,7 +170,7 @@ public class GameManagerScript : MonoBehaviour
             PlayerPrefs.SetInt("Experience", xpMoney);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
+            // Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
         }
 
         if (!pauseToggle) {
@@ -194,7 +194,7 @@ public class GameManagerScript : MonoBehaviour
             sleep = 500;    //some delay before first minion comes
             //musteringPoints = 10 + (wave * (wave + wave + wave) );
             musteringPoints = 5 + (wave * wave);
-            Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
+            // Debug.Log("Mustering Points : " + musteringPoints + "   Wave is : " + wave);
             uiCanvas.GetComponent<CanvasScript>().setAttackPhase(true);
             GameObject.Find("MusicPlayer").GetComponent<MusicPlayerScript>().playAttackMusic();
         }
@@ -341,7 +341,7 @@ public class GameManagerScript : MonoBehaviour
             foreach (GameObject tower in towers) {
                 income += tower.GetComponent<TowerScript>().getMoneyProduction();
             }
-            Debug.Log("Towers found : " +towers.Length);
+            // Debug.Log("Towers found : " +towers.Length);
             money += income;
 
             uiCanvas.GetComponent<CanvasScript>().setAttackPhase(false);
@@ -474,7 +474,7 @@ public class GameManagerScript : MonoBehaviour
         foreach (GameObject tower in towers) {
             income += tower.GetComponent<TowerScript>().getMoneyProduction();
         }
-        Debug.Log("Towers found : " + towers.Length);
+        // Debug.Log("Towers found : " + towers.Length);
         moneyPerTurn = income + 1;
         uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
     }
@@ -511,7 +511,7 @@ public class EnemySpawnData {
             maxEnemyMod = 80;
         }
         int enemyRoll = Random.Range(1 + maxEnemyMod, 20 + maxEnemyMod);  //1,20+maxenemymod
-        Debug.Log("Enemy Rolled : " +enemyRoll);
+        // Debug.Log("Enemy Rolled : " +enemyRoll);
         if (enemyRoll >= 1 && enemyRoll <= 9) { //fly
             enemyType = 1;
         }
@@ -535,7 +535,7 @@ public class EnemySpawnData {
         }
 
         if (enemyType >= 8) {
-            Debug.Log("SOOOOS!!!! ERROR in enemyspawning");
+            // Debug.Log("SOOOOS!!!! ERROR in enemyspawning");
         }
     }
 

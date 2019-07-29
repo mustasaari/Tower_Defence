@@ -138,7 +138,7 @@ public class SlotMachineScript : MonoBehaviour
         //transform.GetChild(2).gameObject.GetComponent<SlotWheelScript>().startSpin();
         //transform.GetChild(3).gameObject.GetComponent<SlotWheelScript>().startSpin();
 
-        Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2]);
+        // Debug.Log("Slot machine result : " + wheels[0] + " " + wheels[1] + " " + wheels[2]);
         //towerToBeEdited.GetComponent<TowerScript>().setAttackDMG(10); //reset dmg to base
         applyResults();
         GameManagerScript.reduceMoney(rollCost);
@@ -275,7 +275,7 @@ public class SlotMachineScript : MonoBehaviour
     }
 
     public void lockPressed(int lck) {
-        Debug.Log("Lock " + lck + " pressed");
+        // Debug.Log("Lock " + lck + " pressed");
         if (lockedWheels[lck] == false ) {
             lockedWheels[lck] = true;
         }
@@ -287,7 +287,7 @@ public class SlotMachineScript : MonoBehaviour
 
     public void rollTheWheel() {
         if (GameManagerScript.getMoney() >= rollCost) {
-            Debug.Log("R key was pressed for reroll.");
+            // Debug.Log("R key was pressed for reroll.");
             if (transform.GetChild(1).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
                 transform.GetChild(2).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady() &&
                 transform.GetChild(3).gameObject.transform.GetComponent<SlotWheelScript>().getRotationReady()) {

@@ -45,7 +45,7 @@ public class VolumeControl : MonoBehaviour {
 		int calculator = 0;
 		List<Resolution> tempres = new List<Resolution>();
 
-		//Debug.Log("Original Resolutions : " +resolutions.Length);
+		// //Debug.Log("Original Resolutions : " +resolutions.Length);
 
 		dropdownItems.Add(resolutions[0].width + " x " +resolutions[0].height);
 		tempres.Add(resolutions[0]);
@@ -89,11 +89,11 @@ public class VolumeControl : MonoBehaviour {
 			GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
 			GetComponent<AudioSource>().Play();
 		}
-			Debug.Log("SFX changed");
+			// Debug.Log("SFX changed");
 	}
 
     public void dropdownChanged(int value) {
-        Debug.Log("Value" + value);
+        // Debug.Log("Value" + value);
         QualitySettings.SetQualityLevel(value, true);
     }
 

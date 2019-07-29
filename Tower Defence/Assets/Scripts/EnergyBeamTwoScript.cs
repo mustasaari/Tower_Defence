@@ -42,7 +42,7 @@ public class EnergyBeamTwoScript : MonoBehaviour
     }
 
     public void setTarget(GameObject targ) {
-        Debug.Log("YAYYYYYYYYYYYYYYYYYY");
+        // Debug.Log("YAYYYYYYYYYYYYYYYYYY");
         target = targ;
         destr = true;
         destr2 = true;
