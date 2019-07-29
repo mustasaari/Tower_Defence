@@ -1760,7 +1760,7 @@ MonoBehaviour:
   isEliteBumblebee: 0
   isEliteLadybug: 1
   isEliteBeetle: 0
-  xp: 3
+  xp: 7
 --- !u!1 &8847243284904507481
 GameObject:
   m_ObjectHideFlags: 0

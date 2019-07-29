@@ -42,7 +42,7 @@ public class ShopScript : MonoBehaviour
         //critical damage multiplier
         transform.GetChild(5).GetChild(1).gameObject.GetComponent<Text>().text = "Critical damage multiplier : " +( 2 + ((float)criticalDamageLevel/4 )) +"\n Next level cost " + ((criticalDamageLevel+1)*(criticalDamageLevel+1))*1000 +" xp  ( +0.25 )";
         //tower bonus damage
-        transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Tower damage bonus : +" +bonusDamageLevel +"\n Next level cost " + ((bonusDamageLevel * bonusDamageLevel + 1) *1000) +" xp  ( +1 )";
+        transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Tower damage bonus : +" +bonusDamageLevel +"\n Next level cost " + ((bonusDamageLevel * bonusDamageLevel + 1) *2000) +" xp  ( +1 )";
         //tower bonus speed
         transform.GetChild(7).GetChild(1).gameObject.GetComponent<Text>().text = "Tower speed bonus : +" +bonusSpeedLevel +"\n Next level cost " + ((bonusSpeedLevel * bonusSpeedLevel + 1) *1000) +" xp  ( +1 )";
         //tower bonus range
@@ -123,12 +123,12 @@ public class ShopScript : MonoBehaviour
     }
 
     public void buyDamage() {
-        int cost = (bonusDamageLevel * bonusDamageLevel +1) *1000;
+        int cost = (bonusDamageLevel * bonusDamageLevel +1) *2000;
 
         if (xp >= cost) {
             xp -= cost;
             bonusDamageLevel++;
-            cost = (bonusDamageLevel * bonusDamageLevel +1) *1000;
+            cost = (bonusDamageLevel * bonusDamageLevel +1) *2000;
 
             transform.GetChild(6).GetChild(1).gameObject.GetComponent<Text>().text = "Tower damage bonus : +" +bonusDamageLevel +"\n Next level cost " + cost +" xp  ( +1 )";
             transform.GetChild(2).gameObject.GetComponent<Text>().text = xp.ToString();
@@ -183,7 +183,7 @@ public class ShopScript : MonoBehaviour
         if (xp < ((criticalDamageLevel+1)*(criticalDamageLevel + 1)) * 1000) {
             transform.GetChild(5).GetChild(2).GetComponent<Button>().interactable = false;
         }
-        if (xp < (bonusDamageLevel * bonusDamageLevel +1) *1000) {
+        if (xp < (bonusDamageLevel * bonusDamageLevel +1) *2000) {
             transform.GetChild(6).GetChild(2).GetComponent<Button>().interactable = false;
         }
         if (xp < (bonusSpeedLevel * bonusSpeedLevel +1) *1000) {

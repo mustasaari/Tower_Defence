@@ -39,6 +39,8 @@ public class CanvasScript : MonoBehaviour
     }
     public void updateLife(int l){
         life.text= "" + l;
+        GetComponent<AudioSource>().volume = PlayerPrefs.GetFloat("SFXvolume", 0.5f);
+        GetComponent<AudioSource>().Play();
     }
     public void updateMoney(int m){
         money.text= "" +m;

@@ -1267,7 +1267,7 @@ MonoBehaviour:
   isEliteBumblebee: 0
   isEliteLadybug: 0
   isEliteBeetle: 0
-  xp: 1
+  xp: 7
 --- !u!135 &724805152658835654
 SphereCollider:
   m_ObjectHideFlags: 0

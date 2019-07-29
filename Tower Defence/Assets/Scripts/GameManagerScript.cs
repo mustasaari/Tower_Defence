@@ -371,8 +371,10 @@ public class GameManagerScript : MonoBehaviour
     } 
 
     public static void eatLeafHP() {   //player hitpoints
-        leafHP--;
-        uiCanvas.GetComponent<CanvasScript>().updateLife(leafHP);
+        if (leafHP > 0) {
+            leafHP--;
+            uiCanvas.GetComponent<CanvasScript>().updateLife(leafHP);
+        }
     }
 
     public static void removeMinionFromField() {
