@@ -16,7 +16,7 @@ public class IntroScript : MonoBehaviour
     {
         if (Input.anyKey) {
             Debug.Log("A key or mouse click has been detected");
-            SceneManager.LoadScene(1);
+            GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToLevel(1);
         }
     }
 }
