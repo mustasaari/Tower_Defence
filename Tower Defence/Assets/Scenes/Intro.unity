@@ -369,6 +369,7 @@ GameObject:
   m_Component:
   - component: {fileID: 750463509}
   - component: {fileID: 750463508}
+  - component: {fileID: 750463510}
   m_Layer: 0
   m_Name: InputDetector
   m_TagString: Untagged
@@ -402,6 +403,102 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &750463510
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750463507}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: b71ccfe82f266864bba0ca44d8059afd, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1731474851
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,22 +616,24 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958522444}
-  m_Text: "For ages our tribe has protected the cosmic crystals that\r\nkeeps the
-    wheels of great slot machine in motion.\r\n\r\nBut beneath the earth lives horde
-    of mechanical bugs that seek out\r\nto destroy and consume our precious cosmic
-    crystals.\r\n\r\nRecently our expedition team has found new crystal near the Crystal
-    Grove\r\nand bugs also drawn to its precence\r\n\r\nNow Supreme-King appoints
-    you to defend these crystals at any cost necessary."
+  m_Text: "For ages our tribe has protected the cosmic crystals that\r\nkeep the wheels
+    of the great slot machine in motion.\r\n\r\nBut beneath the earth lives a horde
+    of mechanical bugs, whose endless desire is\r\nto destroy and consume our precious
+    cosmic crystals.\r\n\r\nRecently our expedition crew found a new crystal cluster
+    near the Crystal Grove \r\nand according to our scouts' reports, the shimmer of
+    the crystals is already attracting the bugs.\r\n\r\nNow our Supreme-Ruler has
+    chosen you among the bravest of our tribe \r\nand appoints you to be the defender
+    of these crystals - at any cost necessary."
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 32
+  m_FontSize: 42
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 161e5efc4c9cdd446acebe8543b5a10d, type: 3}
+  m_Font: {fileID: 12800000, guid: a3b5a3b1e7e8f5545be4c6ce0a63afaa, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -555,7 +654,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 161e5efc4c9cdd446acebe8543b5a10d, type: 3}
+  - {fileID: 2100000, guid: a3b5a3b1e7e8f5545be4c6ce0a63afaa, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
