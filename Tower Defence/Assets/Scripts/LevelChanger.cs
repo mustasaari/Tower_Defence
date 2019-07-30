@@ -13,7 +13,7 @@ public class LevelChanger : MonoBehaviour {
 	public GameObject datacont;
 
 	public void FadeToNextLevel () {
-        FadeToLevel(2);
+        FadeToLevel(3);
 	}
 
 	public void FadeToLevel(int levelIndex) {
