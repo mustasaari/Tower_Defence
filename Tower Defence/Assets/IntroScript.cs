@@ -10,6 +10,7 @@ public class IntroScript : MonoBehaviour
     float volumeLevel;
     bool fadeToNextLevel;
     float sceneStartTime;
+    public float sceneEndTime;
 
     void Start()
     {
@@ -29,6 +30,11 @@ public class IntroScript : MonoBehaviour
             Debug.Log("A key or mouse click has been detected");
             GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToLevel(1);
             fadeToNextLevel = true;
+        }
+
+        if (Time.time - sceneStartTime > sceneEndTime) {
+            fadeToNextLevel = true;
+            GameObject.Find("LevelChanger").GetComponent<LevelChanger>().FadeToLevel(1);
         }
 
         if (fadeToNextLevel) {
