@@ -55,10 +55,10 @@ public class ShopScript : MonoBehaviour
     void Update()
     {
         //Delete all playerprefs
-        if (Input.GetKeyDown(KeyCode.J)) {
-            // Debug.Log("PlayerPrefs Deleted");
-            PlayerPrefs.DeleteAll();
-        }
+        // if (Input.GetKeyDown(KeyCode.J)) {
+        //     Debug.Log("PlayerPrefs Deleted");
+        //     PlayerPrefs.DeleteAll();
+        // }
     }
 
     public void buyLife() {

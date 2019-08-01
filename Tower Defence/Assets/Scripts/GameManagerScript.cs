@@ -107,24 +107,24 @@ public class GameManagerScript : MonoBehaviour
             GameObject.Find("MusicPlayer").GetComponent<MusicPlayerScript>().stopMusic();
         }
 
-        if(Input.GetKeyDown(KeyCode.Alpha5)) {
-            QualitySettings.SetQualityLevel(0, true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha6)) {
-            QualitySettings.SetQualityLevel(1, true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7)) {
-            QualitySettings.SetQualityLevel(2, true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha8)) {
-            QualitySettings.SetQualityLevel(3, true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha9)) {
-            QualitySettings.SetQualityLevel(4, true);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha0)) {
-            QualitySettings.SetQualityLevel(5, true);
-        }
+        // if(Input.GetKeyDown(KeyCode.Alpha5)) {
+        //     QualitySettings.SetQualityLevel(0, true);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha6)) {
+        //     QualitySettings.SetQualityLevel(1, true);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha7)) {
+        //     QualitySettings.SetQualityLevel(2, true);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha8)) {
+        //     QualitySettings.SetQualityLevel(3, true);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha9)) {
+        //     QualitySettings.SetQualityLevel(4, true);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha0)) {
+        //     QualitySettings.SetQualityLevel(5, true);
+        // }
 
 
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -158,20 +158,20 @@ public class GameManagerScript : MonoBehaviour
         spawnMinions();
         // Debug.Log(gamePhase);
 
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            buildableTowers += 5;
-            money += 10;
-            uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
-            uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
+        // if (Input.GetKeyDown(KeyCode.Alpha1)) {
+        //     buildableTowers += 5;
+        //     money += 10;
+        //     uiCanvas.GetComponent<CanvasScript>().updateMoney(money);
+        //     uiCanvas.GetComponent<CanvasScript>().updateTowers(buildableTowers);
 
-            //add also experiance
-            int xpMoney = PlayerPrefs.GetInt("Experience", 0);
-            xpMoney += 1000;
-            PlayerPrefs.SetInt("Experience", xpMoney);
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha2)) {
-            // Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
-        }
+        //     //add also experiance
+        //     int xpMoney = PlayerPrefs.GetInt("Experience", 0);
+        //     xpMoney += 1000;
+        //     PlayerPrefs.SetInt("Experience", xpMoney);
+        // }
+        // if (Input.GetKeyDown(KeyCode.Alpha2)) {
+        //     // Debug.Log("Active minions on field : " + activeMinionsOnField + "  Game phase : " + gamePhase + "  Mustering Points : " + musteringPoints);
+        // }
 
         if (!pauseToggle) {
             checkDesiredGameSpeed();
